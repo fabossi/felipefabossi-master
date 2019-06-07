@@ -1,0 +1,41 @@
+@import "../abstracts/variables.component.scss";
+@import "../abstracts/mixins.component";
+
+html {
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //I want 1rem to be = 9px so, 9/16px = 56.25%;
+  }
+  @include respond(tab-port) {
+    font-size: 50%; //I want 1rem to be = 8px so, 8/16px = 50%;
+  }
+  @include respond(big-desk) {
+    font-size: 75%; //I want 1rem to be = 12px so, 12/16px = 75%
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  box-sizing: border-box;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-grey-dark-3;
+  color: $color-white;
+}
