@@ -1,0 +1,26 @@
+@import "../../sass/main.component.scss";
+
+:host {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+  height: 3rem;
+  left: 56.6%;
+  top: 5.5%;
+  flex-wrap: wrap;
+}
+
+a {
+  backface-visibility: hidden;
+  font-size: 1.4rem;
+  color: $color-white;
+  cursor: pointer;
+  border-bottom: 0rem solid transparent;
+  transition: border ease-in 0.24s;
+  text-decoration: none;
+  &:hover {
+    border-bottom: 0.2rem solid $color-white;
+  }
+}
