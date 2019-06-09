@@ -8,7 +8,7 @@ const routes: Routes = [
     component: HeaderSecondaryComponent
   },
   {
-    path: 'pages', loadChildren: () => import(`./pages/pages.module`).then(m => m.PagesModuleComponent)
+    path: 'page', loadChildren: () => import(`./pages/pages.module`).then(m => m.PagesModuleComponent)
   }
 ];
 

@@ -1,4 +1,5 @@
 @import "../../../sass/main.component.scss";
+
 :host {
   position: relative;
   width: 100%;
@@ -14,6 +15,7 @@ p {
   left: 63%;
   top: 62%;
   font-weight: 700;
+  max-width: 32%;
 }
 
 h1 {
@@ -21,6 +23,7 @@ h1 {
   left: 67%;
   top: 63%;
   color: $color-whiter;
+  max-width: 32%;
 }
 
 a {
@@ -45,4 +48,5 @@ a {
   position: absolute;
   height: 270px;
   top: 7%;
+  // right: .3rem;
 }

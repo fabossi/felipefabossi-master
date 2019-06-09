@@ -12,6 +12,7 @@ import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { VideoBoxComponent } from './header-secondary/video-box/video-box.component';
 import { PageNotFoundComponent } from './error-pages/page-not-found/page-not-found.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PageNotFoundComponent } from './error-pages/page-not-found/page-not-fou
     SandwichMenuComponent,
     HeaderMenuComponent,
     VideoBoxComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ChatbotComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
