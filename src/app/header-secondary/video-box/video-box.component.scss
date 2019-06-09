@@ -1,0 +1,27 @@
+@import "../../../sass/main.component.scss";
+
+:host {
+  position: absolute;
+  width: 45%;
+  height: 40%;
+  border: 0.1rem solid white;
+  top: 33%;
+  left: 6.75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.description {
+  border-top: 0.1rem solid $color-white;
+  align-self: flex-end;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  position: absolute;
+  &__text {
+    font-size: 1.4rem;
+    color: $color-white;
+  }
+}

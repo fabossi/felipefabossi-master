@@ -11,6 +11,11 @@ import { SandwichMenuComponent } from "./sandwich-menu/sandwich-menu.component";
 import { MywebsitePageComponent } from './pages/mywebsite-page/mywebsite-page.component';
 import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
+import { VideoBoxComponent } from './header-secondary/video-box/video-box.component';
+import { PageNotFoundComponent } from './error-pages/page-not-found/page-not-found.component';
+import { ManutComponent } from './error-pages/manut/manut.component';
+import { CareerPageComponent } from './pages/career-page/career-page.component';
+import { AboutMePageComponent } from './pages/about-me-page/about-me-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import { HeaderMenuComponent } from './header-menu/header-menu.component';
     ButtonSignupComponent,
     SandwichMenuComponent,
     MywebsitePageComponent,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+    VideoBoxComponent,
+    PageNotFoundComponent,
+    ManutComponent,
+    CareerPageComponent,
+    AboutMePageComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

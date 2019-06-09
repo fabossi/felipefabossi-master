@@ -1,0 +1,44 @@
+@import "../../../sass/main.component.scss";
+:host {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../assets/felipefabossi-min.jpg");
+  background-size: cover;
+}
+
+p {
+  position: relative;
+  font-size: 3rem;
+  color: $color-white;
+  left: 63%;
+  top: 62%;
+  font-weight: 700;
+}
+
+h1 {
+  position: relative;
+  left: 67%;
+  top: 63%;
+  color: $color-whiter;
+}
+
+a {
+  position: absolute;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: $color-whiter;
+  border: 0.1rem solid $color-white;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  left: 78%;
+  top: 77%;
+  width: 10rem;
+  text-align: center;
+}
+
+.astronaut {
+  position: absolute;
+  height: 300px;
+  top: 7%;
+}
