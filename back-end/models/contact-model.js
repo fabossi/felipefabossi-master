@@ -8,4 +8,4 @@ const contactSchema = mongoose.Schema({
   message: { type: String, require: true }
 });
 
-module.exports = mongoose.model("contact", contactSchema);
+module.exports = mongoose.model("Contact", contactSchema);

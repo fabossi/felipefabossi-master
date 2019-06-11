@@ -8,7 +8,7 @@ const certFileBuff = fs.readFileSync("./file-terc/cert.pem");
 const contactRoutes = require('./routes/contact-route');
 
 const app = express();
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 3000);
 
 
 app.use(cors());
@@ -35,6 +35,9 @@ app.use("/", express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
+
+app.use('/api/sendContact/', contactRoutes);
 
 app.listen(app.get('port'), '0.0.0.0', () => {
   console.log(`Server starting on => ${app.get('port')} `);
