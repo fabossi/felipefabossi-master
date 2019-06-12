@@ -3,15 +3,16 @@ const Contact = require('../models/contact-model');
 
 const router = express.Router();
 
-router.post((req, res, next) => {
-  const contact = new Contact({
-    name: req.body.name,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    message: req.body.message,
-  });
-  console.log(contact);
-  contact
+exports.postContact= () => {
+  router.post((req, res, next) => {
+    const contact = new Contact({
+      name: req.body.name,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      message: req.body.message,
+    });
+    console.log(contact);
+    contact
     .save()
     .then(result => {
       res.status(201).json({
@@ -27,5 +28,7 @@ router.post((req, res, next) => {
       });
     })
     .catch(error => console.log(error));
+  }
+  );
 }
-);
+  
