@@ -18,11 +18,8 @@ exports.postContact = (req, res) => {
       .then(result => {
         if (result) {
           console.log(result);
-          resolve(result)
           res.send(result);
-          res.status(200).json({
-            message: 'oi, funciona'
-          });
+          resolve(result)
         }
       })
       .catch(error => {
