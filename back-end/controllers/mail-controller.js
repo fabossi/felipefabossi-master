@@ -471,7 +471,7 @@ exports.sendEmail = (email, message) => {
 </table>
 <div align="center" class="img-container center fixedwidth" style="padding-right: 20px;padding-left: 20px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 20px;padding-left: 20px;" align="center"><![endif]-->
-<div style="font-size:1px;line-height:20px"> </div><a href="www.felipefabossi.com" target="_blank"> <img align="center" alt="rocket" border="0" class="center fixedwidth" src="http://s3.us-south.cloud-object-storage.appdomain.cloud/fabossi-email-site/rocket-bg.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 573px; display: block;" title="rocket" width="573"/></a>
+<div style="font-size:1px;line-height:20px"> </div><a href="www.felipefabossi.com" target="_blank"> <img align="center" border="0" class="center fixedwidth" src="http://s3.us-south.cloud-object-storage.appdomain.cloud/fabossi-email-site/rocket-bg.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 573px; display: block;" title="rocket" width="573"/></a>
 <div style="font-size:1px;line-height:20px"> </div>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
