@@ -1,7 +1,6 @@
-const express = require('express');
+// const express = require('express');
 const Contact = require('../models/contact-model');
-
-const router = express.Router();
+const mail_controller = require('../controllers/mail-controller');
 
 exports.postContact = (req, res) => {
   console.log(req.body.name);
@@ -21,6 +20,7 @@ exports.postContact = (req, res) => {
           res.send(result);
           resolve(result)
         }
+        mail_controller.sendEmail(req.body.email, req.body.message);
       })
       .catch(error => {
         console.log(error);
