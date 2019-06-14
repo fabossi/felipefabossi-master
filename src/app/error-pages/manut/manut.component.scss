@@ -16,6 +16,10 @@ p {
   top: 62%;
   font-weight: 700;
   max-width: 32%;
+  @include respond(phone) {
+    left: 42%;
+    max-width: 53%;
+  }
 }
 
 h1 {
@@ -24,6 +28,10 @@ h1 {
   top: 63%;
   color: $color-whiter;
   max-width: 32%;
+  @include respond(phone) {
+    left: 51%;
+    max-width: 43%;
+  }
 }
 
 a {
@@ -42,6 +50,9 @@ a {
   &:hover {
     background-color: rgba(255, 255, 255, 0.178);
   }
+  @include respond(phone) {
+    left: 77%;
+  }
 }
 
 .astronaut {
@@ -49,4 +60,7 @@ a {
   height: 270px;
   top: 7%;
   // right: .3rem;
+  @include respond(phone) {
+    height: 164px;
+  }
 }
