@@ -10,6 +10,10 @@
   left: 56.6%;
   top: 5.5%;
   flex-wrap: wrap;
+  @include respond(phone) {
+    width: 54%;
+    left: 43.6%;
+  }
 }
 
 a {

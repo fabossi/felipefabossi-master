@@ -1,4 +1,5 @@
-exports.sendEmail = (email, message) => {
+require('dotenv').config()
+exports.sendEmail = (email) => {
   "use strict";
   const nodemailer = require("nodemailer");
 
@@ -7,7 +8,6 @@ exports.sendEmail = (email, message) => {
 
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
-    // let testAccount = await nodemailer.createTestAccount();
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -16,8 +16,8 @@ exports.sendEmail = (email, message) => {
       requireTLS: true,
       port: 587,
       auth: {
-        user: 'fabossif@gmail.com', // generated ethereal user
-        pass: 'BrennerMalie95785' // generated ethereal password
+        user: process.env.user_email, // generated ethereal user
+        pass: process.env.user_password // generated ethereal password
       }
     });
 
@@ -26,7 +26,7 @@ exports.sendEmail = (email, message) => {
       from: 'fabossif@gmail.com', // sender address
       to: `${email}`, // list of receivers
       subject: "Felipe Fabossi WebSite Contact.", // Subject line
-      text: `${message}`, // plain text body
+      text: 'thank you!', // plain text body
       html: `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

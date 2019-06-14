@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'felipefabossiSite';
+
+  hideToMobile = false;
+
+  constructor() {
+    if (window.screen.width <= 600) {
+      this.hideToMobile = true;
+    }
+  }
+
+  onResize(e) {
+    if (e.target.innerWidth > 600) {
+      this.hideToMobile = false;
+    } else {
+      this.hideToMobile = true;
+    }
+  }
 }

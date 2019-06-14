@@ -14,24 +14,24 @@
           </div>
           <div class="header-image__container-image__img__form-signup__container-inputs">
             <div class="header-image__container-image__img__form-signup__container-inputs__form__group">
-              <input [(ngModel)]='nameTextInput' name='nameTextInput'
+              <input [(ngModel)]="nameTextInput" name='nameTextInput'
                 class="header-image__container-image__img__form-signup__container-inputs__form__input" type="text"
-                placeholder="First Name" />
+                placeholder="First Name" required />
             </div>
             <div class="header-image__container-image__img__form-signup__container-inputs__form__group">
               <input [(ngModel)]='lastNameTextInput' name='lastNameTextInput'
                 class="header-image__container-image__img__form-signup__container-inputs__form__input" type="text"
-                placeholder="Last Name" />
+                placeholder="Last Name" required />
             </div>
             <div class="header-image__container-image__img__form-signup__container-inputs__form__group">
-              <input [(ngModel)]='emailTextInput' name='emailTextInput'
+              <input [(ngModel)]='emailTextInput' [pattern]='emailRegex' name='emailTextInput'
                 class="header-image__container-image__img__form-signup__container-inputs__form__input" type="email"
-                placeholder="Email" />
+                placeholder="Email" required />
             </div>
             <div class="header-image__container-image__img__form-signup__container-inputs__form__group">
               <input [(ngModel)]='messageTextInput' name='messageTextInput'
                 class="header-image__container-image__img__form-signup__container-inputs__form__input text-area"
-                type="text" placeholder="Write your message here..." />
+                type="text" placeholder="Write your message here..." required />
             </div>
           </div>
           <button-signup (click)='submitInformations()'></button-signup>
@@ -41,3 +41,7 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="isLoading">
+  <app-modal-feedback></app-modal-feedback>
+</ng-container>

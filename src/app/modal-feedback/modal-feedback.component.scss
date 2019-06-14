@@ -1,0 +1,31 @@
+@import "../../sass/main.component.scss";
+
+:host,
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.808);
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  span {
+    display: inline-block;
+    margin: 0 5px;
+    color: #fff;
+    font-size: 1.75rem;
+    font-family: "Quattrocento Sans", sans-serif;
+    @include for-loop-blur;
+  }
+}
+
+@include blue-text-animation;

@@ -11,6 +11,26 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin blue-text-animation {
+  @keyframes blur-text {
+    0% {
+      filter: blur(0px);
+    }
+    100% {
+      filter: blur(3px);
+    }
+  }
+}
+
+@mixin for-loop-blur {
+  @for $i from 0 through 6 {
+    &:nth-child(#{$i + 1}) {
+      filter: blur(0px);
+      animation: blur-text 1.4s (#{$i/6}) + s infinite linear alternate;
+    }
+  }
+}
 // Medias Query`s Manager
 
 /*

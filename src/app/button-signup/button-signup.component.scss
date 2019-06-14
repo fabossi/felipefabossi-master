@@ -5,13 +5,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   height: 4rem;
-  width: 10rem;
+  width: auto;
   border-radius: 0.7rem;
   cursor: pointer;
   background-color: #5c1f10d2;
   outline: none;
   &__text {
     font-size: 1.6rem;
+    padding: 0.5rem;
     text-transform: uppercase;
     color: $color-white;
     @include respond(phone) {

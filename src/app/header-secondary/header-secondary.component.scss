@@ -65,12 +65,12 @@
           &--colorD {
             color: #2c3e50;
           }
-          // @include respond(tab-port) {
-          //   font-size: 1.2rem !important;
-          // }
-          // @include respond(phone) {
-          //   font-size: 1.1rem !important;
-          // }
+          @include respond(tab-port) {
+            font-size: 1.2rem !important;
+          }
+          @include respond(phone) {
+            font-size: 1.1rem !important;
+          }
         }
         &__container-inputs {
           position: absolute;
@@ -97,27 +97,27 @@
               }
             }
           }
-          // @include respond(tab-port) {
-          //   top: 19%;
-          //   left: 14%;
-          //   transform: scale(1);
-          // }
-          // @include respond(phone) {
-          //   top: 9% !important;
-          //   left: 2% !important;
-          //   transform: scale(0.8) !important;
-          // }
+          @include respond(tab-port) {
+            top: 19%;
+            left: 14%;
+            transform: scale(1);
+          }
+          @include respond(phone) {
+            top: 9% !important;
+            left: -8% !important;
+            transform: scale(0.8) !important;
+          }
         }
-        // @include respond(tab-port) {
-        //   height: 40rem;
-        //   width: 47rem;
-        //   top: 29%;
-        //   left: 4%;
-        // }
-        // @include respond(phone) {
-        //   height: 30rem !important;
-        //   width: 35rem !important;
-        // }
+        @include respond(tab-port) {
+          height: 40rem;
+          width: 47rem;
+          top: 29%;
+          left: 18%;
+        }
+        @include respond(phone) {
+          height: 35rem !important;
+          width: 39rem !important;
+        }
       }
     }
   }

@@ -16,6 +16,11 @@ import { PageNotFoundComponent } from './error-pages/page-not-found/page-not-fou
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { EmailServiceService } from './services/email-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
+import { SafePipe } from './pipes/safe.pipe';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
+
 
 
 @NgModule({
@@ -29,9 +34,13 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderMenuComponent,
     VideoBoxComponent,
     PageNotFoundComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    ModalFeedbackComponent,
+    SafePipe,
+    HeaderSocialMobileComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule
+  ],
   providers: [EmailServiceService],
   bootstrap: [AppComponent]
 })
