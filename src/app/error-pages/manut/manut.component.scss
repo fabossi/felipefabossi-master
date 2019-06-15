@@ -16,9 +16,9 @@ p {
   top: 62%;
   font-weight: 700;
   max-width: 32%;
-  @include respond(phone) {
-    left: 42%;
-    max-width: 53%;
+  @include respond(phone-small) {
+    left: 22%;
+    max-width: 75%;
   }
 }
 
@@ -28,9 +28,9 @@ h1 {
   top: 63%;
   color: $color-whiter;
   max-width: 32%;
-  @include respond(phone) {
-    left: 51%;
-    max-width: 43%;
+  @include respond(phone-small) {
+    left: 35%;
+    max-width: 61%;
   }
 }
 
@@ -50,8 +50,8 @@ a {
   &:hover {
     background-color: rgba(255, 255, 255, 0.178);
   }
-  @include respond(phone) {
-    left: 77%;
+  @include respond(phone-small) {
+    left: 68%;
   }
 }
 
@@ -60,7 +60,8 @@ a {
   height: 270px;
   top: 7%;
   // right: .3rem;
-  @include respond(phone) {
+  @include respond(phone-small) {
     height: 164px;
   }
 }
+

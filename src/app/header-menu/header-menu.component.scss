@@ -9,10 +9,17 @@
   height: 3rem;
   left: 56.6%;
   top: 5.5%;
-  flex-wrap: wrap;
   @include respond(phone) {
-    width: 54%;
-    left: 43.6%;
+  }
+
+  @include respond(phone-small) {
+    width: 75%;
+    left: 14.6%;
+    top: 2.5%;
+  }
+  @include respond(tab-port) {
+    width: 48%;
+    left: 42.6%;
   }
 }
 

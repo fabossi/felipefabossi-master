@@ -20,6 +20,7 @@ import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.componen
 import { SafePipe } from './pipes/safe.pipe';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
+import { SignupFormComponent } from './forms/signup-form/signup-form.component';
 
 
 
@@ -37,7 +38,8 @@ import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile
     ChatbotComponent,
     ModalFeedbackComponent,
     SafePipe,
-    HeaderSocialMobileComponent
+    HeaderSocialMobileComponent,
+    SignupFormComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule
   ],

@@ -11,13 +11,13 @@ export class AppComponent {
   hideToMobile = false;
 
   constructor() {
-    if (window.screen.width <= 600) {
+    if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }
   }
 
   onResize(e) {
-    if (e.target.innerWidth > 600) {
+    if (e.target.innerWidth > 800) {
       this.hideToMobile = false;
     } else {
       this.hideToMobile = true;

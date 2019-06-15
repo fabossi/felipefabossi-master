@@ -1,0 +1,7 @@
+<h1>Contact me!</h1>
+<input type="text" [(ngModel)]="nameTextInput" name='nameTextInput' placeholder="Write your name here..">
+<input type="text" [(ngModel)]="lastNameTextInput" name='lastNameTextInput' placeholder="Write your Last name here..">
+<input type="email" [(ngModel)]="emailTextInput" name='emailTextInput' placeholder="Write your email here..">
+<textarea [(ngModel)]="messageTextInput" name='messageTextInput' id="" cols="30" rows="10"
+  placeholder="Write your message to Felipe .."></textarea>
+<button (click)='submitInformations()'>SEND</button>

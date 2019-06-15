@@ -12,7 +12,7 @@
   align-items: center;
   flex-direction: row;
   @include respond(phone) {
-    justify-content: space-evenly;
+    justify-content: space-evenly !important;
   }
 }
 
@@ -28,9 +28,6 @@
   &:active {
     transform: scale(1);
   }
-  @include respond(phone) {
-    margin: 0;
-  }
 }
 
 .wpp {
@@ -43,6 +40,10 @@
 .fb {
   filter: grayscale(5%);
   height: 3rem;
+  @include respond(tab-port) {
+    position: relative;
+    top: -0.75rem;
+  }
 }
 
 .share {

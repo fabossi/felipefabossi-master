@@ -1,0 +1,73 @@
+@import "../../../sass/main.component.scss";
+
+:host {
+  position: absolute;
+  height: 60%;
+  width: 40%;
+  background-color: $color-white;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  padding: 1rem;
+  @include respond(phone) {
+    width: 77% !important;
+  }
+  @include respond(tab-port) {
+    width: 77% !important;
+  }
+  @include respond(tab-land) {
+    width: 53%;
+  }
+}
+
+input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 0.7rem;
+  background-color: #000;
+  border: none;
+  width: 80%;
+  outline: none;
+  margin: 1rem;
+}
+
+textarea {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 0.7rem;
+  background-color: #000;
+  border: none;
+  width: 80%;
+  outline: none;
+  margin: 1rem;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 3rem;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 1.2rem;
+  width: 100px;
+  background-color: #5c1f10d2;
+  color: $color-white;
+  cursor: pointer;
+}
+
+::placeholder {
+  text-align: center;
+}
