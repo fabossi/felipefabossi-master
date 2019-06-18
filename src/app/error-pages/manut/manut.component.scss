@@ -46,6 +46,8 @@ a {
   top: 77%;
   width: 10rem;
   text-align: center;
+  -webkit-transition: background-color ease-in-out 0.4s;
+  -o-transition: background-color ease-in-out 0.4s;
   transition: background-color ease-in-out 0.4s;
   &:hover {
     background-color: rgba(255, 255, 255, 0.178);
@@ -64,4 +66,3 @@ a {
     height: 164px;
   }
 }
-

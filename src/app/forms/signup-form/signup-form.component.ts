@@ -14,9 +14,13 @@ export class SignupFormComponent implements OnInit {
   messageTextInput: string;
   isLoading = false;
   subscription: Subscription;
+  opacity = false;
+  hasErrors = false;
   emailRegex = '/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/';
 
-  constructor(private emailService: EmailServiceService) { }
+  constructor(private emailService: EmailServiceService) {
+    this.opacity = true;
+  }
 
   ngOnInit() {
   }
@@ -24,12 +28,12 @@ export class SignupFormComponent implements OnInit {
   submitInformations() {
     this.emailService.submitInformations(this.nameTextInput,
       this.lastNameTextInput, this.emailTextInput, this.messageTextInput).then(data => {
-        if (data) {
+        if (data != null || data !== undefined) {
           this.isLoading = true;
         } else {
           // this.isLoading = false;
+          this.hasErrors = true;
           console.error('Fields are Missing!');
-          return;
         }
       }).catch(error => {
         if (error) {
@@ -38,13 +42,14 @@ export class SignupFormComponent implements OnInit {
       });
     this.subscription = this.emailService.getSubmitComplete().subscribe(status => {
       if (status === 'ready') {
+        console.log('status => ' + status);
         setTimeout(() => {
           this.nameTextInput = '';
           this.lastNameTextInput = '';
           this.emailTextInput = '';
           this.messageTextInput = '';
           this.isLoading = false;
-        }, 3000);
+        }, 4000);
       }
     });
   }

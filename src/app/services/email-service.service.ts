@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class EmailServiceService {
-  LOCAL_URL = 'http://localhost:4000';
+  LOCAL_URL = '';
   submitComplete = new BehaviorSubject<string>('waiting');
   constructor(private http: HttpClient) {
     if (!environment.production) {

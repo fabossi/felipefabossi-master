@@ -1,5 +1,6 @@
 require('dotenv').config()
 exports.sendEmail = (email) => {
+
   "use strict";
   const nodemailer = require("nodemailer");
 
@@ -11,7 +12,7 @@ exports.sendEmail = (email) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      service: 'Gmail',
       secure: false, // true for 465, false for other ports
       requireTLS: true,
       port: 587,
@@ -599,6 +600,7 @@ exports.sendEmail = (email) => {
     // Preview only available when sending through an Ethereal account
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    transporter.close();
   }
 
   main().catch(console.error);

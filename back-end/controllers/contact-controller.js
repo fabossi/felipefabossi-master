@@ -14,16 +14,16 @@ exports.postContact = (req, res) => {
     contact
       .save()
       .then(result => {
-        if (result) {
+        if (result != null || result != undefined) {
           res.send(result);
+          mail_controller.sendEmail(req.body.email);
+          admin_controller.sendAdminEmail(req.body.email, req.body.message);
           resolve(result)
         } else {
           res.status(500).json({
             message: 'Fields Required.'
           });
         }
-        mail_controller.sendEmail(req.body.email);
-        admin_controller.sendAdminEmail(req.body.email, req.body.message);
       })
       .catch(error => {
         res.status(500).json({

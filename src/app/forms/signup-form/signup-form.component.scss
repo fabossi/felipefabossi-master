@@ -1,17 +1,27 @@
 @import "../../../sass/main.component.scss";
 
-:host {
+:host(app-signup-form) {
   position: absolute;
   height: 60%;
   width: 40%;
   background-color: $color-white;
   border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   top: 55%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 0.7;
   padding: 1rem;
@@ -19,7 +29,7 @@
     width: 77% !important;
   }
   @include respond(tab-port) {
-    width: 77% !important;
+    width: 65% !important;
   }
   @include respond(tab-land) {
     width: 53%;
@@ -50,6 +60,10 @@ textarea {
   width: 80%;
   outline: none;
   margin: 1rem;
+  -webkit-animation: moveInBottom 0.5s ease-in;
+  animation: moveInBottom 0.5s ease-in;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 h1 {
@@ -66,8 +80,124 @@ button {
   background-color: #5c1f10d2;
   color: $color-white;
   cursor: pointer;
+  outline: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  transition: -webkit-transform 0.2s ease-out;
+  -o-transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  &:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  &:active {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}
+
+::-ms-input-placeholder {
+  text-align: center;
 }
 
 ::placeholder {
   text-align: center;
+}
+
+.see{
+  @-webkit-keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(3rem);
+      transform: translateY(3rem);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translate (0);
+      transform: translate (0);
+    }
+  }
+  @keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(3rem);
+      transform: translateY(3rem);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translate (0);
+      transform: translate (0);
+    }
+  }
+  -webkit-animation: moveInBottom 0.7s ease-in-out;
+  animation: moveInBottom 0.7s ease-in-out;
+}
+
+.hasErrors {
+  @-webkit-keyframes shake {
+    10%,
+    90% {
+      -webkit-transform: translate3d(-1px, 0, 0);
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      -webkit-transform: translate3d(2px, 0, 0);
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translate3d(-4px, 0, 0);
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      -webkit-transform: translate3d(4px, 0, 0);
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+  @keyframes shake {
+    10%,
+    90% {
+      -webkit-transform: translate3d(-1px, 0, 0);
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      -webkit-transform: translate3d(2px, 0, 0);
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translate3d(-4px, 0, 0);
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      -webkit-transform: translate3d(4px, 0, 0);
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }

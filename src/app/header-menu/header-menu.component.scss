@@ -2,15 +2,19 @@
 
 :host {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   width: 30%;
   height: 3rem;
   left: 56.6%;
   top: 5.5%;
-  @include respond(phone) {
-  }
 
   @include respond(phone-small) {
     width: 75%;
@@ -18,17 +22,21 @@
     top: 2.5%;
   }
   @include respond(tab-port) {
-    width: 48%;
-    left: 42.6%;
+    width: 63%;
+    left: 17.6%;
+    top: 16.5%;
   }
 }
 
 a {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   font-size: 1.4rem;
   color: $color-white;
   cursor: pointer;
   border-bottom: 0rem solid transparent;
+  -webkit-transition: border ease-in 0.24s;
+  -o-transition: border ease-in 0.24s;
   transition: border ease-in 0.24s;
   text-decoration: none;
   &:hover {

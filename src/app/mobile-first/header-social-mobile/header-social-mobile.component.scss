@@ -7,47 +7,73 @@
   height: 6%;
   background-color: $color-blacker;
   top: 94vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   @include respond(phone) {
-    justify-content: space-evenly !important;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+  }
+  @include respond(tab-port) {
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
   }
 }
 
 .icons {
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  margin: 1.5rem;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  -o-transition: transform 0.2s;
   transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   &:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
     transform: scale(1.05);
   }
   &:active {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
   }
 }
 
 .wpp {
+  -webkit-filter: grayscale(5%);
   filter: grayscale(5%);
 }
 .lkdn {
+  -webkit-filter: grayscale(5%);
   filter: grayscale(5%);
 }
 
 .fb {
+  -webkit-filter: grayscale(5%);
   filter: grayscale(5%);
   height: 3rem;
-  @include respond(tab-port) {
-    position: relative;
-    top: -0.75rem;
-  }
 }
 
 .share {
   position: absolute;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
   font-size: 1.6rem;
   color: $color-white;

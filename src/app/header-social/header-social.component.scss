@@ -12,39 +12,63 @@ a {
   border-right: 0.1rem solid rgba(199, 199, 199, 0.288);
   background-color: $color-blacker;
   // opacity: 0.6;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 .icons {
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   margin: 1.5rem;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  -o-transition: transform 0.2s;
   transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   &:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
     transform: scale(1.05);
   }
   &:active {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
   }
 }
 
 .wpp {
+  -webkit-filter: grayscale(5%);
   filter: grayscale(5%);
 }
 .lkdn {
+  -webkit-filter: grayscale(5%);
   filter: grayscale(5%);
 }
 
 .fb {
+  -webkit-filter: grayscale(5%);
   filter: grayscale(5%);
   height: 3rem;
 }
 
 .share {
   position: absolute;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
   font-size: 1.6rem;
   color: $color-white;
