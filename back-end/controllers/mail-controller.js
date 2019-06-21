@@ -1,6 +1,5 @@
 require('dotenv').config()
 exports.sendEmail = (email) => {
-
   "use strict";
   const nodemailer = require("nodemailer");
 
@@ -12,7 +11,7 @@ exports.sendEmail = (email) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      service: 'Gmail',
+      host: 'smtp.gmail.com',
       secure: false, // true for 465, false for other ports
       requireTLS: true,
       port: 587,
@@ -26,10 +25,10 @@ exports.sendEmail = (email) => {
     let info = await transporter.sendMail({
       from: 'fabossif@gmail.com', // sender address
       to: `${email}`, // list of receivers
-      subject: "Felipe Fabossi WebSite Contact.", // Subject line
-      text: 'thank you!', // plain text body
+      subject: "Felipe Fabossi Reply.", // Subject line
+      text: 'do not reply.', // plain text body
       html: `
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
@@ -510,12 +509,6 @@ exports.sendEmail = (email) => {
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
-<div align="center" class="button-container" style="padding-top:15px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 15px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="www.felipefabossi.com" style="height:34.5pt; width:201pt; v-text-anchor:middle;" arcsize="55%" stroke="false" fillcolor="#67D6AF"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Trebuchet MS', Tahoma, sans-serif; font-size:18px"><![endif]--><a href="www.felipefabossi.com" style="-webkit-text-size-adjust: none; text-decoration: none; display: block; color: #ffffff; background-color: #67D6AF; border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; width: 40%; width: calc(40% - 2px); border-top: 1px solid #67D6AF; border-right: 1px solid #67D6AF; border-bottom: 1px solid #67D6AF; border-left: 1px solid #67D6AF; padding-top: 5px; padding-bottom: 5px; font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;" target="_blank"><span style="padding-left:20px;padding-right:20px;font-size:18px;display:inline-block;">
-<span style="font-size: 16px; line-height: 32px;"><span style="font-size: 18px; line-height: 36px;">www.felipefabossi.com</span></span>
-</span></a>
-<!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-</div>
 <table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">
 <tbody>
 <tr style="vertical-align: top;" valign="top">
@@ -600,7 +593,6 @@ exports.sendEmail = (email) => {
     // Preview only available when sending through an Ethereal account
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    transporter.close();
   }
 
   main().catch(console.error);

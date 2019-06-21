@@ -17,23 +17,22 @@ export class EmailServiceService {
 
   submitInformations(name: string, lastName: String, email: string, message: string) {
     return new Promise((resolve, reject) => {
-      const headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
+      const headers = new HttpHeaders();
       const body = {
         name: name,
         lastName: lastName,
         email: email,
         message: message
       };
-      if (body) {
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+      if (body != null || body !== undefined) {
         this.submitComplete.next('waiting');
         this.http.post(this.LOCAL_URL + '/api/contact', body, { headers: headers })
           .toPromise()
           .then(data => {
             if (data != null || data !== undefined) {
-              this.submitComplete.next('ready');
               resolve(data);
-            } else {
-              reject(data);
             }
           }).catch(error => {
             if (error) {
@@ -42,6 +41,7 @@ export class EmailServiceService {
             }
           });
       }
+      this.submitComplete.next('ready');
     }).catch(error => console.log(error));
   }
 

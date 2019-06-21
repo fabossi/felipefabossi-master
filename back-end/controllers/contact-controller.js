@@ -14,10 +14,10 @@ exports.postContact = (req, res) => {
     contact
       .save()
       .then(result => {
-        if (result != null || result != undefined) {
-          res.send(result);
+        if (result) {
           mail_controller.sendEmail(req.body.email);
           admin_controller.sendAdminEmail(req.body.email, req.body.message);
+          res.send(result);
           resolve(result)
         } else {
           res.status(500).json({
@@ -31,5 +31,5 @@ exports.postContact = (req, res) => {
         });
         reject(error);
       });
-  })
+  }).catch(error => console.error(error));
 }

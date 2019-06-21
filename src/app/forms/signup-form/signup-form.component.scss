@@ -116,7 +116,7 @@ button {
   text-align: center;
 }
 
-.see{
+.see {
   @-webkit-keyframes moveInBottom {
     0% {
       opacity: 0;
@@ -142,7 +142,7 @@ button {
     }
   }
   -webkit-animation: moveInBottom 0.7s ease-in-out;
-  animation: moveInBottom 0.7s ease-in-out;
+  animation: moveInBottom 2s ease-in;
 }
 
 .hasErrors {
@@ -172,6 +172,7 @@ button {
       transform: translate3d(4px, 0, 0);
     }
   }
+
   @keyframes shake {
     10%,
     90% {
