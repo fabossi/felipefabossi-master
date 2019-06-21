@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
+
 mongoose
   .connect(
     "mongodb://dbaas18.hyperprotectdbaas.cloud.ibm.com:27049,dbaas17.hyperprotectdbaas.cloud.ibm.com:27162,dbaas19.hyperprotectdbaas.cloud.ibm.com:27113/admin?replicaSet=fabossi-dbas",
