@@ -1,0 +1,7 @@
+<div class="container" [ngClass]="{down: showModal}">
+  <img class='container__img' src="https://fabossi.s3-sa-east-1.amazonaws.com/mail.svg" alt="Email Image">
+  <p class='text'>
+    {{ message }}
+  </p>
+  <button (click)='closeModal()' class='button'>concluído</button>
+</div>

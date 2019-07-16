@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EmailServiceService } from 'src/app/services/email-service.service';
 
@@ -7,7 +7,7 @@ import { EmailServiceService } from 'src/app/services/email-service.service';
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss']
 })
-export class SignupFormComponent implements OnInit {
+export class SignupFormComponent implements OnInit, OnDestroy {
   nameTextInput: string;
   lastNameTextInput: string;
   emailTextInput: string;
@@ -20,29 +20,8 @@ export class SignupFormComponent implements OnInit {
 
   constructor(private emailService: EmailServiceService) {
     this.opacity = true;
-  }
-
-  ngOnInit() {
-  }
-
-  submitInformations() {
-    this.emailService.submitInformations(this.nameTextInput,
-      this.lastNameTextInput, this.emailTextInput, this.messageTextInput).then(data => {
-        if (data != null || data !== undefined) {
-          this.isLoading = true;
-        } else {
-          // this.isLoading = false;
-          this.hasErrors = true;
-          console.error('Fields are Missing!');
-        }
-      }).catch(error => {
-        if (error) {
-          this.isLoading = false;
-        }
-      });
     this.subscription = this.emailService.getSubmitComplete().subscribe(status => {
       if (status === 'ready') {
-        console.log('status => ' + status);
         setTimeout(() => {
           this.nameTextInput = '';
           this.lastNameTextInput = '';
@@ -50,8 +29,37 @@ export class SignupFormComponent implements OnInit {
           this.messageTextInput = '';
           this.isLoading = false;
         }, 4000);
+      } else if (status === 'waiting') {
+        this.isLoading = true;
+      } else if (status === 'error') {
+        this.isLoading = true;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 4000);
       }
     });
   }
 
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  submitInformations() {
+    this.emailService.submitInformations(this.nameTextInput,
+      this.lastNameTextInput, this.emailTextInput, this.messageTextInput).then(data => {
+        if (data || data != null || data !== undefined) {
+          this.hasErrors = false;
+        } else {
+          this.hasErrors = true;
+          console.error('Fields are Missing!');
+        }
+      }).catch(error => {
+        if (error) {
+          console.error(error);
+        }
+      });
+  }
 }

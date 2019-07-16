@@ -20,6 +20,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  z-index: 1;
   @include respond(phone) {
     -webkit-box-pack: space-evenly;
     -ms-flex-pack: space-evenly;

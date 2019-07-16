@@ -15,7 +15,6 @@
   height: 3rem;
   left: 56.6%;
   top: 5.5%;
-
   @include respond(phone-small) {
     width: 75%;
     left: 14.6%;
@@ -39,7 +38,8 @@ a {
   -o-transition: border ease-in 0.24s;
   transition: border ease-in 0.24s;
   text-decoration: none;
+  // z-index: 1;
   &:hover {
-    border-bottom: 0.2rem solid $color-white;
+    border-bottom: 0.1rem solid $color-white;
   }
 }

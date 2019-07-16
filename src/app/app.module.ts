@@ -17,10 +17,10 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
 import { EmailServiceService } from './services/email-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
-import { SafePipe } from './pipes/safe.pipe';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
 import { SignupFormComponent } from './forms/signup-form/signup-form.component';
+import { ModalMessageSubmitComponent } from './modal-message-submit/modal-message-submit.component';
 
 
 
@@ -37,7 +37,7 @@ import { SignupFormComponent } from './forms/signup-form/signup-form.component';
     PageNotFoundComponent,
     ChatbotComponent,
     ModalFeedbackComponent,
-    SafePipe,
+    ModalMessageSubmitComponent,
     HeaderSocialMobileComponent,
     SignupFormComponent
   ],

@@ -471,7 +471,7 @@ exports.sendEmail = (email) => {
 </table>
 <div align="center" class="img-container center fixedwidth" style="padding-right: 20px;padding-left: 20px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 20px;padding-left: 20px;" align="center"><![endif]-->
-<div style="font-size:1px;line-height:20px"> </div><a href="www.felipefabossi.com" target="_blank"> <img align="center" border="0" class="center fixedwidth" src="http://s3.us-south.cloud-object-storage.appdomain.cloud/fabossi-email-site/rocket-bg.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 573px; display: block;" title="rocket" width="573"/></a>
+<div style="font-size:1px;line-height:20px"> </div><a href="www.felipefabossi.com" target="_blank"> <img align="center" border="0" class="center fixedwidth" src="https://fabossi.s3-sa-east-1.amazonaws.com/rocket-bg.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; width: 100%; max-width: 573px; display: block;" title="rocket" width="573"/></a>
 <div style="font-size:1px;line-height:20px"> </div>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -485,10 +485,11 @@ exports.sendEmail = (email) => {
 </div>
 </div>
 </div>
-<div style="background-image:url('http://s3.us-south.cloud-object-storage.appdomain.cloud/fabossi-email-site/clouds1.png');background-position:top left;background-repeat:repeat;background-color:#001232;">
+
+<div style="background-image:url('https://fabossi.s3-sa-east-1.amazonaws.com/clouds1.png');background-position:top left;background-repeat:repeat;background-color:#001232;">
 <div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 675px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;;">
 <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-image:url('http://s3.us-south.cloud-object-storage.appdomain.cloud/fabossi-email-site/clouds1.png');background-position:top left;background-repeat:repeat;background-color:#001232;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:675px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-image:url('https://fabossi.s3-sa-east-1.amazonaws.com/clouds1.png');background-position:top left;background-repeat:repeat;background-color:#001232;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:675px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
 <!--[if (mso)|(IE)]><td align="center" width="675" style="background-color:transparent;width:675px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:30px; padding-bottom:30px;"><![endif]-->
 <div class="col num12" style="min-width: 320px; max-width: 675px; display: table-cell; vertical-align: top;;">
 <div style="width:100% !important;">

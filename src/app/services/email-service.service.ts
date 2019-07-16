@@ -8,7 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EmailServiceService {
   LOCAL_URL = '';
-  submitComplete = new BehaviorSubject<string>('waiting');
+  submitComplete = new BehaviorSubject<string>('');
+  status: 'SUCCESS' | '400';
+
   constructor(private http: HttpClient) {
     if (!environment.production) {
       this.LOCAL_URL = 'http://localhost:4000';
@@ -24,7 +26,6 @@ export class EmailServiceService {
         email: email,
         message: message
       };
-      headers.append('Accept', 'application/json');
       headers.append('Content-Type', 'application/json');
       if (body != null || body !== undefined) {
         this.submitComplete.next('waiting');
@@ -32,16 +33,19 @@ export class EmailServiceService {
           .toPromise()
           .then(data => {
             if (data != null || data !== undefined) {
+              this.status = 'SUCCESS';
+              this.submitComplete.next('ready');
               resolve(data);
             }
           }).catch(error => {
             if (error) {
+              this.status = '400';
+              this.submitComplete.next('error');
               console.error(error);
               reject(error);
             }
           });
       }
-      this.submitComplete.next('ready');
     }).catch(error => console.log(error));
   }
 
@@ -49,5 +53,9 @@ export class EmailServiceService {
     if (this.submitComplete != null || this.submitComplete !== undefined) {
       return this.submitComplete;
     }
+  }
+
+  getItemsReady() {
+    return this.submitComplete;
   }
 }

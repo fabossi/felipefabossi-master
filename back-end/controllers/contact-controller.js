@@ -1,4 +1,3 @@
-// const express = require('express');
 const Contact = require('../models/contac-model');
 const mail_controller = require('../controllers/mail-controller');
 const admin_controller = require('../controllers/admin-email-controller');
@@ -14,20 +13,21 @@ exports.postContact = (req, res) => {
     contact
       .save()
       .then(result => {
-        if (result) {
+        if (result !== null || result !== undefined) {
           mail_controller.sendEmail(req.body.email);
           admin_controller.sendAdminEmail(req.body.email, req.body.message);
           res.send(result);
           resolve(result)
         } else {
-          res.status(500).json({
+          res.status(422).json({
             message: 'Fields Required.'
           });
         }
       })
       .catch(error => {
         res.status(500).json({
-          message: 'Fields Required.'
+          message: 'Something wrong.',
+          error: error
         });
         reject(error);
       });

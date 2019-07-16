@@ -10,9 +10,10 @@
   placeholder="Write your email here..">
 
 <textarea [ngClass]='{see: opacity, hasErrors: hasErrors}' autocomplete="off" [(ngModel)]="messageTextInput"
-  name='messageTextInput' id="" cols="30" rows="10" placeholder="Write your message to Felipe .."></textarea>
+  name='messageTextInput' cols="30" rows="10" placeholder="Write your message to me .."></textarea>
 
 <button (click)='submitInformations()'>SEND</button>
+
 
 <ng-container *ngIf="isLoading">
   <app-modal-feedback></app-modal-feedback>

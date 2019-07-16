@@ -120,25 +120,23 @@ button {
   @-webkit-keyframes moveInBottom {
     0% {
       opacity: 0;
-      -webkit-transform: translateY(3rem);
-      transform: translateY(3rem);
+    }
+    80% {
+      opacity: 0.4;
     }
     100% {
       opacity: 1;
-      -webkit-transform: translate (0);
-      transform: translate (0);
     }
   }
   @keyframes moveInBottom {
     0% {
       opacity: 0;
-      -webkit-transform: translateY(3rem);
-      transform: translateY(3rem);
+    }
+    80% {
+      opacity: 0.9;
     }
     100% {
       opacity: 1;
-      -webkit-transform: translate (0);
-      transform: translate (0);
     }
   }
   -webkit-animation: moveInBottom 0.7s ease-in-out;

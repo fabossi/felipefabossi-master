@@ -3,4 +3,10 @@
 </div>
 <app-header-menu></app-header-menu>
 <app-header-social-mobile *ngIf="hideToMobile"></app-header-social-mobile>
+
+<div *ngIf="showFeedback">
+  <app-modal-message-submit (modalFeedBackEvent)='askFeedback($event)' [status]='_status_feedback'>
+  </app-modal-message-submit>
+</div>
+
 <router-outlet></router-outlet>

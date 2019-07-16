@@ -1,7 +1,6 @@
 @import "../../sass/main.component.scss";
 
-:host(app-modal-feedback),
-.loading {
+:host {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -16,7 +15,7 @@
   -ms-flex-align: center;
   align-items: center;
   bottom: 0;
-  top: -94px;
+  top: -19.9rem;
 }
 img {
   z-index: 2;
