@@ -9,6 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'page', loadChildren: './pages/pages.module#PagesModuleComponent'
+  },
+  {
+    path: '**', loadChildren: './error-pages/page-not-found/page-not-found.module#PageNotFoundModule'
   }
 ];
 

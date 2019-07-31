@@ -11,18 +11,13 @@ import { ButtonSignupComponent } from './button-signup/button-signup.component';
 import { SandwichMenuComponent } from './sandwich-menu/sandwich-menu.component';
 import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
-import { VideoBoxComponent } from './header-secondary/video-box/video-box.component';
-import { PageNotFoundComponent } from './error-pages/page-not-found/page-not-found.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { EmailServiceService } from './services/email-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
 import { SignupFormComponent } from './forms/signup-form/signup-form.component';
 import { ModalMessageSubmitComponent } from './modal-message-submit/modal-message-submit.component';
-
-
 
 @NgModule({
   declarations: [
@@ -33,16 +28,13 @@ import { ModalMessageSubmitComponent } from './modal-message-submit/modal-messag
     ButtonSignupComponent,
     SandwichMenuComponent,
     HeaderMenuComponent,
-    VideoBoxComponent,
-    PageNotFoundComponent,
     ChatbotComponent,
     ModalFeedbackComponent,
     ModalMessageSubmitComponent,
     HeaderSocialMobileComponent,
-    SignupFormComponent
+    SignupFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [EmailServiceService],
   bootstrap: [AppComponent]
 })

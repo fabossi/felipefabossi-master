@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { EmailServiceService } from 'src/app/services/email-service.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { EmailServiceService } from 'src/app/services/email-service.service';
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss']
 })
-export class SignupFormComponent implements OnInit, OnDestroy {
+export class SignupFormComponent {
   nameTextInput: string;
   lastNameTextInput: string;
   emailTextInput: string;
@@ -16,36 +16,15 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   opacity = false;
   hasErrors = false;
-  emailRegex = '/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/';
 
   constructor(private emailService: EmailServiceService) {
-    this.opacity = true;
-    this.subscription = this.emailService.getSubmitComplete().subscribe(status => {
+    this.emailService.getItemsReady().subscribe(status => {
       if (status === 'ready') {
-        setTimeout(() => {
-          this.nameTextInput = '';
-          this.lastNameTextInput = '';
-          this.emailTextInput = '';
-          this.messageTextInput = '';
-          this.isLoading = false;
-        }, 4000);
-      } else if (status === 'waiting') {
-        this.isLoading = true;
-      } else if (status === 'error') {
-        this.isLoading = true;
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 4000);
+        this.cleanFields();
       }
     });
   }
 
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 
   submitInformations() {
     this.emailService.submitInformations(this.nameTextInput,
@@ -61,5 +40,12 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           console.error(error);
         }
       });
+  }
+
+  cleanFields() {
+    this.emailTextInput = null;
+    this.messageTextInput = null;
+    this.nameTextInput = null;
+    this.lastNameTextInput = null;
   }
 }

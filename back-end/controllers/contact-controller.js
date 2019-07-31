@@ -1,9 +1,11 @@
 const Contact = require('../models/contac-model');
 const mail_controller = require('../controllers/mail-controller');
 const admin_controller = require('../controllers/admin-email-controller');
+const axios = require('@nuxtjs/axios');
 
 exports.postContact = (req, res) => {
   return new Promise((resolve, reject) => {
+
     const contact = new Contact({
       name: req.body.name,
       lastName: req.body.lastName,

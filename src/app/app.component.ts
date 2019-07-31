@@ -19,17 +19,23 @@ export class AppComponent {
     if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }
-    this.subscription = this.emailService.getSubmitComplete().subscribe(status => {
+    this.subscription = this.emailService.getItemsReady().subscribe(status => {
       if (status === 'ready') {
+        this.isLoading = false;
         this._status_feedback = this.emailService.status;
         setTimeout(() => {
           this.showFeedback = true;
-        }, 4200);
+        }, 400);
       } else if (status === 'error') {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 4000);
         this._status_feedback = this.emailService.status;
         setTimeout(() => {
           this.showFeedback = true;
         }, 4200);
+      } else if (status === 'waiting') {
+        this.isLoading = true;
       }
     });
   }

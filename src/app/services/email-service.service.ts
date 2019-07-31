@@ -11,6 +11,7 @@ export class EmailServiceService {
   submitComplete = new BehaviorSubject<string>('');
   status: 'SUCCESS' | '400';
 
+
   constructor(private http: HttpClient) {
     if (!environment.production) {
       this.LOCAL_URL = 'http://localhost:4000';
@@ -26,9 +27,9 @@ export class EmailServiceService {
         email: email,
         message: message
       };
+      this.submitComplete.next('waiting');
       headers.append('Content-Type', 'application/json');
       if (body != null || body !== undefined) {
-        this.submitComplete.next('waiting');
         this.http.post(this.LOCAL_URL + '/api/contact', body, { headers: headers })
           .toPromise()
           .then(data => {
@@ -55,7 +56,7 @@ export class EmailServiceService {
     }
   }
 
-  getItemsReady() {
+  public getItemsReady() {
     return this.submitComplete;
   }
 }

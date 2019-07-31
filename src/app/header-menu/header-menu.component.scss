@@ -1,7 +1,7 @@
 @import "../../sass/main.component.scss";
 
 :host {
-  position: absolute;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,19 +27,29 @@
   }
 }
 
-a {
-  -webkit-backface-visibility: hidden;
+.menu-home-button {
   backface-visibility: hidden;
-  font-size: 1.4rem;
-  color: $color-white;
-  cursor: pointer;
-  border-bottom: 0rem solid transparent;
-  -webkit-transition: border ease-in 0.24s;
-  -o-transition: border ease-in 0.24s;
-  transition: border ease-in 0.24s;
+  border: 0.1rem solid $color-white;
+  padding: 0.7rem;
+  border-radius: 1.3rem;
+  width: 25%;
+  display: flex;
+  justify-content: center;
   text-decoration: none;
-  // z-index: 1;
+  align-items: center;
+  position: relative;
+  left: 70%;
+  background-color: rgba($color: #ffff, $alpha: 0.1);
+  transition: transform 0.2s ease-out;
+  &__text {
+    font-size: 1.2rem;
+    color: $color-white;
+    cursor: pointer;
+  }
   &:hover {
-    border-bottom: 0.1rem solid $color-white;
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(1);
   }
 }
