@@ -1,9 +1,14 @@
+const express = require('express');
+const app = express();
 const Contact = require('../models/contac-model');
 const mail_controller = require('../controllers/mail-controller');
 const admin_controller = require('../controllers/admin-email-controller');
 const db = require('../Database/db.mongo');
 const sanitize = require('express-sanitizer');
 const contacts = [];
+
+app.use(sanitize());
+
 
 exports.insertContact = (req, res) => {
   return new Promise((resolve, reject) => {

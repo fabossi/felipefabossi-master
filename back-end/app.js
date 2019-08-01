@@ -1,11 +1,11 @@
 const express = require('express');
+const app = express();
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require("body-parser");
 const contactRoutes = require('./routes/contact-route');
 const mongodb = require('./Database/db.mongo');
 const helmet = require('helmet');
-const app = express();
 const sanitize = require('express-sanitizer');
 const express_session = require('express-session');
 const RateLimit = require('express-rate-limit');
@@ -15,15 +15,15 @@ const limiter = RateLimit({
   store: new MongoStore({
     uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/contacts?retryWrites=true&w=majority`
   }),
-  max: 5,
+  max: 100,
   windowMs: 15 * 60 * 1000,
   message:
-    "Too many requests, please try again after an hour"
+    "Too many requests, please try again in 15 minutes"
 });
 
 const apiLimiter = RateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5,
+  max: 100,
   message:
     "Too many requests, please try again after in 15 minutes"
 });
@@ -33,6 +33,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet.xssFilter());
 app.use(helmet.frameguard({ action: 'deny' }));
+app.use(sanitize());
+app.use(cors());
+app.use(limiter);
+app.use('/api/', apiLimiter, contactRoutes);
+app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
@@ -46,11 +51,6 @@ app.use(express_session({
   resave: false,
   saveUninitialized: true
 }))
-app.use(sanitize());
-app.use(cors());
-app.use(limiter);
-app.use('/api/', apiLimiter, contactRoutes);
-app.use("/", express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
