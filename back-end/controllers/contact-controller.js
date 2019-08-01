@@ -9,7 +9,6 @@ const contacts = [];
 
 app.use(sanitize());
 
-
 exports.insertContact = (req, res) => {
   return new Promise((resolve, reject) => {
     const sanitizedName = req.sanitize(req.body.name);
@@ -31,8 +30,8 @@ exports.insertContact = (req, res) => {
         mail_controller.sendEmail(req.body.email);
         admin_controller.sendAdminEmail(req.body.email, req.body.message);
         contacts.push(result);
-        res.status(200).json({ contacts });
-        resolve(contacts);
+        res.status(200).json(result.ops[0]);
+        resolve(result);
       }).catch(err => { console.error(err); reject(error); });
   }).catch(error => { console.error(error); reject(error); });
 }
