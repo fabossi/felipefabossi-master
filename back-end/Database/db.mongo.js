@@ -1,23 +1,33 @@
-const mongoDb = require('mongodb').MongoClient;
+const mongodb = require('mongodb');
 require('dotenv').config();
+const MongoClient = mongodb.MongoClient;
+const mongoDbUrl = process.env.url_mongo;
 
-exports.connectMongo = (req, res) => {
-  mongoDb
-    .connect(
-      process.env.url_mongo,
-      {
-        useNewUrlParser: true,
-        ssl: true
-      }
-    )
-    .then((client) => {
-      if (client.db()) {
-        console.log("Connection Success.");
-      } else {
-        throw new Error("DataBase not initialized!");
-      }
+let _db;
+
+const initDb = callback => {
+  if (_db) {
+    console.log('Database is already initialized!');
+    return callback(null, _db);
+  }
+  MongoClient.connect(mongoDbUrl, { useNewUrlParser: true, ssl: true })
+    .then(client => {
+      _db = client;
+      callback(null, _db);
     })
-    .catch(error => {
-      console.error("Connection Failed.", error);
+    .catch(err => {
+      callback(err);
     });
-}
+};
+
+const getDb = () => {
+  if (!_db) {
+    throw Error('Database not initialzed');
+  }
+  return _db;
+};
+
+module.exports = {
+  initDb,
+  getDb
+};

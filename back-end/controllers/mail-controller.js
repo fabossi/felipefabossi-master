@@ -12,9 +12,9 @@ exports.sendEmail = (email) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
-      secure: false, // true for 465, false for other ports
+      secure: true, // true for 465, false for other ports
       requireTLS: true,
-      port: 587,
+      port: 465,
       auth: {
         user: process.env.user_email, // generated ethereal user
         pass: process.env.user_password // generated ethereal password
@@ -596,5 +596,5 @@ exports.sendEmail = (email) => {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
 
-  main().catch(console.error);
+  main().catch(error => console.error(error));
 }

@@ -1,37 +1,33 @@
 const Contact = require('../models/contac-model');
 const mail_controller = require('../controllers/mail-controller');
 const admin_controller = require('../controllers/admin-email-controller');
-const axios = require('@nuxtjs/axios');
+const db = require('../Database/db.mongo');
+const sanitize = require('express-sanitizer');
+const contacts = [];
 
-exports.postContact = (req, res) => {
+exports.insertContact = (req, res) => {
   return new Promise((resolve, reject) => {
-
-    const contact = new Contact({
-      name: req.body.name,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      message: req.body.message,
+    const sanitizedName = req.sanitize(req.body.name);
+    const sanitizedLastName = req.sanitize(req.body.lastName);
+    const sanitizedEmail = req.sanitize(req.body.email);
+    const sanitizedMessage = req.sanitize(req.body.message);
+    const newContact = new Contact({
+      name: sanitizedName,
+      lastName: sanitizedLastName,
+      email: sanitizedEmail,
+      message: sanitizedMessage,
     });
-    contact
-      .save()
+    db.getDb()
+      .db()
+      .collection('contacts')
+      .insertOne(newContact)
       .then(result => {
-        if (result !== null || result !== undefined) {
-          mail_controller.sendEmail(req.body.email);
-          admin_controller.sendAdminEmail(req.body.email, req.body.message);
-          res.send(result);
-          resolve(result)
-        } else {
-          res.status(422).json({
-            message: 'Fields Required.'
-          });
-        }
-      })
-      .catch(error => {
-        res.status(500).json({
-          message: 'Something wrong.',
-          error: error
-        });
-        reject(error);
-      });
-  }).catch(error => console.error(error));
+        console.log(result)
+        mail_controller.sendEmail(req.body.email);
+        admin_controller.sendAdminEmail(req.body.email, req.body.message);
+        contacts.push(result);
+        res.status(200).json({ contacts });
+        resolve(contacts);
+      }).catch(err => { console.error(err); reject(error); });
+  }).catch(error => { console.error(error); reject(error); });
 }

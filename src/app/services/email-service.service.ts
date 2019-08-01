@@ -36,6 +36,7 @@ export class EmailServiceService {
             if (data != null || data !== undefined) {
               this.status = 'SUCCESS';
               this.submitComplete.next('ready');
+              console.log(data);
               resolve(data);
             }
           }).catch(error => {
@@ -47,13 +48,7 @@ export class EmailServiceService {
             }
           });
       }
-    }).catch(error => console.log(error));
-  }
-
-  public getSubmitComplete() {
-    if (this.submitComplete != null || this.submitComplete !== undefined) {
-      return this.submitComplete;
-    }
+    }).catch(error => { console.error(error); });
   }
 
   public getItemsReady() {

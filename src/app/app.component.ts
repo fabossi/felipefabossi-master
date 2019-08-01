@@ -27,9 +27,7 @@ export class AppComponent {
           this.showFeedback = true;
         }, 400);
       } else if (status === 'error') {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 4000);
+        this.isLoading = false;
         this._status_feedback = this.emailService.status;
         setTimeout(() => {
           this.showFeedback = true;
