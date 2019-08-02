@@ -36,7 +36,6 @@ export class EmailServiceService {
             if (data != null || data !== undefined) {
               this.status = 'SUCCESS';
               this.submitComplete.next('ready');
-              console.log(data);
               resolve(data);
             }
           }).catch(error => {

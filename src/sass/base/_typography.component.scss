@@ -11,6 +11,7 @@ body {
 .heading-primary {
   color: $color-white;
   text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   margin-bottom: 6rem;
 
@@ -19,7 +20,9 @@ body {
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
+    -webkit-animation-name: moveInLeft;
     animation-name: moveInLeft;
+    -webkit-animation-duration: 1s;
     animation-duration: 1s;
     @include respond(phone) {
       letter-spacing: 1rem;
@@ -32,6 +35,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1rem;
+    -webkit-animation: moveInRight 1s ease-out;
     animation: moveInRight 1s ease-out;
     /*
     * animation-timing-function: ease-out;
@@ -49,13 +53,19 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   display: inline-block;
-  background-image: linear-gradient(
-    to right bottom,
-    $color-primary-light,
-    $color-primary-dark
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from($color-primary-light),
+    to($color-primary-dark)
   );
+  background-image: -o-linear-gradient(left top, $color-primary-light, $color-primary-dark);
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
   -webkit-background-clip: text;
   color: transparent;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
   transition: all 0.2s;
   letter-spacing: 0.2rem;
 
@@ -66,6 +76,8 @@ body {
     font-size: 2.5rem;
   }
   &:hover {
+    -webkit-transform: skewY(2deg) skewX(15deg) scale(1.1);
+    -ms-transform: skewY(2deg) skewX(15deg) scale(1.1);
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
   }

@@ -13,6 +13,8 @@
       width: 100%;
       height: 100vh;
       top: 5.1rem;
+      background-image: -o-linear-gradient(rgba(48, 48, 48, 0.05), rgba(0, 0, 0, 0.05)),
+        url("https://fabossi.s3-sa-east-1.amazonaws.com/felipefabossi-min.jpg");
       background-image: -webkit-gradient(
           linear,
           left top,
@@ -20,10 +22,6 @@
           from(rgba(48, 48, 48, 0.05)),
           to(rgba(0, 0, 0, 0.05))
         ),
-        url("https://fabossi.s3-sa-east-1.amazonaws.com/felipefabossi-min.jpg");
-      background-image: -webkit-linear-gradient(rgba(48, 48, 48, 0.05), rgba(0, 0, 0, 0.05)),
-        url("https://fabossi.s3-sa-east-1.amazonaws.com/felipefabossi-min.jpg");
-      background-image: -o-linear-gradient(rgba(48, 48, 48, 0.05), rgba(0, 0, 0, 0.05)),
         url("https://fabossi.s3-sa-east-1.amazonaws.com/felipefabossi-min.jpg");
       background-image: linear-gradient(rgba(48, 48, 48, 0.05), rgba(0, 0, 0, 0.05)),
         url("https://fabossi.s3-sa-east-1.amazonaws.com/felipefabossi-min.jpg");
@@ -92,6 +90,11 @@
 }
 
 ::-ms-input-placeholder {
+  color: $color-white;
+  opacity: 0.9;
+}
+
+::-moz-placeholder {
   color: $color-white;
   opacity: 0.9;
 }

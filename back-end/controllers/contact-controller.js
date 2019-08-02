@@ -11,22 +11,17 @@ app.use(sanitize());
 
 exports.insertContact = (req, res) => {
   return new Promise((resolve, reject) => {
-    const sanitizedName = req.sanitize(req.body.name);
-    const sanitizedLastName = req.sanitize(req.body.lastName);
-    const sanitizedEmail = req.sanitize(req.body.email);
-    const sanitizedMessage = req.sanitize(req.body.message);
     const newContact = new Contact({
-      name: sanitizedName,
-      lastName: sanitizedLastName,
-      email: sanitizedEmail,
-      message: sanitizedMessage,
+      name: req.body.name,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      message: req.body.message,
     });
     db.getDb()
       .db()
       .collection('contacts')
       .insertOne(newContact)
       .then(result => {
-        console.log(result)
         mail_controller.sendEmail(req.body.email);
         admin_controller.sendAdminEmail(req.body.email, req.body.message);
         contacts.push(result);

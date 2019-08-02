@@ -11,7 +11,6 @@ import { ButtonSignupComponent } from './button-signup/button-signup.component';
 import { SandwichMenuComponent } from './sandwich-menu/sandwich-menu.component';
 import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
-import { ChatbotComponent } from './chatbot/chatbot.component';
 import { EmailServiceService } from './services/email-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
@@ -28,7 +27,6 @@ import { ModalMessageSubmitComponent } from './modal-message-submit/modal-messag
     ButtonSignupComponent,
     SandwichMenuComponent,
     HeaderMenuComponent,
-    ChatbotComponent,
     ModalFeedbackComponent,
     ModalMessageSubmitComponent,
     HeaderSocialMobileComponent,

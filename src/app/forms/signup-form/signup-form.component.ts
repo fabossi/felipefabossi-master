@@ -15,7 +15,7 @@ export class SignupFormComponent {
   isLoading = false;
   subscription: Subscription;
   opacity = false;
-  hasErrors = false;
+  hasErrors = '';
 
   constructor(private emailService: EmailServiceService) {
     this.emailService.getItemsReady().subscribe(status => {
@@ -27,19 +27,23 @@ export class SignupFormComponent {
 
 
   submitInformations() {
-    this.emailService.submitInformations(this.nameTextInput,
-      this.lastNameTextInput, this.emailTextInput, this.messageTextInput).then(data => {
-        if (data || data != null || data !== undefined) {
-          this.hasErrors = false;
-        } else {
-          this.hasErrors = true;
-          console.error('Fields are Missing!');
-        }
-      }).catch(error => {
-        if (error) {
-          console.error(error);
-        }
-      });
+    if (this.emailTextInput == null || this.lastNameTextInput == null
+      || this.messageTextInput == null || this.nameTextInput == null) {
+      return this.hasErrors = 'fill in all fields';
+    } else {
+      this.emailService.submitInformations(this.nameTextInput,
+        this.lastNameTextInput, this.emailTextInput, this.messageTextInput).then(data => {
+          if (data != null || data !== undefined) {
+          } else {
+            this.hasErrors = 'fill in all fields';
+            console.error('Fields are Missing!');
+          }
+        }).catch(error => {
+          if (error) {
+            console.error(error);
+          }
+        });
+    }
   }
 
   cleanFields() {
