@@ -7,10 +7,10 @@ a {
 
 :host {
   position: absolute;
-  height: 100vh;
+  height: 92vh;
   width: 4.5%;
-  border-right: 0.1rem solid rgba(199, 199, 199, 0.288);
-  background-color: $color-blacker;
+  // border-right: 0.1rem solid rgba(199, 199, 199, 0.288);
+  // background-color: rgba(39, 38, 38, 0.9);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,8 +24,11 @@ a {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  top: 8%;
+  box-shadow: 0 0.9rem 1rem rgba($color-black, 0.6);
 }
 .icons {
+  backface-visibility: hidden;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   margin: 1.5rem;
@@ -36,7 +39,6 @@ a {
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   &:hover {
     -webkit-transform: scale(1.05);
     -ms-transform: scale(1.05);
