@@ -3,20 +3,21 @@
 </div>
 
 <div class="header-first">
-  <!-- <div class='header-first__container-h1s'>
-    <p class='header-first__container-h1s__hello'>Hello!</p>
-    <p class='header-first__container-h1s__plasure'>Nice to meet you, my name is Philip.</p>
-  </div> -->
-  <!-- <img class='header-first__cloud-img' src="../../assets/cloud.png" alt="Cloud Image"> -->
   <div class='header-first__container-boat'>
     <div class="header-first__container-boat__play">
-      <img src='../../assets/play2.svg' class="header-first__container-boat__play__play-img" />
+      <ng-container *ngIf="!animate">
+        <img src='../../assets/play2.svg' class="header-first__container-boat__play__play-img"
+          (click)='initAnimation($event)' />
+      </ng-container>
+      <ng-container *ngIf="animate">
+        <img src='../../assets/pause.svg' class="header-first__container-boat__play__play-img"
+          (click)='initAnimation($event)' />
+      </ng-container>
     </div>
-    <img class='header-first__container-boat__boat-logo' src="../../assets/boat.svg" alt="Boat Image">
+    <img [ngClass]="{'boatMove' : animate}" class='header-first__container-boat__boat-logo' src="../../assets/boat.svg"
+      alt="Boat Image">
   </div>
   <img class="header-first__storm-img" height='50%' width='100%' src='../../assets/blue.png' />
   <button class='header-first__button-more'>
     <span class='header-first__button-more__text-button'>Learn more</span></button>
-
 </div>
-<!-- <app-signup-form></app-signup-form> -->

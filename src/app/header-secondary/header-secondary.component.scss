@@ -75,7 +75,6 @@
     &__boat-logo {
       position: relative;
       height: 13rem;
-      animation: boatMove 6.5s infinite;
     }
     &__play {
       position: relative;
@@ -108,20 +107,23 @@
   }
 }
 
-@keyframes boatMove {
-  0% {
-    transform: rotate(1deg) translate(0px, 0px);
+.boatMove {
+  @keyframes boatMove {
+    0% {
+      transform: rotate(1.2deg) translate(0px, 0px);
+    }
+    25% {
+      transform: rotate(-1.2deg) translate(0px, -8px);
+    }
+    50% {
+      transform: rotate(1.2deg) translate(0px, 0px);
+    }
+    75% {
+      transform: rotate(-1.2deg) translate(0px, -3px);
+    }
+    100% {
+      transform: rotate(1.2deg) translate(0px, 0px);
+    }
   }
-  25% {
-    transform: rotate(-1deg) translate(0px, -8px);
-  }
-  50% {
-    transform: rotate(1deg) translate(0px, 0px);
-  }
-  75% {
-    transform: rotate(-1deg) translate(0px, -3px);
-  }
-  100% {
-    transform: rotate(1deg) translate(0px, 0px);
-  }
+  animation: boatMove 7.5s infinite;
 }
