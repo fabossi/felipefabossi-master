@@ -22,7 +22,6 @@ export class ModalFormEmailComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-
   ngOnInit() {
   }
 
