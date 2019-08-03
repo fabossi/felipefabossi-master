@@ -54,7 +54,7 @@
   flex-direction: row;
   align-items: center;
   &__button-more {
-    position: relative;
+    position: absolute;
     backface-visibility: hidden;
     border-radius: 0.7rem;
     padding: 1.3rem;
@@ -65,7 +65,7 @@
     width: 10%;
     transition: all 0.22s ease-in;
     align-self: flex-end;
-    top: -3%;
+    bottom: 5rem;
     &__text-button {
       text-transform: uppercase;
       color: $color-blacker;
@@ -98,5 +98,64 @@
     position: absolute;
     align-self: flex-end;
     right: 0;
+  }
+  &__container-boat {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    position: relative;
+    right: 35%;
+    top: 16%;
+    &__boat-logo {
+      position: relative;
+      height: 13rem;
+      animation: boatMove 6.5s infinite;
+    }
+    &__play {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 4rem;
+      width: 4rem;
+      border-radius: 4rem;
+      opacity: 0.7;
+      transition: all 0.3s ease-out;
+      z-index: 3;
+      cursor: pointer;
+      right: 1rem;
+      box-shadow: 0rem 0 2.5rem 0rem;
+      &__play-img {
+        height: 100%;
+        width: 100%;
+      }
+      &:hover {
+        transform: scale(1.2);
+      }
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+  &__cloud-img {
+    position: relative;
+  }
+}
+
+@keyframes boatMove {
+  0% {
+    transform: rotate(1deg) translate(0px, 0px);
+  }
+  25% {
+    transform: rotate(-1deg) translate(0px, -8px);
+  }
+  50% {
+    transform: rotate(1deg) translate(0px, 0px);
+  }
+  75% {
+    transform: rotate(-1deg) translate(0px, -3px);
+  }
+  100% {
+    transform: rotate(1deg) translate(0px, 0px);
   }
 }
