@@ -10,54 +10,93 @@
   position: absolute;
   width: 100vw;
   height: 8%;
-  // background-color: rgba(39, 38, 38, 0.9);
-  box-shadow: 0 0.1rem 1.7rem rgba($color-black, 0.6);
 }
 
-.text-area {
-  text-align: center;
-  padding: 3.5rem;
-}
-.color-2 {
-  background-color: #555555;
-}
+// form singup
+// .text-area {
+//   text-align: center;
+//   padding: 3.5rem;
+// }
+// .color-2 {
+//   background-color: #555555;
+// }
 
-::-webkit-input-placeholder {
-  color: $color-white;
-  opacity: 0.9;
-}
+// ::-webkit-input-placeholder {
+//   color: $color-white;
+//   opacity: 0.9;
+// }
 
-:-ms-input-placeholder {
-  color: $color-white;
-  opacity: 0.9;
-}
+// :-ms-input-placeholder {
+//   color: $color-white;
+//   opacity: 0.9;
+// }
 
-::-ms-input-placeholder {
-  color: $color-white;
-  opacity: 0.9;
-}
+// ::-ms-input-placeholder {
+//   color: $color-white;
+//   opacity: 0.9;
+// }
 
-::-moz-placeholder {
-  color: $color-white;
-  opacity: 0.9;
-}
+// ::-moz-placeholder {
+//   color: $color-white;
+//   opacity: 0.9;
+// }
 
-::placeholder {
-  color: $color-white;
-  opacity: 0.9;
-}
+// ::placeholder {
+//   color: $color-white;
+//   opacity: 0.9;
+// }
 
 .header-first {
-  width: calc(100vw - 4.5%);
-  height: calc(100vh - 8%);
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  position: absolute;
-  left: 4.5%;
-  top: 8%;
-  // background-image: url("https://fabossi.s3-sa-east-1.amazonaws.com/felipe.jpg");
-  // background-size: cover;
-  // background-repeat: no-repeat;
+  &__button-more {
+    position: relative;
+    backface-visibility: hidden;
+    border-radius: 0.7rem;
+    padding: 1.3rem;
+    background-color: $color-white;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    width: 10%;
+    transition: all 0.22s ease-in;
+    align-self: flex-end;
+    top: -3%;
+    &__text-button {
+      text-transform: uppercase;
+      color: $color-blacker;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(1);
+    }
+  }
+  &__container-h1s {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    &__hello {
+      font-size: 2rem;
+    }
+    &__plasure {
+      font-size: 3rem;
+    }
+  }
+  &__storm-img {
+    width: 100vw;
+    height: 60%;
+    /* z-index: -2; */
+    position: absolute;
+    align-self: flex-end;
+    right: 0;
+  }
 }
