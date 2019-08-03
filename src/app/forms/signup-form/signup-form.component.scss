@@ -3,7 +3,6 @@
 :host(app-signup-form) {
   height: 70%;
   width: 51%;
-  // background-color: $color-white;
   border-radius: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11,7 +10,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  // padding: 1rem;
 }
 
 .container-names {
@@ -28,18 +26,12 @@
   color: $color-grey;
 }
 
-.email-input {
-}
-
-.textarea-input {
-}
-
 .button {
   border: none;
   border-radius: 1.5rem;
   padding: 0.9rem 2.3rem;
   font-size: 1.2rem;
-  color: $color-white;
+  color: $color-whiter;
   text-transform: uppercase;
   background-color: $color-primary-dark;
   cursor: pointer;
@@ -64,7 +56,6 @@
 }
 
 .basics-input-styles {
-  // border-radius: 1.3rem;
   background-color: transparent;
   padding: 1rem;
   outline: none;

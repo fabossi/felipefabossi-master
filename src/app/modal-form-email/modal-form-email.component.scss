@@ -81,60 +81,28 @@
   }
 }
 
-.down {
-  @-webkit-keyframes shake {
-    10%,
-    90% {
-      -webkit-transform: translate3d(-1px, 0, 0);
-      transform: translate3d(-1px, 0, 0);
-    }
-
-    20%,
-    80% {
-      -webkit-transform: translate3d(2px, 0, 0);
-      transform: translate3d(2px, 0, 0);
-    }
-
-    30%,
-    50%,
-    70% {
-      -webkit-transform: translate3d(-4px, 0, 0);
-      transform: translate3d(-4px, 0, 0);
-    }
-
-    40%,
-    60% {
-      -webkit-transform: translate3d(4px, 0, 0);
-      transform: translate3d(4px, 0, 0);
-    }
+.close-img {
+  position: relative;
+  height: 3.5rem;
+  width: 3.5rem;
+  align-self: flex-end;
+  margin: 2rem;
+  top: -10%;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: transform 0.4s;
+  @supports (-webkit-mask: url()) or (mask-image: url()) {
+    background-color: $color-white;
+    -webkit-mask-image: url("../../assets/close.svg");
+    -webkit-mask-size: cover;
+    mask-image: url("../../assets/close.svg");
+    mask-size: cover;
+    background-image: none;
   }
-
-  @keyframes shake {
-    10%,
-    90% {
-      -webkit-transform: translate3d(-1px, 0, 0);
-      transform: translate3d(-1px, 0, 0);
-    }
-
-    20%,
-    80% {
-      -webkit-transform: translate3d(2px, 0, 0);
-      transform: translate3d(2px, 0, 0);
-    }
-
-    30%,
-    50%,
-    70% {
-      -webkit-transform: translate3d(-4px, 0, 0);
-      transform: translate3d(-4px, 0, 0);
-    }
-
-    40%,
-    60% {
-      -webkit-transform: translate3d(4px, 0, 0);
-      transform: translate3d(4px, 0, 0);
-    }
+  &:hover {
+    transform: rotate(90deg) scale(1.05);
   }
-  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  &:active {
+    transform: scale(1);
+  }
 }
