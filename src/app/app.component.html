@@ -12,4 +12,9 @@
 <ng-container *ngIf="isLoading">
   <app-modal-feedback></app-modal-feedback>
 </ng-container>
+
+<ng-container *ngIf="showModal">
+  <app-modal-form-email></app-modal-form-email>
+</ng-container>
+
 <router-outlet></router-outlet>

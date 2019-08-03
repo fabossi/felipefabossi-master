@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { EmailServiceService } from '../services/email-service.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -8,10 +9,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class HeaderMenuComponent implements OnInit {
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private emailService: EmailServiceService) { }
 
 
   ngOnInit() {
+  }
+
+  showEmail() {
+    this.emailService.showEmail.next(true);
   }
 
 }

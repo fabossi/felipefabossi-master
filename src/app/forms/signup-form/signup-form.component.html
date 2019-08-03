@@ -1,15 +1,15 @@
-<h1>Contact me!</h1>
+<div class="container-names">
+  <input class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
+    [(ngModel)]="nameTextInput" name='nameTextInput' placeholder="Your name">
 
-<input autocomplete="off" type="text" [(ngModel)]="nameTextInput" name='nameTextInput'
-  placeholder="Write your name here..">
+  <input class='container-names__lastName-input basics-input-styles' autocomplete="off" type="text"
+    [(ngModel)]="lastNameTextInput" name='lastNameTextInput' placeholder="Your lastname">
+</div>
 
-<input autocomplete="off" type="text" [(ngModel)]="lastNameTextInput" name='lastNameTextInput'
-  placeholder="Write your Last name here..">
+<input class='email-input basics-input-styles' autocomplete="off" type="email" [(ngModel)]="emailTextInput"
+  name='emailTextInput' placeholder="youremail@provider.com">
 
-<input autocomplete="off" type="email" [(ngModel)]="emailTextInput" name='emailTextInput'
-  placeholder="Write your email here..">
+<textarea class='textarea-input basics-input-styles' autocomplete="off" [(ngModel)]="messageTextInput"
+  name='messageTextInput' cols="2" rows="2" placeholder="Write your message to me here."></textarea>
 
-<textarea autocomplete="off" [(ngModel)]="messageTextInput" name='messageTextInput' cols="30" rows="10"
-  placeholder="Write your message to me .."></textarea>
-
-<button (click)='submitInformations()'>SEND</button>
+<button (click)='submitInformations()' class='button'>SEND</button>

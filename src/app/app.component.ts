@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EmailServiceService } from './services/email-service.service';
 
@@ -8,11 +8,13 @@ import { EmailServiceService } from './services/email-service.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   subscription: Subscription;
+  subscriptionModal: Subscription;
   hideToMobile = false;
   isLoading: boolean;
   showFeedback = false;
+  showModal = false;
   _status_feedback: 'SUCCESS' | '400';
 
   constructor(private emailService: EmailServiceService) {
@@ -36,6 +38,14 @@ export class AppComponent {
         this.isLoading = true;
       }
     });
+    this.subscriptionModal = this.emailService.showEmail.subscribe((showModal) => {
+      this.showModal = showModal;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscriptionModal.unsubscribe();
   }
 
   onResize(e) {

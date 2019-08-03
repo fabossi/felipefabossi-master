@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailServiceService {
   LOCAL_URL = '';
+  showEmail = new Subject<boolean>();
   submitComplete = new BehaviorSubject<string>('');
   status: 'SUCCESS' | '400';
 
