@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { HeaderSecondaryComponent } from './header-secondary/header-secondary.component';
-import { ButtonHeaderSecondaryComponent } from './button-header-secondary/button-header-secondary.component';
-import { ButtonSignupComponent } from './button-signup/button-signup.component';
 import { SandwichMenuComponent } from './sandwich-menu/sandwich-menu.component';
 import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
@@ -24,8 +22,6 @@ import { ModalFormEmailComponent } from './modal-form-email/modal-form-email.com
     AppComponent,
     HeaderSocialComponent,
     HeaderSecondaryComponent,
-    ButtonHeaderSecondaryComponent,
-    ButtonSignupComponent,
     SandwichMenuComponent,
     HeaderMenuComponent,
     ModalFeedbackComponent,

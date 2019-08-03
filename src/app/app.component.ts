@@ -23,19 +23,17 @@ export class AppComponent implements OnDestroy {
     }
     this.subscription = this.emailService.getItemsReady().subscribe(status => {
       if (status === 'ready') {
-        this.isLoading = false;
+        this.showModal = false;
         this._status_feedback = this.emailService.status;
         setTimeout(() => {
           this.showFeedback = true;
         }, 400);
       } else if (status === 'error') {
-        this.isLoading = false;
+        this.showModal = false;
         this._status_feedback = this.emailService.status;
         setTimeout(() => {
           this.showFeedback = true;
-        }, 4200);
-      } else if (status === 'waiting') {
-        this.isLoading = true;
+        }, 400);
       }
     });
     this.subscriptionModal = this.emailService.showEmail.subscribe((showModal) => {
