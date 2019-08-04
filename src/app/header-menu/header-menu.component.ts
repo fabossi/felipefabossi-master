@@ -8,7 +8,11 @@ import { EmailServiceService } from '../services/email-service.service';
   styleUrls: ['./header-menu.component.scss']
 })
 export class HeaderMenuComponent implements OnInit {
-
+  RLH = '';
+  RLWB = '/page/websites';
+  RLSK = '/page/skills';
+  RLCR = '/page/career';
+  RLAM = '/page/about-me';
   constructor(private emailService: EmailServiceService) { }
 
 
