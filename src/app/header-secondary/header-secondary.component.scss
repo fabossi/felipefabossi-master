@@ -130,43 +130,5 @@
 }
 
 .boatMove {
-  @keyframes boatMove {
-    0% {
-      transform: rotate(1.2deg) translate(0px, 0px);
-    }
-    25% {
-      transform: rotate(-1.2deg) translate(0px, -8px);
-    }
-    50% {
-      transform: rotate(1.2deg) translate(0px, 0px);
-    }
-    75% {
-      transform: rotate(-1.2deg) translate(0px, -3px);
-    }
-    100% {
-      transform: rotate(1.2deg) translate(0px, 0px);
-    }
-  }
   animation: boatMove 7.5s infinite;
-}
-
-@-webkit-keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
 }

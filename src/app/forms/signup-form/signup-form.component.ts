@@ -1,55 +1,62 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { EmailServiceService } from 'src/app/services/email-service.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss']
 })
-export class SignupFormComponent {
-  nameTextInput: string;
-  lastNameTextInput: string;
-  emailTextInput: string;
-  messageTextInput: string;
+export class SignupFormComponent implements OnInit {
   isLoading = false;
   subscription: Subscription;
   opacity = false;
-  hasErrors = '';
-
+  hasErrors = false;
+  signupForm: FormGroup;
+  stausRequest = 'wait';
   constructor(private emailService: EmailServiceService) {
     this.emailService.getItemsReady().subscribe(status => {
       if (status === 'ready') {
+        this.stausRequest = status;
         this.cleanFields();
+      } else if (status === 'waiting') {
+        this.stausRequest = status;
+      } else if (status === 'error') {
+        this.stausRequest = status;
       }
+    });
+  }
+
+  ngOnInit() {
+    this.signupForm = new FormGroup({
+      'nameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'lastNameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'emailTextInput': new FormControl(null, [Validators.required, Validators.email]),
+      'messageTextInput': new FormControl(null, [Validators.required, Validators.minLength(4)]),
     });
   }
 
 
   submitInformations() {
-    if (this.emailTextInput == null || this.lastNameTextInput == null
-      || this.messageTextInput == null || this.nameTextInput == null) {
-      return this.hasErrors = 'fill in all fields';
+    if (this.signupForm.invalid) {
+      return this.hasErrors = true;
     } else {
-      this.emailService.submitInformations(this.nameTextInput,
-        this.lastNameTextInput, this.emailTextInput, this.messageTextInput).then(data => {
-          if (data != null || data !== undefined) {
-          } else {
-            this.hasErrors = 'fill in all fields';
-            console.error('Fields are Missing!');
-          }
-        }).catch(error => {
-          if (error) {
-            console.error(error);
-          }
-        });
+      this.emailService.submitInformations(this.signupForm.value).then(data => {
+        if (data != null || data !== undefined) {
+        } else {
+          this.hasErrors = true;
+          console.error('Fields are Missing!');
+        }
+      }).catch(error => {
+        if (error) {
+          console.error(error);
+        }
+      });
     }
   }
 
   cleanFields() {
-    this.emailTextInput = null;
-    this.messageTextInput = null;
-    this.nameTextInput = null;
-    this.lastNameTextInput = null;
+    this.signupForm.reset();
   }
 }

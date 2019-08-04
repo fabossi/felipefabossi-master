@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderSecondaryComponent } from './header-secondary/header-secondary.component';
 import { SandwichMenuComponent } from './sandwich-menu/sandwich-menu.component';
@@ -30,7 +30,7 @@ import { ModalFormEmailComponent } from './modal-form-email/modal-form-email.com
     SignupFormComponent,
     ModalFormEmailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [EmailServiceService],
   bootstrap: [AppComponent]
 })

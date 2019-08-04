@@ -12,7 +12,6 @@ app.use(sanitize());
 exports.insertContact = (req, res) => {
   return new Promise((resolve, reject) => {
     const newContact = new Contact({
-
       name: req.body.name,
       lastName: req.body.lastName,
       email: req.body.email,

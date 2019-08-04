@@ -19,14 +19,11 @@ export class EmailServiceService {
     }
   }
 
-  submitInformations(name: string, lastName: String, email: string, message: string) {
+  submitInformations(form) {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();
       const body = {
-        name: name,
-        lastName: lastName,
-        email: email,
-        message: message
+        form: form
       };
       this.submitComplete.next('waiting');
       headers.append('Content-Type', 'application/json');

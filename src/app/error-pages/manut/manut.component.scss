@@ -10,42 +10,10 @@
   height: 100vh;
 }
 
-.margin {
-  margin: 6rem;
-}
-
-p {
-  font-size: 3rem;
-  color: $color-blacker;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 .storm-img {
   width: 100vw;
   height: 60%;
   position: absolute;
   align-self: flex-end;
   bottom: 0;
-}
-
-a {
-  font-size: 1.4rem;
-  text-decoration: none;
-  color: $color-primary-dark;
-  padding: 0.5rem;
-  border-radius: 2rem;
-  width: 10rem;
-  text-align: center;
-  -webkit-transition: background-color ease-in-out 0.4s;
-  -o-transition: background-color ease-in-out 0.4s;
-  transition: background-color ease-in-out 0.4s;
-  box-shadow: 0 4px 15px rgba(52, 73, 94, 0.3);
-  z-index: 3;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.178);
-  }
-  @include respond(phone-small) {
-    left: 68%;
-  }
 }

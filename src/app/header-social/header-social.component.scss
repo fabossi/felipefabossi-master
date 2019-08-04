@@ -56,19 +56,13 @@ a {
   }
 }
 
-.wpp {
-  -webkit-filter: grayscale(5%);
-  filter: grayscale(5%);
-}
-.lkdn {
-  -webkit-filter: grayscale(5%);
-  filter: grayscale(5%);
+.fb {
+  height: 3rem;
 }
 
-.fb {
-  -webkit-filter: grayscale(5%);
-  filter: grayscale(5%);
-  height: 3rem;
+.make-grey {
+  -webkit-filter: grayscale(3%);
+  filter: grayscale(3%);
 }
 
 .share {
@@ -83,25 +77,4 @@ a {
   letter-spacing: 0.7rem;
   cursor: pointer;
   font-family: "Vidaloka", serif;
-}
-
-@-webkit-keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
 }

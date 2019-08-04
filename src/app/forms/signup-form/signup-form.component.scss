@@ -1,8 +1,9 @@
 @import "../../../sass/main.component.scss";
 
-:host(app-signup-form) {
-  height: 70%;
-  width: 51%;
+:host(app-signup-form),
+form {
+  height: 96%;
+  width: 75%;
   border-radius: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11,6 +12,8 @@
   justify-content: space-around;
   align-items: center;
 }
+
+@include loader;
 
 .container-names {
   display: flex;
@@ -31,7 +34,7 @@
   border-radius: 1.5rem;
   padding: 0.9rem 2.3rem;
   font-size: 1.2rem;
-  color: $color-whiter;
+  color: $color-white;
   text-transform: uppercase;
   background-color: $color-primary-dark;
   cursor: pointer;
@@ -42,7 +45,7 @@
   -o-transition: all 0.2s;
   transition: all 0.2s;
   width: 30%;
-  box-shadow: 0 0rem 1rem 0.3rem #28b485a8, 0 0rem 2rem 0.1rem #28b4857c;
+  box-shadow: 0 0rem 0.5rem 0.3rem #28b485a8, 0 0rem 0.8rem 0.3rem #28b485a8;
   &:hover {
     -webkit-transform: scale(1.05);
     -ms-transform: scale(1.05);
@@ -65,4 +68,12 @@
   color: $color-whiter;
   font-size: 1.4rem;
   text-align: center;
+}
+
+.hasError {
+  border-bottom: 0.1rem solid $color-red-2 !important;
+}
+
+.noError {
+  border-bottom: 0.1rem solid $color-primary-light !important;
 }

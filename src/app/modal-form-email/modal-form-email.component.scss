@@ -87,16 +87,16 @@
   height: 3.5rem;
   width: 3.5rem;
   align-self: flex-end;
-  margin: 2rem;
-  top: -10%;
+  top: 3%;
+  right: 2%;
   cursor: pointer;
   backface-visibility: hidden;
   transition: transform 0.4s;
   @supports (-webkit-mask: url()) or (mask-image: url()) {
     background-color: $color-white;
-    -webkit-mask-image: url("../../assets/close.svg");
+    -webkit-mask-image: url("https://fabossi.s3-sa-east-1.amazonaws.com/close.svg");
     -webkit-mask-size: cover;
-    mask-image: url("../../assets/close.svg");
+    mask-image: url("https://fabossi.s3-sa-east-1.amazonaws.com/close.svg");
     mask-size: cover;
     background-image: none;
   }

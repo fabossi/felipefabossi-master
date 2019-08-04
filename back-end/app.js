@@ -39,9 +39,9 @@ app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    styleSrc: ["'self'"],
+    styleSrc: ["'self'", 'https://fabossi.s3-sa-east-1.amazonaws.com/'],
     scriptSrc: ["'self'"],
-    fontSrc: ["'self'"]
+    fontSrc: ["'self'", 'https://fonts.googleapis.com']
   }
 }));
 

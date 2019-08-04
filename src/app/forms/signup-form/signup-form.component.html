@@ -1,15 +1,32 @@
-<div class="container-names">
-  <input class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
-    [(ngModel)]="nameTextInput" name='nameTextInput' placeholder="Your name">
+<form [formGroup]="signupForm">
+  <div class="container-names">
+    <input [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
+      class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
+      formControlName="nameTextInput" placeholder="Your name">
 
-  <input class='container-names__lastName-input basics-input-styles' autocomplete="off" type="text"
-    [(ngModel)]="lastNameTextInput" name='lastNameTextInput' placeholder="Your lastname">
-</div>
+    <input
+      [ngClass]="{'hasError': !signupForm.get('lastNameTextInput').valid && signupForm.get('lastNameTextInput').touched}"
+      class='container-names__lastName-input basics-input-styles' autocomplete="off" type="text"
+      formControlName="lastNameTextInput" placeholder="Your lastname">
+  </div>
 
-<input class='email-input basics-input-styles' autocomplete="off" type="email" [(ngModel)]="emailTextInput"
-  name='emailTextInput' placeholder="youremail@provider.com">
+  <input [ngClass]="{'hasError': !signupForm.get('emailTextInput').valid && signupForm.get('emailTextInput').touched}"
+    class='email-input basics-input-styles' autocomplete="off" type="email" name='emailTextInput'
+    formControlName="emailTextInput" placeholder="youremail@provider.com">
 
-<textarea class='textarea-input basics-input-styles' autocomplete="off" [(ngModel)]="messageTextInput"
-  name='messageTextInput' cols="2" rows="2" placeholder="Write your message to me here."></textarea>
-
-<button (click)='submitInformations()' class='button'>SEND</button>
+  <textarea
+    [ngClass]="{'hasError': !signupForm.get('messageTextInput').valid && signupForm.get('messageTextInput').touched}"
+    class='textarea-input basics-input-styles' autocomplete="off" cols="2" rows="2" formControlName="messageTextInput"
+    placeholder="Write your message to me here."></textarea>
+  <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">
+    <button (click)='submitInformations()' class='button'>SEND</button>
+  </ng-container>
+  <ng-container *ngIf="stausRequest === 'waiting' || stausRequest === 'error'">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </ng-container>
+</form>
