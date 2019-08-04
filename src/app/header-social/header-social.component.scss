@@ -26,6 +26,12 @@ a {
   border-radius: 0 1.2rem 1.2rem 0;
   box-shadow: 0 2.4rem 14.6rem -1rem rgba(27, 27, 27, 0.6);
 }
+
+.make-animation {
+  -webkit-animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
 .icons {
   backface-visibility: hidden;
   -webkit-filter: grayscale(100%);
@@ -77,4 +83,25 @@ a {
   letter-spacing: 0.7rem;
   cursor: pointer;
   font-family: "Vidaloka", serif;
+}
+
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
