@@ -1,24 +1,24 @@
 @import "../../../sass/main.component.scss";
 
 :host {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  z-index: -1;
+}
+
+.margin {
+  margin: 6rem;
 }
 
 p {
-  position: relative;
   font-size: 3rem;
-  color: $color-white;
-  left: 63%;
-  top: 62%;
+  color: $color-blacker;
   font-weight: 700;
-  max-width: 32%;
-  @include respond(phone-small) {
-    left: 22%;
-    max-width: 75%;
-  }
+  text-transform: uppercase;
 }
 
 .storm-img {
@@ -29,47 +29,23 @@ p {
   bottom: 0;
 }
 
-h1 {
-  position: relative;
-  left: 67%;
-  top: 63%;
-  color: $color-whiter;
-  max-width: 32%;
-  @include respond(phone-small) {
-    left: 35%;
-    max-width: 61%;
-  }
-}
-
 a {
-  position: absolute;
   font-size: 1.4rem;
   text-decoration: none;
-  color: $color-whiter;
-  border: 0.1rem solid $color-white;
+  color: $color-primary-dark;
   padding: 0.5rem;
   border-radius: 2rem;
-  left: 78%;
-  top: 77%;
   width: 10rem;
   text-align: center;
   -webkit-transition: background-color ease-in-out 0.4s;
   -o-transition: background-color ease-in-out 0.4s;
   transition: background-color ease-in-out 0.4s;
+  box-shadow: 0 4px 15px rgba(52, 73, 94, 0.3);
+  z-index: 3;
   &:hover {
     background-color: rgba(255, 255, 255, 0.178);
   }
   @include respond(phone-small) {
     left: 68%;
-  }
-}
-
-.astronaut {
-  position: absolute;
-  height: 270px;
-  top: 7%;
-  // right: .3rem;
-  @include respond(phone-small) {
-    height: 164px;
   }
 }

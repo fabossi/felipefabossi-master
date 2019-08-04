@@ -52,6 +52,7 @@
     transition: all 0.22s ease-in;
     align-self: flex-end;
     bottom: 5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.71);
     &__text-button {
       text-transform: uppercase;
       color: $color-blacker;

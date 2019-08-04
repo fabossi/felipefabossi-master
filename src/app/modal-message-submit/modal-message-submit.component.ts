@@ -28,10 +28,10 @@ export class ModalMessageSubmitComponent implements OnInit {
     this._status = status;
     switch (status) {
       case 'SUCCESS':
-        this.message = 'Obrigado pelo contato, seu e-mail foi enviado com sucesso.';
+        this.message = 'Thanks for the contact, your email was sent successfully.';
         break;
       case '400':
-        this.message = `Ops, algo de errado aconteceu, tente novamente.`;
+        this.message = `Oops, something wrong happened, try again.`;
         break;
     }
   }

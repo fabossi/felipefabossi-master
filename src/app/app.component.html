@@ -1,4 +1,4 @@
-<div class='main' (window:resize)="onResize($event)">
+<ng-container (window:resize)="onResize($event)">
   <header-social *ngIf="!hideToMobile"></header-social>
 
 <div class="container-profile">
@@ -20,5 +20,5 @@
   <app-modal-form-email></app-modal-form-email>
 </ng-container>
 
-</div>
+</ng-container>
 <router-outlet></router-outlet>
