@@ -1,23 +1,42 @@
 <form [formGroup]="signupForm">
   <div class="container-names">
-    <input [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
-      class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
-      formControlName="nameTextInput" placeholder="Your name">
+    <div class="generic-message-input-error">
+      <input [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
+        class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
+        formControlName="nameTextInput" placeholder="Your name">
+      <div *ngIf="signupForm.get('nameTextInput').errors || signupForm.get('nameTextInput').invalid"
+        class="generic-message-input-error__top">Insert at least 3 characters.</div>
+    </div>
 
-    <input
-      [ngClass]="{'hasError': !signupForm.get('lastNameTextInput').valid && signupForm.get('lastNameTextInput').touched}"
-      class='container-names__lastName-input basics-input-styles' autocomplete="off" type="text"
-      formControlName="lastNameTextInput" placeholder="Your lastname">
+    <div class="generic-message-input-error">
+      <input
+        [ngClass]="{'hasError': !signupForm.get('lastNameTextInput').valid && signupForm.get('lastNameTextInput').touched}"
+        class='generic-message-input-error container-names__lastName-input basics-input-styles' autocomplete="off"
+        type="text" formControlName="lastNameTextInput" placeholder="Your lastname">
+      <div *ngIf="signupForm.get('lastNameTextInput').errors || signupForm.get('lastNameTextInput').invalid"
+        class="generic-message-input-error__top">Insert at least 3 characters.</div>
+    </div>
   </div>
 
-  <input [ngClass]="{'hasError': !signupForm.get('emailTextInput').valid && signupForm.get('emailTextInput').touched}"
-    class='email-input basics-input-styles' autocomplete="off" type="email" name='emailTextInput'
-    formControlName="emailTextInput" placeholder="youremail@provider.com">
+  <div class="generic-message-input-error">
+    <input [ngClass]="{'hasError': !signupForm.get('emailTextInput').valid && signupForm.get('emailTextInput').touched}"
+      class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="email"
+      name='emailTextInput' formControlName="emailTextInput" placeholder="youremail@provider.com">
+    <div *ngIf="signupForm.get('emailTextInput').invalid" class="generic-message-input-error__top">Please, insert
+      a valid email.</div>
+  </div>
 
-  <textarea
-    [ngClass]="{'hasError': !signupForm.get('messageTextInput').valid && signupForm.get('messageTextInput').touched}"
-    class='textarea-input basics-input-styles' autocomplete="off" cols="2" rows="2" formControlName="messageTextInput"
-    placeholder="Write your message to me here."></textarea>
+  <div class="generic-message-input-error">
+    <textarea
+      [ngClass]="{'hasError': !signupForm.get('messageTextInput').valid && signupForm.get('messageTextInput').touched}"
+      class='generic-message-input-error textarea-input basics-input-styles' id='messageTextInput' autocomplete="off"
+      cols="2" rows="2" formControlName="messageTextInput" [maxlength]="mxlengthTA"
+      placeholder="Write your message to me here." #messageTextInput>
+    </textarea>
+    <div class='generic-message-input-error__top'>
+      {{ messageTextInput.value.length }} of 155
+    </div>
+  </div>
   <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">
     <button (click)='submitInformations()' class='button'>SEND</button>
   </ng-container>
@@ -29,4 +48,5 @@
       <div></div>
     </div>
   </ng-container>
+
 </form>

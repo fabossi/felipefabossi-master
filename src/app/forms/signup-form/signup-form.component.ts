@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EmailServiceService } from 'src/app/services/email-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,9 +12,12 @@ export class SignupFormComponent implements OnInit {
   isLoading = false;
   subscription: Subscription;
   opacity = false;
-  hasErrors = false;
   signupForm: FormGroup;
   stausRequest = 'wait';
+  mxlengthTA = 155;
+  mxlengthN = 25;
+  mxlengthLN = 45;
+
   constructor(private emailService: EmailServiceService) {
     this.emailService.getItemsReady().subscribe(status => {
       if (status === 'ready') {
@@ -30,27 +33,24 @@ export class SignupFormComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'nameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      'lastNameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'nameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3),
+      Validators.maxLength(this.mxlengthN)]),
+      'lastNameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3),
+      Validators.maxLength(this.mxlengthLN)]),
+      'messageTextInput': new FormControl(null, [Validators.required, Validators.minLength(4),
+      Validators.maxLength(this.mxlengthTA)]),
       'emailTextInput': new FormControl(null, [Validators.required, Validators.email]),
-      'messageTextInput': new FormControl(null, [Validators.required, Validators.minLength(4)]),
     });
   }
 
-
   submitInformations() {
     if (this.signupForm.invalid) {
-      return this.hasErrors = true;
+      throw new Error('Fill all fields');
     } else {
-      this.emailService.submitInformations(this.signupForm.value).then(data => {
-        if (data != null || data !== undefined) {
-        } else {
-          this.hasErrors = true;
-          console.error('Fields are Missing!');
-        }
-      }).catch(error => {
+      console.log(this.signupForm);
+      this.emailService.submitInformations(this.signupForm.value).then().catch(error => {
         if (error) {
-          console.error(error);
+          throw Error(error);
         }
       });
     }

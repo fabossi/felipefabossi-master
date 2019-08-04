@@ -1,6 +1,12 @@
 @import "../../sass/main.component.scss";
 @import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
 
+:host {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+
 .height {
   height: 12%;
   width: 12%;
