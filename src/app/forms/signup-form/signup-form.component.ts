@@ -33,13 +33,13 @@ export class SignupFormComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'nameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3),
+      'nameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthN)]),
-      'lastNameTextInput': new FormControl(null, [Validators.required, Validators.minLength(3),
+      'lastNameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthLN)]),
-      'messageTextInput': new FormControl(null, [Validators.required, Validators.minLength(4),
+      'messageTextInput': new FormControl('', [Validators.required, Validators.minLength(4),
       Validators.maxLength(this.mxlengthTA)]),
-      'emailTextInput': new FormControl(null, [Validators.required, Validators.email]),
+      'emailTextInput': new FormControl('', [Validators.required, Validators.email]),
     });
   }
 
