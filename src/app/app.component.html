@@ -1,6 +1,9 @@
 <div class='main' (window:resize)="onResize($event)">
   <header-social *ngIf="!hideToMobile"></header-social>
 </div>
+<div class="container-profile">
+  <app-header-menu></app-header-menu>
+</div>
 <!-- <app-header-menu></app-header-menu> -->
 <app-header-social-mobile *ngIf="hideToMobile"></app-header-social-mobile>
 
