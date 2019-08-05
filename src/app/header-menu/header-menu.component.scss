@@ -70,3 +70,45 @@ a {
     background-image: none;
   }
 }
+
+.ready-only {
+  cursor: not-allowed;
+}
+
+.make-animation {
+  &:hover ~ .message__inf {
+    visibility: visible;
+    height: 3rem;
+  }
+  &:hover ~ .message__inf > span {
+    opacity: 1;
+  }
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  &__inf {
+    height: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: height 0.4s, visibility 0.7s;
+    transition-delay: 0.11s;
+    box-shadow: 0 0rem 2em rgba($color: $color-black, $alpha: 0.18);
+    position: absolute;
+    top: 35px;
+    border-radius: 1rem;
+    visibility: hidden;
+    &__text {
+      transition: opacity 0.35s;
+      transition-delay: 0.014s;
+      font-size: 1.2rem;
+      color: $color-black;
+      padding: 0rem 1rem;
+      opacity: 0;
+    }
+  }
+}
