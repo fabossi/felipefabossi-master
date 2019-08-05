@@ -96,7 +96,7 @@ a {
     justify-content: center;
     align-items: center;
     transition: height 0.4s, visibility 0.7s;
-    transition-delay: 0.11s;
+    transition-delay: 0.13s;
     box-shadow: 0 0rem 2em rgba($color: $color-black, $alpha: 0.18);
     position: absolute;
     top: 35px;
@@ -106,7 +106,7 @@ a {
       transition: opacity 0.35s;
       transition-delay: 0.016s;
       font-size: 1.2rem;
-      color: $color-black;
+      color: $color-blacker;
       padding: 0rem 1rem;
       opacity: 0;
     }

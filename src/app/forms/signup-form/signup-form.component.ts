@@ -14,7 +14,7 @@ export class SignupFormComponent implements OnInit {
   opacity = false;
   signupForm: FormGroup;
   stausRequest = 'wait';
-  mxlengthTA = 155;
+  mxlengthTA = 355;
   mxlengthN = 25;
   mxlengthLN = 45;
 

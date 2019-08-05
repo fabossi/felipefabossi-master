@@ -34,7 +34,7 @@
       placeholder="Write your message to me here." #messageTextInput>
     </textarea>
     <div class='generic-message-input-error__top'>
-      {{ messageTextInput.value.length }} of 155
+      {{ messageTextInput.value.length }} of {{mxlengthTA}}
     </div>
   </div>
   <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">

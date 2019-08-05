@@ -60,12 +60,22 @@ a {
   height: 3rem;
 }
 .github {
-  height: 3.5rem;
+  height: 2.1rem;
+  width: 2.1rem;
+}
+.linkedin {
+  height: 2rem;
+  width: 2rem;
+}
+.wpp {
+  height: 2rem;
+  width: 1.9rem;
+  color: $color-primary-dark;
 }
 
 .make-grey {
-  -webkit-filter: grayscale(3%);
-  filter: grayscale(3%);
+  -webkit-filter: grayscale(2%) !important;
+  filter: grayscale(2%) !important;
 }
 
 .share {
