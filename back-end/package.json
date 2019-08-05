@@ -24,6 +24,7 @@
     "mongoose": "^5.5.14",
     "nodemailer": "^1.2.2",
     "nodemon": "^1.19.1",
-    "rate-limit-mongo": "^1.0.3"
+    "rate-limit-mongo": "^1.0.3",
+    "sanitize": "^2.1.0"
   }
 }
