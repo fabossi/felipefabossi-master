@@ -22,13 +22,10 @@ export class EmailServiceService {
   submitInformations(form) {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();
-      const body = {
-        form: form
-      };
       this.submitComplete.next('waiting');
       headers.append('Content-Type', 'application/json');
-      if (body != null || body !== undefined) {
-        this.http.post(this.LOCAL_URL + '/api/contact', body, { headers: headers })
+      if (form != null || form !== undefined) {
+        this.http.post(this.LOCAL_URL + '/api/contact', form, { headers: headers })
           .toPromise()
           .then(data => {
             if (data != null || data !== undefined) {
