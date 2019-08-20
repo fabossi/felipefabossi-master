@@ -1,24 +1,22 @@
 <div (window:resize)="onResize($event)">
   <header-social *ngIf="!hideToMobile"></header-social>
 
-<div class="container-profile">
-  <app-header-menu></app-header-menu>
-</div>
-<!-- <app-header-menu></app-header-menu> -->
-<app-header-social-mobile *ngIf="hideToMobile"></app-header-social-mobile>
+  <div class="container-profile">
+    <app-header-menu></app-header-menu>
+  </div>
 
-<div *ngIf="showFeedback">
-  <app-modal-message-submit (modalFeedBackEvent)='askFeedback($event)' [status]='_status_feedback'>
-  </app-modal-message-submit>
-</div>
+  <!-- <app-header-social-mobile ></app-header-social-mobile> -->
 
-<!-- <ng-container *ngIf="isLoading">
-  <app-modal-feedback></app-modal-feedback>
-</ng-container> -->
+  <app-only-computer *ngIf="hideToMobile"></app-only-computer>
 
-<ng-container *ngIf="showModal">
-  <app-modal-form-email></app-modal-form-email>
-</ng-container>
+  <div *ngIf="showFeedback">
+    <app-modal-message-submit (modalFeedBackEvent)='askFeedback($event)' [status]='_status_feedback'>
+    </app-modal-message-submit>
+  </div>
+
+  <ng-container *ngIf="showModal">
+    <app-modal-form-email></app-modal-form-email>
+  </ng-container>
 
 </div>
 <router-outlet></router-outlet>

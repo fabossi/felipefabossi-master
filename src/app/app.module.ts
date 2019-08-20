@@ -16,6 +16,7 @@ import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile
 import { SignupFormComponent } from './forms/signup-form/signup-form.component';
 import { ModalMessageSubmitComponent } from './modal-message-submit/modal-message-submit.component';
 import { ModalFormEmailComponent } from './modal-form-email/modal-form-email.component';
+import { OnlyComputerComponent } from './mobile-first/only-computer/only-computer.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ModalFormEmailComponent } from './modal-form-email/modal-form-email.com
     HeaderSocialMobileComponent,
     SignupFormComponent,
     ModalFormEmailComponent,
+    OnlyComputerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [EmailServiceService],

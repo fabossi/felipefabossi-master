@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import openSocket from 'socket.io-client';
 
 @Component({
   selector: "header-secondary",
@@ -12,7 +13,6 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
   }
 
   ngOnDestroy() {

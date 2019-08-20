@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EmailServiceService } from 'src/app/services/email-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -47,7 +47,6 @@ export class SignupFormComponent implements OnInit {
     if (this.signupForm.invalid) {
       throw new Error('Fill all fields');
     } else {
-      console.log(this.signupForm);
       this.emailService.submitInformations(this.signupForm.value).then().catch(error => {
         if (error) {
           throw Error(error);
