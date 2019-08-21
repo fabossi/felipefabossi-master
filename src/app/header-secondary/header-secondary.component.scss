@@ -32,6 +32,9 @@
     align-items: center;
     width: 92%;
     top: 19.8rem;
+    & > * {
+      cursor: pointer;
+    }
     &__python {
       height: 10%;
       width: 10%;
