@@ -8,7 +8,10 @@ import openSocket from 'socket.io-client';
 })
 export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   animate = true;
-  haveEvent = false;
+  MongoEvent = false;
+  PythonEvent = false;
+  NodeEvent = false;
+  AngularEvent = false;
 
   constructor() { }
 
@@ -25,9 +28,25 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkEvent(event) {
+  checkMongoEvent(event) {
     if (event) {
-      this.haveEvent = true;
+      this.MongoEvent = true;
+    }
+  }
+
+  checkPythonEvent(event) {
+    if (event) {
+      this.PythonEvent = true;
+    }
+  }
+  checkNodeEvent(event) {
+    if (event) {
+      this.NodeEvent = true;
+    }
+  }
+  checkAngularEvent(event) {
+    if (event) {
+      this.AngularEvent = true;
     }
   }
 
