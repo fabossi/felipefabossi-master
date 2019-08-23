@@ -30,23 +30,23 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
 
   checkMongoEvent(event) {
     if (event) {
-      this.MongoEvent = true;
+      this.MongoEvent = !this.MongoEvent;
     }
   }
 
   checkPythonEvent(event) {
     if (event) {
-      this.PythonEvent = true;
+      this.PythonEvent = !this.PythonEvent;
     }
   }
   checkNodeEvent(event) {
     if (event) {
-      this.NodeEvent = true;
+      this.NodeEvent = !this.NodeEvent;
     }
   }
   checkAngularEvent(event) {
     if (event) {
-      this.AngularEvent = true;
+      this.AngularEvent = !this.AngularEvent;
     }
   }
 
