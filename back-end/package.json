@@ -23,7 +23,7 @@
     "express-sanitizer": "^1.0.5",
     "express-session": "^1.16.2",
     "helmet": "3.20.0",
-    "mongodb": "^3.3.0-beta2",
+    "mongodb": "^3.3.0",
     "mongoose": "^5.5.14",
     "nodemailer": "^1.2.2",
     "nodemon": "^1.19.1",

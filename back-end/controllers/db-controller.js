@@ -1,6 +1,5 @@
 const db = require('../Database/db.mongo');
 const Contact = require('../models/contac-model');
-const contacts = [];
 
 exports.saveToMongo = (req, res) => {
   return new Promise((resolve, reject) => {
@@ -15,8 +14,6 @@ exports.saveToMongo = (req, res) => {
       .collection('contacts')
       .insertOne(newContact)
       .then(result => {
-        console.log(result.ops);
-        contacts.push(result);
         res.status(200).json(result.ops[0]);
         resolve(result);
       }).catch(err => { console.error(err); res.sendStatus(500).json({ err: err }); reject(error); });
@@ -28,9 +25,13 @@ exports.getMongoContact = (req, res) => {
     db.getDb()
       .db()
       .collection('contacts')
-      .find()
-      .then(result => { console.log(result); resolve(result) }).catch(error => { console.error(error); reject(error) });
-  })
+      .find({})
+      .then(result => {
+        console.log(result); resolve(result)
+      }).catch(error => {
+        console.error(error); res.sendStatus(500).json({ err: error }); reject(error)
+      });
+  }).catch(err => { console.error(err); })
 }
 
 exports.deleteContacts = (req, res) => {
@@ -39,6 +40,10 @@ exports.deleteContacts = (req, res) => {
       .db()
       .collection('contacts')
       .deleteMany({})
-      .then(result => { console.log(result); resolve(result) }).catch(error => { console.error(error); reject(error) });
-  })
+      .then(result => {
+        console.log(result); resolve(result)
+      }).catch(error => {
+        console.error(error); res.sendStatus(500).json({ err: error }); reject(error)
+      });
+  }).catch(err => { console.error(err); })
 }

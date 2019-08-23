@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss']
 })
+
 export class SignupFormComponent implements OnInit {
   isLoading = false;
   subscription: Subscription;

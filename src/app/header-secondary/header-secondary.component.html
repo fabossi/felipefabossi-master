@@ -1,6 +1,7 @@
 <div class="header-first">
   <div class="header-first__container-languages">
-    <img class='header-first__container-languages__mongo make-animation make-grey'
+    <img [ngClass]="{'highlihgted': haveEvent}" (click)='checkEvent($event)'
+      class='header-first__container-languages__mongo make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/mongo.svg" alt="Mongo Logo">
     <img class='header-first__container-languages__python make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/python.svg" alt="Python Logo">

@@ -6,9 +6,8 @@ exports.insertContact = (req, res) => {
   return new Promise((resolve, reject) => {
     db_controller.saveToMongo(req, res)
       .then(result => {
-        mail_controller.sendEmail(req.body.email);
-        admin_controller.sendAdminEmail(req.body.email, req.body.message);
-        // res.sendStatus(200).json({ result: result });
+        mail_controller.sendEmail(req.body.emailTextInput);
+        admin_controller.sendAdminEmail(req.body.emailTextInput, req.body.messageTextInput);
         resolve(result);
       })
       .catch(error => {

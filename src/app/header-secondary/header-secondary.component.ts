@@ -8,6 +8,7 @@ import openSocket from 'socket.io-client';
 })
 export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   animate = true;
+  haveEvent = false;
 
   constructor() { }
 
@@ -21,6 +22,12 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   initAnimation(event) {
     if (event) {
       this.animate = !this.animate;
+    }
+  }
+
+  checkEvent(event) {
+    if (event) {
+      this.haveEvent = true;
     }
   }
 

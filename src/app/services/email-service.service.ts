@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+// import { map, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,6 @@ export class EmailServiceService {
       this.submitComplete.next('waiting');
       headers.append('Content-Type', 'application/json');
       this.http.post(this.LOCAL_URL + '/api/contact', form, { headers: headers })
-
         // .pipe(filter((data: any) => {
         //   if (data.name === 'felipe') {
         //     console.log(data);
@@ -44,7 +43,6 @@ export class EmailServiceService {
         //   console.log(data);
         //   return data;
         // }))
-
         .toPromise()
         .then(data => {
           this.status = 'SUCCESS';

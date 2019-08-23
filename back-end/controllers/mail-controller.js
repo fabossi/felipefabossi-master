@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 exports.sendEmail = (email) => {
   "use strict";
   const nodemailer = require("nodemailer");
@@ -23,7 +24,7 @@ exports.sendEmail = (email) => {
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: 'fabossif@gmail.com', // sender address
+      from: process.env.user_email, // sender address
       to: `${email}`, // list of receivers
       subject: "Felipe Fabossi Reply.", // Subject line
       text: 'do not reply.', // plain text body
@@ -553,7 +554,7 @@ exports.sendEmail = (email) => {
 <tbody>
 <tr align="center" style="vertical-align: top; display: inline-block; text-align: center;" valign="top">
 <td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 3px; padding-left: 3px; border-collapse: collapse;" valign="top"><a href="https://www.facebook.com/felipefabossicosta" target="_blank"><img alt="Facebook" height="32" src="https://fabossi.s3-sa-east-1.amazonaws.com/facebook.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Facebook" width="32"/></a></td>
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 3px; padding-left: 3px; border-collapse: collapse;" valign="top"><a href="https://www.linkedin.com/in/fabossifelipe/" target="_blank"><img alt="LinkedIn" height="32" src="https://fabossi.s3-sa-east-1.amazonaws.com/linkedin%402x.png".pngstyle="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="LinkedIn" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 3px; padding-left: 3px; border-collapse: collapse;" valign="top"><a href="https://www.linkedin.com/in/fabossifelipe/" target="_blank"><img alt="LinkedIn" height="32" src="https://fabossi.s3-sa-east-1.amazonaws.com/linkedin.svg".pngstyle="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="LinkedIn" width="32"/></a></td>
 </tr>
 </tbody>
 </table>

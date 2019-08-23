@@ -66,8 +66,7 @@ mongodb.initDb((err, db) => {
     const io = require('socket.io')(server);
     io.on('connection', socket => {
       console.log('Client Connected');
-    })
-
+    });
   }
 });
 

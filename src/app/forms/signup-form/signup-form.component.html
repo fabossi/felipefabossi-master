@@ -40,7 +40,7 @@
   <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">
     <button (click)='submitInformations()' class='button'>SEND</button>
   </ng-container>
-  <ng-container *ngIf="stausRequest === 'waiting' || stausRequest === 'error'">
+  <ng-container *ngIf="stausRequest === 'waiting'">
     <div class="lds-ring">
       <div></div>
       <div></div>
