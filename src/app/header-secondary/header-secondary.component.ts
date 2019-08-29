@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import openSocket from 'socket.io-client';
+// import openSocket from 'socket.io-client';
 
 @Component({
   selector: "header-secondary",

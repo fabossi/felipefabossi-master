@@ -26,8 +26,8 @@ exports.getMongoContact = (req, res) => {
       .db()
       .collection('contacts')
       .find({})
-      .then(result => {
-        console.log(result); resolve(result)
+      .then(resultado => {
+        console.log(resultado); resolve(resultado); res.sendStatus(200).json({ res: resultado });
       }).catch(error => {
         console.error(error); res.sendStatus(500).json({ err: error }); reject(error)
       });
@@ -35,7 +35,7 @@ exports.getMongoContact = (req, res) => {
 }
 
 exports.deleteContacts = (req, res) => {
-  return new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     db.getDb()
       .db()
       .collection('contacts')

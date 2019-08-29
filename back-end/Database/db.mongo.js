@@ -10,7 +10,7 @@ const initDb = callback => {
     console.log('Database is already initialized!');
     return callback(null, _db);
   }
-  MongoClient.connect(mongoDbUrl, { useNewUrlParser: true, ssl: true, useUnifiedTopology: true })
+  MongoClient.connect(mongoDbUrl, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(client => {
       _db = client;
       callback(null, _db);

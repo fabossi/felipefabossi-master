@@ -1,16 +1,16 @@
 <div class="header-first">
 
   <div class="header-first__container-languages">
-    <img [ngClass]="{'highlihgted': MongoEvent}" (click)='checkMongoEvent($event)'
+    <img [ngClass]="{'highlihgted': MongoEvent, 'darked': !MongoEvent}" (click)='checkMongoEvent($event)'
       class='header-first__container-languages__mongo make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/mongo.svg" alt="Mongo Logo">
-    <img [ngClass]="{'highlihgted': PythonEvent}" (click)='checkPythonEvent($event)'
+    <img [ngClass]="{'highlihgted': PythonEvent, 'darked': !PythonEvent}" (click)='checkPythonEvent($event)'
       class='header-first__container-languages__python make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/python.svg" alt="Python Logo">
-    <img [ngClass]="{'highlihgted': NodeEvent}" (click)='checkNodeEvent($event)'
+    <img [ngClass]="{'highlihgted': NodeEvent, 'darked': !NodeEvent}" (click)='checkNodeEvent($event)'
       class='header-first__container-languages__node height make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/node.svg" alt="NodeJS Logo">
-    <img [ngClass]="{'highlihgted': AngularEvent}" (click)='checkAngularEvent($event)'
+    <img [ngClass]="{'highlihgted': AngularEvent, 'darked': !AngularEvent}" (click)='checkAngularEvent($event)'
       class='header-first__container-languages__angular make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/angular.svg" alt="Angular Logo">
   </div>
@@ -32,6 +32,6 @@
 
   <img class="header-first__storm-img" height='50%' width='100%'
     src='https://fabossi.s3-sa-east-1.amazonaws.com/blue.png' />
-  <button class='header-first__button-more'>
-    <span class='header-first__button-more__text-button'>Learn more</span></button>
+  <!-- <button class='header-first__button-more'>
+    <span class='header-first__button-more__text-button'>Learn more</span></button> -->
 </div>

@@ -60,13 +60,10 @@ mongodb.initDb((err, db) => {
   if (err) {
     console.error(err);
   } else {
-    const server = app.listen(app.get('port'), '0.0.0.0', () => {
+    app.listen(app.get('port'), '0.0.0.0', () => {
       console.log(`Server starting on => ${app.get('port')} `);
     });
-    const io = require('socket.io')(server);
-    io.on('connection', socket => {
-      console.log('Client Connected');
-    });
+
   }
 });
 

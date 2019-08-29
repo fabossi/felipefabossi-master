@@ -5,89 +5,98 @@ a {
   text-decoration: none;
 }
 
-:host {
-  position: absolute;
-  height: 100vh;
-  width: 4.5%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
+.container {
+  position             : absolute;
+  height               : 100vh;
+  width                : 4.5%;
+  display              : -webkit-box;
+  display              : -ms-flexbox;
+  display              : flex;
+  -webkit-box-pack     : center;
+  -ms-flex-pack        : center;
+  justify-content      : center;
+  -webkit-box-align    : center;
+  -ms-flex-align       : center;
+  align-items          : center;
+  -webkit-box-orient   : vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  z-index: 2;
-  border-radius: 0 1.2rem 1.2rem 0;
-  box-shadow: 0 2.4rem 14.6rem -1rem rgba(27, 27, 27, 0.6);
+  -ms-flex-direction   : column;
+  flex-direction       : column;
+  z-index              : 2;
+  border-radius        : 0 1.2rem 1.2rem 0;
+  box-shadow           : 0 2.4rem 14.6rem -1rem rgba(27, 27, 27, 0.6);
 }
 
 .make-animation {
   -webkit-animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation        : scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .icons {
-  backface-visibility: hidden;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  margin: 1.5rem;
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 0.2s;
-  transition: -webkit-transform 0.2s;
-  -o-transition: transform 0.2s;
-  transition: transform 0.2s;
-  transition: transform 0.2s, -webkit-transform 0.2s;
+  backface-visibility        : hidden;
+  -webkit-filter             : grayscale(100%);
+  filter                     : grayscale(100%);
+  margin                     : 1.5rem;
+  cursor                     : pointer;
+  -webkit-transition         : -webkit-transform 0.2s;
+  transition                 : -webkit-transform 0.2s;
+  -o-transition              : transform 0.2s;
+  transition                 : transform 0.2s;
+  transition                 : transform 0.2s, -webkit-transform 0.2s;
   -webkit-backface-visibility: hidden;
+
   &:hover {
     -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
+    -ms-transform    : scale(1.05);
+    transform        : scale(1.05);
   }
+
   &:active {
     -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
+    -ms-transform    : scale(1);
+    transform        : scale(1);
   }
 }
 
 .fb {
   height: 3rem;
 }
+
 .github {
   height: 2.5rem;
-  width: 2.5rem;
+  width : 2.5rem;
 }
+
 .linkedin {
   height: 2rem;
-  width: 2rem;
+  width : 2rem;
 }
+
 .wpp {
   height: 2rem;
-  width: 1.9rem;
-  color: $color-primary-dark;
+  width : 1.9rem;
+  color : $color-primary-dark;
 }
 
 .make-grey {
   -webkit-filter: grayscale(2%) !important;
-  filter: grayscale(2%) !important;
+  filter        : grayscale(2%) !important;
 }
 
 .share {
-  position: absolute;
+  position         : absolute;
   -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  font-size: 1.6rem;
-  color: $color-white;
-  top: 88%;
-  opacity: 0.7;
-  letter-spacing: 0.7rem;
-  cursor: pointer;
-  font-family: "Vidaloka", serif;
+  -ms-transform    : rotate(-90deg);
+  transform        : rotate(-90deg);
+  font-size        : 1.6rem;
+  color            : $color-white;
+  top              : 88%;
+  opacity          : 0.7;
+  letter-spacing   : 0.7rem;
+  cursor           : pointer;
+  font-family      : "Vidaloka", serif;
+}
+
+.menuInitialAnimation {
+  animation: menuInitialAnimation .95s ease-out;
 }

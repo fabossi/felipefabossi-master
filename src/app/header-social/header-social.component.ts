@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-social.component.scss']
 })
 export class HeaderSocialComponent implements OnInit {
-
+  initialAnimation = false;
   constructor() { }
 
   ngOnInit() {
+    this.initialAnimation = true;
   }
 
 }
