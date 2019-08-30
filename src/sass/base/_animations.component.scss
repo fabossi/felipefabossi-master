@@ -223,3 +223,9 @@
     transform        : scale(1);
   }
 }
+
+@keyframes boatMoveRight {
+  100% {
+    transform: translateX(74%);
+  }
+}

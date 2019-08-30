@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EmailServiceService } from './services/email-service.service';
 
@@ -8,13 +8,14 @@ import { EmailServiceService } from './services/email-service.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit {
   subscription: Subscription;
   subscriptionModal: Subscription;
   hideToMobile = false;
   isLoading: boolean;
   showFeedback = false;
   showModal = false;
+  initialAnimation = false;
   _status_feedback: 'SUCCESS' | '400';
 
   constructor(private emailService: EmailServiceService) {
@@ -41,6 +42,10 @@ export class AppComponent implements OnDestroy {
     this.subscriptionModal = this.emailService.showEmail.subscribe((showModal) => {
       this.showModal = showModal;
     });
+  }
+
+  ngOnInit() {
+    this.initialAnimation = true;
   }
 
   ngOnDestroy() {

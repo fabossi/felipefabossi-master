@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 // import openSocket from 'socket.io-client';
 
 @Component({
-  selector: "header-secondary",
-  templateUrl: "./header-secondary.component.html",
-  styleUrls: ["./header-secondary.component.scss"]
+  selector: 'header-secondary',
+  templateUrl: './header-secondary.component.html',
+  styleUrls: ['./header-secondary.component.scss']
 })
 export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   animate = true;
@@ -12,8 +12,14 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   PythonEvent = false;
   NodeEvent = false;
   AngularEvent = false;
+  moveBoatToMongo = false;
+  moveBoatToNode = false;
+  moveBoatToAngular = false;
+  moveBoatToPython = false;
 
-  constructor() { }
+  constructor() {
+
+  }
 
 
   ngOnInit() {
@@ -31,23 +37,28 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   checkMongoEvent(event) {
     if (event) {
       this.MongoEvent = !this.MongoEvent;
+      this.moveBoatToMongo = !this.moveBoatToMongo;
     }
   }
 
   checkPythonEvent(event) {
     if (event) {
       this.PythonEvent = !this.PythonEvent;
-    }
-  }
-  checkNodeEvent(event) {
-    if (event) {
-      this.NodeEvent = !this.NodeEvent;
-    }
-  }
-  checkAngularEvent(event) {
-    if (event) {
-      this.AngularEvent = !this.AngularEvent;
+      this.moveBoatToPython = !this.moveBoatToPython;
     }
   }
 
+  checkNodeEvent(event) {
+    if (event) {
+      this.NodeEvent = !this.NodeEvent;
+      this.moveBoatToNode = !this.moveBoatToNode;
+    }
+  }
+
+  checkAngularEvent(event) {
+    if (event) {
+      this.AngularEvent = !this.AngularEvent;
+      this.moveBoatToAngular = !this.moveBoatToAngular;
+    }
+  }
 }

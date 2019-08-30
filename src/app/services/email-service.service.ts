@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject, Subject } from 'rxjs';
-// import { map, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,23 +25,6 @@ export class EmailServiceService {
       this.submitComplete.next('waiting');
       headers.append('Content-Type', 'application/json');
       this.http.post(this.LOCAL_URL + '/api/contact', form, { headers: headers })
-        // .pipe(filter((data: any) => {
-        //   if (data.name === 'felipe') {
-        //     console.log(data);
-        //     return data;
-        //   }
-        // }))
-
-        // FILTER AND MAP OPERATORS
-
-        // .pipe(map((data: any) => {
-        //   data.forEach((value, index) => {
-        //     data[index].nome = data[index].name;
-        //     delete data[index].name;
-        //   });
-        //   console.log(data);
-        //   return data;
-        // }))
         .toPromise()
         .then(data => {
           this.status = 'SUCCESS';
@@ -59,5 +41,15 @@ export class EmailServiceService {
 
   public getItemsReady() {
     return this.submitComplete;
+  }
+
+  async getEmails() {
+    await this.http.get(this.LOCAL_URL + '/api/getEmails')
+      .toPromise()
+      .then(data => {
+        console.table(data);
+      }).catch(err => {
+        console.error(err);
+      });
   }
 }

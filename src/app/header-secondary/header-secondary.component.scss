@@ -174,3 +174,9 @@
 .boatMove {
   animation: boatMove 7.5s infinite;
 }
+
+.boatMovimentation {
+  animation          : boatMoveRight 2.9s ease-out;
+  animation-fill-mode: forwards;
+
+}

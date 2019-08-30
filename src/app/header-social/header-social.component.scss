@@ -25,11 +25,13 @@ a {
   z-index              : 2;
   border-radius        : 0 1.2rem 1.2rem 0;
   box-shadow           : 0 2.4rem 14.6rem -1rem rgba(27, 27, 27, 0.6);
+  backface-visibility  : hidden;
 }
 
 .make-animation {
-  -webkit-animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation        : scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  backface-visibility: hidden;
+  -webkit-animation  : scale-up-center 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation          : scale-up-center 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .icons {
@@ -98,5 +100,6 @@ a {
 }
 
 .menuInitialAnimation {
-  animation: menuInitialAnimation .95s ease-out;
+  backface-visibility: hidden;
+  animation          : menuInitialAnimation .95s ease-out;
 }

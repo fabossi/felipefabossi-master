@@ -4,27 +4,33 @@
     <img [ngClass]="{'highlihgted': MongoEvent, 'darked': !MongoEvent}" (click)='checkMongoEvent($event)'
       class='header-first__container-languages__mongo make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/mongo.svg" alt="Mongo Logo">
+
     <img [ngClass]="{'highlihgted': PythonEvent, 'darked': !PythonEvent}" (click)='checkPythonEvent($event)'
       class='header-first__container-languages__python make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/python.svg" alt="Python Logo">
+
     <img [ngClass]="{'highlihgted': NodeEvent, 'darked': !NodeEvent}" (click)='checkNodeEvent($event)'
       class='header-first__container-languages__node height make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/node.svg" alt="NodeJS Logo">
+
     <img [ngClass]="{'highlihgted': AngularEvent, 'darked': !AngularEvent}" (click)='checkAngularEvent($event)'
       class='header-first__container-languages__angular make-animation make-grey'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/angular.svg" alt="Angular Logo">
   </div>
 
-  <div class='header-first__container-boat'>
+  <div class='header-first__container-boat' [ngClass]="{'boatMovimentation': moveBoatToMongo}">
     <div class="header-first__container-boat__play">
+
       <ng-container *ngIf="!animate">
         <img src='https://fabossi.s3-sa-east-1.amazonaws.com/play2.svg'
           class="header-first__container-boat__play__play-img" (click)='initAnimation($event)' />
       </ng-container>
+
       <ng-container *ngIf="animate">
         <img src='https://fabossi.s3-sa-east-1.amazonaws.com/pause.svg'
           class="header-first__container-boat__play__play-img" (click)='initAnimation($event)' />
       </ng-container>
+
     </div>
     <img [ngClass]="{'boatMove' : animate}" class='header-first__container-boat__boat-logo'
       src="https://fabossi.s3-sa-east-1.amazonaws.com/boat.svg" alt="Boat Image">
