@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 // import openSocket from 'socket.io-client';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'header-secondary',
   templateUrl: './header-secondary.component.html',
   styleUrls: ['./header-secondary.component.scss']
@@ -12,10 +13,15 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   PythonEvent = false;
   NodeEvent = false;
   AngularEvent = false;
-  moveBoatToMongo = false;
-  moveBoatToNode = false;
-  moveBoatToAngular = false;
-  moveBoatToPython = false;
+  moveBoatToMongo = true;
+  moveBoatToNode = true;
+  moveBoatToAngular = true;
+  moveBoatToPython = true;
+  offSetX = 0;
+  mongoSize = 0;
+  pythonSize = 0;
+  angularSize = 0;
+  nodeSize = 0;
 
   constructor() {
 
@@ -34,31 +40,31 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkMongoEvent(event) {
-    if (event) {
-      this.MongoEvent = !this.MongoEvent;
-      this.moveBoatToMongo = !this.moveBoatToMongo;
-    }
+  checkMongoEvent(event, element) {
+    this.MongoEvent = !this.MongoEvent;
+    this.mongoSize = element.getBoundingClientRect().left;
+    document.documentElement.style.setProperty('--offset-x',
+      `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkPythonEvent(event) {
-    if (event) {
-      this.PythonEvent = !this.PythonEvent;
-      this.moveBoatToPython = !this.moveBoatToPython;
-    }
+  checkPythonEvent(event, element) {
+    this.PythonEvent = !this.PythonEvent;
+    this.pythonSize = element.getBoundingClientRect().left;
+    document.documentElement.style.setProperty('--offset-x',
+      `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkNodeEvent(event) {
-    if (event) {
-      this.NodeEvent = !this.NodeEvent;
-      this.moveBoatToNode = !this.moveBoatToNode;
-    }
+  checkNodeEvent(event, element) {
+    this.NodeEvent = !this.NodeEvent;
+    console.log('Node', element.getBoundingClientRect());
+    this.nodeSize = element.getBoundingClientRect().left;
+    document.documentElement.style.setProperty('--offset-x',
+      `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkAngularEvent(event) {
-    if (event) {
-      this.AngularEvent = !this.AngularEvent;
-      this.moveBoatToAngular = !this.moveBoatToAngular;
-    }
+  checkAngularEvent(event, element) {
+    this.AngularEvent = !this.AngularEvent;
+    document.documentElement.style.setProperty('--offset-x',
+      `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 }

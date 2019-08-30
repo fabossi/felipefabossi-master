@@ -176,7 +176,7 @@
 }
 
 .boatMovimentation {
-  animation          : boatMoveRight 2.9s ease-out;
-  animation-fill-mode: forwards;
+  margin-left: var(--offset-x);
+  transition: all 3s;
 
 }
