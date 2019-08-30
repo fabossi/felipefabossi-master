@@ -32,21 +32,21 @@ export class HeaderSecondaryComponent {
     }
   }
 
-  checkMongoEvent(element: HTMLImageElement) {
+  checkMongoEvent(element) {
     this.MongoEvent = !this.MongoEvent;
     this.mongoSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkPythonEvent(element: HTMLImageElement) {
+  checkPythonEvent(element) {
     this.PythonEvent = !this.PythonEvent;
     this.pythonSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkNodeEvent(element: HTMLImageElement) {
+  checkNodeEvent(element) {
     this.NodeEvent = !this.NodeEvent;
     console.log('Node', element.getBoundingClientRect());
     this.nodeSize = element.getBoundingClientRect().left;
@@ -54,7 +54,7 @@ export class HeaderSecondaryComponent {
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkAngularEvent(element: HTMLImageElement) {
+  checkAngularEvent(element) {
     this.AngularEvent = !this.AngularEvent;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
