@@ -7,7 +7,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './header-secondary.component.html',
   styleUrls: ['./header-secondary.component.scss']
 })
-export class HeaderSecondaryComponent implements OnInit, OnDestroy {
+export class HeaderSecondaryComponent {
   animate = true;
   MongoEvent = false;
   PythonEvent = false;
@@ -17,7 +17,6 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
   moveBoatToNode = true;
   moveBoatToAngular = true;
   moveBoatToPython = true;
-  offSetX = 0;
   mongoSize = 0;
   pythonSize = 0;
   angularSize = 0;
@@ -27,34 +26,27 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
 
   }
 
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-  }
-
   initAnimation(event) {
     if (event) {
       this.animate = !this.animate;
     }
   }
 
-  checkMongoEvent(event, element) {
+  checkMongoEvent(element: HTMLImageElement) {
     this.MongoEvent = !this.MongoEvent;
     this.mongoSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkPythonEvent(event, element) {
+  checkPythonEvent(element: HTMLImageElement) {
     this.PythonEvent = !this.PythonEvent;
     this.pythonSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkNodeEvent(event, element) {
+  checkNodeEvent(element: HTMLImageElement) {
     this.NodeEvent = !this.NodeEvent;
     console.log('Node', element.getBoundingClientRect());
     this.nodeSize = element.getBoundingClientRect().left;
@@ -62,7 +54,7 @@ export class HeaderSecondaryComponent implements OnInit, OnDestroy {
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
-  checkAngularEvent(event, element) {
+  checkAngularEvent(element: HTMLImageElement) {
     this.AngularEvent = !this.AngularEvent;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
