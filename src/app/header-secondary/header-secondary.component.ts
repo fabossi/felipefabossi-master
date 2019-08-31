@@ -27,21 +27,19 @@ export class HeaderSecondaryComponent {
   }
 
   initAnimation(event) {
-    if (event) {
-      this.animate = !this.animate;
-    }
+    this.animate = !this.animate;
   }
 
   checkMongoEvent(element) {
     this.MongoEvent = !this.MongoEvent;
-    this.mongoSize = element.getBoundingClientRect().left;
+    // this.mongoSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
 
   checkPythonEvent(element) {
     this.PythonEvent = !this.PythonEvent;
-    this.pythonSize = element.getBoundingClientRect().left;
+    // this.pythonSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }
@@ -49,7 +47,7 @@ export class HeaderSecondaryComponent {
   checkNodeEvent(element) {
     this.NodeEvent = !this.NodeEvent;
     console.log('Node', element.getBoundingClientRect());
-    this.nodeSize = element.getBoundingClientRect().left;
+    // this.nodeSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
       `${element.getBoundingClientRect().left + window.scrollX}pt`);
   }

@@ -3,6 +3,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'header-social',
   templateUrl: './header-social.component.html',
   styleUrls: ['./header-social.component.scss']
