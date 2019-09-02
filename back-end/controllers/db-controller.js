@@ -26,7 +26,7 @@ exports.getMongoContact = (req, res) => {
       .getDb()
       .db()
       .collection('contacts')
-      .findOne({ name: name })
+      .find({})
       .then(resultado => {
         console.log(resultado); res.status(200).json({ res: resultado }); resolve(resultado);
       }).catch(error => { res.status(500).json({ err: error }); reject(error) });
