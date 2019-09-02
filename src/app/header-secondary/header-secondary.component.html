@@ -18,9 +18,7 @@
       src="https://fabossi.s3-sa-east-1.amazonaws.com/angular.svg" alt="Angular Logo" #angular>
   </div>
 
-  <div class='header-first__container-boat' [ngClass]="{'boatMovimentation': moveBoatToMongo,
-     'boatMovimentation': moveBoatToNode, 'boatMovimentation': moveBoatToAngular,
-     'boatMovimentation': moveBoatToPython}">
+  <div class='header-first__container-boat' [ngClass]="{'boatMovimentation': moveBoatToMongo}">
     <div class="header-first__container-boat__play">
 
       <ng-container *ngIf="!animate">
