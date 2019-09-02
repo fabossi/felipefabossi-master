@@ -34,27 +34,28 @@ export class HeaderSecondaryComponent {
     this.MongoEvent = !this.MongoEvent;
     // this.mongoSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}pt`);
+      `${element.getBoundingClientRect().left + window.scrollX}px`);
   }
 
   checkPythonEvent(element) {
     this.PythonEvent = !this.PythonEvent;
     // this.pythonSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}pt`);
+      `${element.getBoundingClientRect().left + window.scrollX}px`);
   }
 
   checkNodeEvent(element) {
     this.NodeEvent = !this.NodeEvent;
+    console.log(element.getBoundingClientRect().left);
     console.log('Node', element.getBoundingClientRect());
     // this.nodeSize = element.getBoundingClientRect().left;
     document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}pt`);
+      `${element.getBoundingClientRect().left + window.scrollX}px`);
   }
 
   checkAngularEvent(element) {
     this.AngularEvent = !this.AngularEvent;
     document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}pt`);
+      `${element.getBoundingClientRect().left + window.scrollX}px`);
   }
 }

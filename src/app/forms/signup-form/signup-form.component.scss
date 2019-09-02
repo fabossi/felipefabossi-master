@@ -98,3 +98,7 @@ form {
 .noError {
   border-bottom: 0.1rem solid $color-primary-light !important;
 }
+
+input {
+  text-transform: lowercase;
+}

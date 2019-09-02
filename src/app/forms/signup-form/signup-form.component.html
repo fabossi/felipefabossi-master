@@ -1,9 +1,10 @@
 <form [formGroup]="signupForm">
   <div class="container-names">
     <div class="generic-message-input-error">
-      <input [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
+      <input autofocus
+        [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
         class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
-        formControlName="nameTextInput" [maxlength]='mxlengthN' autofocus placeholder="Your name">
+        formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name">
       <div *ngIf="signupForm.get('nameTextInput').errors || signupForm.get('nameTextInput').invalid"
         class="generic-message-input-error__top">Insert at least 3 characters.</div>
     </div>
