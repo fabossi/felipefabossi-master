@@ -18,7 +18,7 @@ export class HeaderSocialComponent {
         this.initialAnimation = true;
         setTimeout(() => {
           this.initialAnimation = false;
-        }, 955);
+        }, 1200);
       });
   }
 }

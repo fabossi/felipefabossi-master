@@ -5,6 +5,10 @@ a {
   text-decoration: none;
 }
 
+:host {
+  backface-visibility: hidden;
+}
+
 .container {
   position             : absolute;
   height               : 100vh;

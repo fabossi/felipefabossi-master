@@ -3,7 +3,7 @@
   <div class="header-first__container-languages">
     <img [ngClass]="{'highlihgted': MongoEvent, 'darked': !MongoEvent}" (click)='checkMongoEvent(mongo)'
       class='header-first__container-languages__mongo make-animation make-grey'
-      src="https://fabossi.s3-sa-east-1.amazonaws.com/mongo.svg" alt="Mongo Logo" #mongo>
+      src="https://fabossi.s3-sa-east-1.amazonaws.com/mongo.svg" alt="Mongo Logo" id="mongo" #mongo>
 
     <img [ngClass]="{'highlihgted': PythonEvent, 'darked': !PythonEvent}" (click)='checkPythonEvent(python)'
       class='header-first__container-languages__python make-animation make-grey'
@@ -18,7 +18,7 @@
       src="https://fabossi.s3-sa-east-1.amazonaws.com/angular.svg" alt="Angular Logo" #angular>
   </div>
 
-  <div class='header-first__container-boat' [ngClass]="{'boatMovimentation': moveBoatToMongo}">
+  <div class='header-first__container-boat' [ngClass]="{'boatMovimentation': moveBoatToMongo}" id="boat-box">
     <div class="header-first__container-boat__play">
 
       <ng-container *ngIf="!animate">
@@ -33,11 +33,11 @@
 
     </div>
     <img [ngClass]="{'boatMove' : animate}" class='header-first__container-boat__boat-logo'
-      src="https://fabossi.s3-sa-east-1.amazonaws.com/boat.svg" alt="Boat Image">
+      src="https://fabossi.s3-sa-east-1.amazonaws.com/boat.svg" alt="Boat Image" id="boat">
   </div>
 
   <img class="header-first__storm-img" height='50%' width='100%'
-    src='https://fabossi.s3-sa-east-1.amazonaws.com/blue.png' />
+    src='https://fabossi.s3-sa-east-1.amazonaws.com/blue.png'  />
 
   <!-- <button class='header-first__button-more'>
     <span class='header-first__button-more__text-button'>Learn more</span></button> -->

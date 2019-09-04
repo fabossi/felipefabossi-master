@@ -18,6 +18,7 @@ export class SignupFormComponent implements OnInit {
   mxlengthTA = 355;
   mxlengthN = 25;
   mxlengthLN = 45;
+  initAnimation = false;
 
   constructor(private emailService: EmailServiceService) {
     this.emailService.getItemsReady().subscribe(status => {
@@ -42,6 +43,7 @@ export class SignupFormComponent implements OnInit {
       Validators.maxLength(this.mxlengthTA)]),
       'emailTextInput': new FormControl('', [Validators.required, Validators.email]),
     });
+    this.initAnimation = true;
   }
 
   submitInformations() {

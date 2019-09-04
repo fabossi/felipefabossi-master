@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-// import openSocket from 'socket.io-client';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -7,7 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './header-secondary.component.html',
   styleUrls: ['./header-secondary.component.scss']
 })
-export class HeaderSecondaryComponent {
+export class HeaderSecondaryComponent implements AfterViewInit {
   animate = true;
   MongoEvent = false;
   PythonEvent = false;
@@ -17,13 +16,13 @@ export class HeaderSecondaryComponent {
   moveBoatToNode = true;
   moveBoatToAngular = true;
   moveBoatToPython = true;
-  mongoSize = 0;
-  pythonSize = 0;
-  angularSize = 0;
-  nodeSize = 0;
 
   constructor() {
 
+  }
+
+  ngAfterViewInit() {
+    document.documentElement.style.setProperty('--offset-x', '4.5vw');
   }
 
   initAnimation(event) {
@@ -32,30 +31,41 @@ export class HeaderSecondaryComponent {
 
   checkMongoEvent(element) {
     this.MongoEvent = !this.MongoEvent;
-    // this.mongoSize = element.getBoundingClientRect().left;
-    document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}px`);
+    this.PythonEvent = false;
+    this.AngularEvent = false;
+    this.NodeEvent = false;
+    this.moveBoat(element);
   }
 
   checkPythonEvent(element) {
     this.PythonEvent = !this.PythonEvent;
-    // this.pythonSize = element.getBoundingClientRect().left;
-    document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}px`);
+    this.MongoEvent = false;
+    this.AngularEvent = false;
+    this.NodeEvent = false;
+    this.moveBoat(element);
   }
 
   checkNodeEvent(element) {
     this.NodeEvent = !this.NodeEvent;
-    console.log(element.getBoundingClientRect().left);
-    console.log('Node', element.getBoundingClientRect());
-    // this.nodeSize = element.getBoundingClientRect().left;
-    document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}px`);
+    this.MongoEvent = false;
+    this.AngularEvent = false;
+    this.PythonEvent = false;
+    this.moveBoat(element);
   }
 
   checkAngularEvent(element) {
     this.AngularEvent = !this.AngularEvent;
+    this.MongoEvent = false;
+    this.PythonEvent = false;
+    this.NodeEvent = false;
+    this.moveBoat(element);
+  }
+
+  moveBoat(element: HTMLElement) {
+    let sub = document.getElementById('boat-box').clientWidth - document.getElementById('boat').clientWidth;
+    sub = sub < 0 ? 0 : sub;
     document.documentElement.style.setProperty('--offset-x',
-      `${element.getBoundingClientRect().left + window.scrollX}px`);
+      `${element.getBoundingClientRect().left - sub
+      + (element.getBoundingClientRect().width / 2) - (document.getElementById('boat').clientWidth / 2)}px`);
   }
 }
