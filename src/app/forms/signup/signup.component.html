@@ -30,13 +30,26 @@
         a valid email.</div>
     </div>
 
-    <div class="generic-message-input-error">
-      <input
-        [ngClass]="{'hasError': !signupForm?.get('passwordTextInput').valid && signupForm?.get('passwordTextInput').touched}"
-        class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="password"
-        name='passwordTextInput' formControlName="passwordTextInput" placeholder="******">
-      <div *ngIf="signupForm?.get('passwordTextInput').invalid" class="generic-message-input-error__top">Please, insert
-        a valid password.</div>
+    <div class="container-names">
+      <div class="generic-message-input-error">
+        <input autofocus
+          [ngClass]="{'hasError': !signupForm?.get('passwordTextInput').valid && signupForm?.get('passwordTextInput').touched}"
+          class='container-names__name-input basics-input-styles' autocomplete="off" type="password"
+          formControlName="passwordTextInput" [maxlength]='mxlengthN' placeholder="write your password here">
+        <div *ngIf="signupForm?.get('passwordTextInput').errors || signupForm?.get('passwordTextInput').invalid"
+          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+      </div>
+
+      <div class="generic-message-input-error">
+        <input
+          [ngClass]="{'hasError': !signupForm?.get('passwordConfirmTextInput').valid && signupForm?.get('passwordConfirmTextInput').touched}"
+          class='generic-message-input-error container-names__lastName-input basics-input-styles' autocomplete="off"
+          type="password" formControlName="passwordConfirmTextInput" [maxlength]='mxlengthLN'
+          placeholder="confirm your password here">
+        <div
+          *ngIf="signupForm?.get('passwordConfirmTextInput').errors || signupForm?.get('passwordConfirmTextInput').invalid"
+          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+      </div>
     </div>
     <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">
       <button class='button'>SEND</button>

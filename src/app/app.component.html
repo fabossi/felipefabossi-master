@@ -15,8 +15,17 @@
   </div>
 
   <ng-container *ngIf="showModal">
-    <app-modal-form-email></app-modal-form-email>
+    <app-modal-form-email>
+      <app-contact-form></app-contact-form>
+    </app-modal-form-email>
   </ng-container>
+
+  <ng-container *ngIf="showSignup">
+    <app-modal-form-email>
+      <app-signup-form></app-signup-form>
+    </app-modal-form-email>
+  </ng-container>
+
 
 </div>
 <router-outlet></router-outlet>

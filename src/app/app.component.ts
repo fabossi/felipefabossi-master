@@ -12,10 +12,12 @@ import { ContactService } from './services/contact-service.service';
 export class AppComponent implements OnDestroy, OnInit {
   subscription: Subscription;
   subscriptionModal: Subscription;
+  subscriptionSignUp: Subscription;
   hideToMobile = false;
   isLoading: boolean;
   showFeedback = false;
   showModal = false;
+  showSignup = false;
   initialAnimation = false;
   _status_feedback: 'SUCCESS' | '400';
 
@@ -43,6 +45,10 @@ export class AppComponent implements OnDestroy, OnInit {
     this.subscriptionModal = this.contactService.showEmail.subscribe((showModal) => {
       this.showModal = showModal;
     });
+
+    this.subscriptionSignUp = this.contactService.showSignup.subscribe((showSignup) => {
+      this.showSignup = showSignup;
+    });
   }
 
   ngOnInit() {
@@ -52,6 +58,7 @@ export class AppComponent implements OnDestroy, OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.subscriptionModal.unsubscribe();
+    this.subscriptionSignUp.unsubscribe();
   }
 
   onResize(e) {

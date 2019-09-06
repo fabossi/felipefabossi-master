@@ -9,6 +9,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class ContactService {
   private LOCAL_URL = '';
   showEmail = new Subject<boolean>();
+  showSignup = new Subject<boolean>();
   private submitComplete = new BehaviorSubject<string>('');
   status: 'SUCCESS' | '400';
 

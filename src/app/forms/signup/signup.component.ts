@@ -39,9 +39,8 @@ export class SignupComponent implements OnInit {
       'lastNameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthLN)]),
       'emailTextInput': new FormControl('', [Validators.required, Validators.email]),
-      'messageTextInput': new FormControl('', [Validators.required, Validators.minLength(4),
-      Validators.maxLength(this.mxlengthTA)]),
       'passwordTextInput': new FormControl('', [Validators.required]),
+      'passwordConfirmTextInput': new FormControl('', [Validators.required]),
     });
     this.initAnimation = true;
   }

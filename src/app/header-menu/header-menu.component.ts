@@ -22,4 +22,7 @@ export class HeaderMenuComponent implements OnInit {
     this.contactService.showEmail.next(true);
   }
 
+  showSignup() {
+    this.contactService.showSignup.next(true);
+  }
 }
