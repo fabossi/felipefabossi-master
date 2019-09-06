@@ -31,7 +31,7 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  closeModal(active = true) {
+  closeModal(active) {
     active = !active;
     if (this.subscription) {
       this.contactService.showEmail.next(active);
