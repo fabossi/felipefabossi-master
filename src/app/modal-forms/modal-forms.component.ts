@@ -10,6 +10,7 @@ import { ContactService } from '../services/contact-service.service';
 export class ModalFormsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionSignup: Subscription;
+
   constructor(private contactService: ContactService) {
     this.subscription = this.contactService.showEmail.subscribe((isActivated) => {
       if (isActivated) {
