@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private LOCAL_URL = '';
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient, private router: Router) {
     if (!environment.production) {
@@ -23,6 +23,10 @@ export class AuthService {
     this.http.post(this.LOCAL_URL + '/api/signup/', form, { headers })
       .subscribe(() => {
         this.router.navigate(['/']);
-      }, error => { this.authStatusListener.next(false); });
+      }, error => { this.authStatusListener.next('error'); });
+  }
+
+  onRequestComplete() {
+    return this.authStatusListener;
   }
 }
