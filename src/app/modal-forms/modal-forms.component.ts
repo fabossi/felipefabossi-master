@@ -3,11 +3,11 @@ import { Subscription } from 'rxjs';
 import { ContactService } from '../services/contact-service.service';
 
 @Component({
-  selector: 'app-modal-form-email',
-  templateUrl: './modal-form-email.component.html',
-  styleUrls: ['./modal-form-email.component.scss']
+  selector: 'app-modal-forms',
+  templateUrl: './modal-forms.component.html',
+  styleUrls: ['./modal-forms.component.scss']
 })
-export class ModalFormEmailComponent implements OnInit, OnDestroy {
+export class ModalFormsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionSignup: Subscription;
   constructor(private contactService: ContactService) {
