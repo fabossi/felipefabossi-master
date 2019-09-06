@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EmailServiceService } from './services/email-service.service';
+import { ContactService } from './services/contact-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -18,20 +19,20 @@ export class AppComponent implements OnDestroy, OnInit {
   initialAnimation = false;
   _status_feedback: 'SUCCESS' | '400';
 
-  constructor(private emailService: EmailServiceService) {
+  constructor(private contactService: ContactService) {
     if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }
-    this.subscription = this.emailService.getItemsReady().subscribe(status => {
+    this.subscription = this.contactService.getItemsReady().subscribe(status => {
       if (status === 'ready') {
         this.showModal = false;
-        this._status_feedback = this.emailService.status;
+        this._status_feedback = this.contactService.status;
         setTimeout(() => {
           this.showFeedback = true;
         }, 400);
       } else if (status === 'error') {
         this.showModal = false;
-        this._status_feedback = this.emailService.status;
+        this._status_feedback = this.contactService.status;
         setTimeout(() => {
           this.showFeedback = true;
         }, 400);
@@ -39,7 +40,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this.showModal = true;
       }
     });
-    this.subscriptionModal = this.emailService.showEmail.subscribe((showModal) => {
+    this.subscriptionModal = this.contactService.showEmail.subscribe((showModal) => {
       this.showModal = showModal;
     });
   }

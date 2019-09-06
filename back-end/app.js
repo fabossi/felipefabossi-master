@@ -3,12 +3,13 @@ const app = express();
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require("body-parser");
-const contactRoutes = require('./routes/contact-route');
+const user_route = require('./routes/user.route');
+const contact_route = require('./routes/contact.route');
+const db_route = require('./routes/db.route');
 const mongodb = require('./Database/db.mongo');
 const helmet = require('helmet');
 const compression = require('compression');
 const RateLimit = require('express-rate-limit');
-const db_route = require('./routes/db.route');
 const MongoStore = require('rate-limit-mongo');
 
 const limiter = RateLimit({
@@ -40,7 +41,8 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(cors());
-app.use('/api/', apiLimiter, contactRoutes);
+app.use('/api/', apiLimiter, user_route);
+app.use('/api/', apiLimiter, contact_route);
 app.use('/api/', limiter, db_route);
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({

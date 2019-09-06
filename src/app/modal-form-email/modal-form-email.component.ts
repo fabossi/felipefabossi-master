@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EmailServiceService } from '../services/email-service.service';
 import { Subscription } from 'rxjs';
+import { ContactService } from '../services/contact-service.service';
 
 @Component({
   selector: 'app-modal-form-email',
@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs';
 export class ModalFormEmailComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
-  constructor(private emailService: EmailServiceService) {
-    this.subscription = this.emailService.showEmail.subscribe((isActivated) => {
+  constructor(private contactService: ContactService) {
+    this.subscription = this.contactService.showEmail.subscribe((isActivated) => {
       if (isActivated) {
         this.closeModal(isActivated);
       }
@@ -27,6 +27,6 @@ export class ModalFormEmailComponent implements OnInit, OnDestroy {
 
   closeModal(active = true) {
     active = !active;
-    return this.emailService.showEmail.next(active);
+    return this.contactService.showEmail.next(active);
   }
 }

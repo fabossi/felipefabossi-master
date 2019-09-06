@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailServiceService } from '../services/email-service.service';
+import { ContactService } from '../services/contact-service.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -12,14 +12,14 @@ export class HeaderMenuComponent implements OnInit {
   RLSK = '/page/skills';
   RLCR = '/page/career';
   RLAM = '/page/about-me';
-  constructor(private emailService: EmailServiceService) { }
+  constructor(private contactService: ContactService) { }
 
 
   ngOnInit() {
   }
 
   showEmail() {
-    this.emailService.showEmail.next(true);
+    this.contactService.showEmail.next(true);
   }
 
 }
