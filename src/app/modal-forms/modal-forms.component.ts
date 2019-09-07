@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../services/contact-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-forms',
@@ -11,7 +12,7 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionSignup: Subscription;
 
-  constructor(private contactService: ContactService) {
+  constructor(private contactService: ContactService, private router: Router) {
     this.subscription = this.contactService.showEmail.subscribe((isActivated) => {
       if (isActivated) {
         this.closeModal(isActivated);
@@ -40,5 +41,6 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
     if (this.subscriptionSignup) {
       this.contactService.showSignup.next(active);
     }
+    this.router.navigate(['/']);
   }
 }
