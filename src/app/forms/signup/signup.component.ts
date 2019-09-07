@@ -21,16 +21,7 @@ export class SignupComponent implements OnInit {
   see_password = false;
 
   constructor(private authService: AuthService) {
-    this.authService.onRequestComplete().subscribe(status => {
-      if (status === 'ready') {
-        this.stausRequest = status;
-        this.cleanFields();
-      } else if (status === 'waiting') {
-        this.stausRequest = status;
-      } else if (status === 'error') {
-        this.stausRequest = status;
-      }
-    });
+    this.authService.onRequestComplete().subscribe(status => { });
   }
 
   ngOnInit() {
@@ -40,8 +31,8 @@ export class SignupComponent implements OnInit {
       'lastNameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthLN)]),
       'emailTextInput': new FormControl('', [Validators.required, Validators.email]),
-      'passwordTextInput': new FormControl('', [Validators.required]),
-      'passwordConfirmTextInput': new FormControl('', [Validators.required]),
+      'passwordTextInput': new FormControl('', [Validators.required, Validators.minLength(3)]),
+      'passwordConfirmTextInput': new FormControl('', [Validators.required, Validators.minLength(3)]),
     });
     this.initAnimation = true;
   }
@@ -51,11 +42,11 @@ export class SignupComponent implements OnInit {
   }
 
   onSignUp() {
-    try {
-      this.authService.signup(this.signupForm.value);
-    } catch (error) {
-      throw new Error(error);
-    }
+    this.authService.signup(this.signupForm.get('nameTextInput').value, this.signupForm.get('lastNameTextInput').value,
+      this.signupForm.get('emailTextInput').value, this.signupForm.get('passwordTextInput').value)
+      .then()
+      .catch(error => console.error(error));
+    this.signupForm.reset();
   }
 
   seePassword() {

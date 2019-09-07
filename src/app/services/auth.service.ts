@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { SignupData } from '../forms/signup/signup.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private LOCAL_URL = '';
-  private authStatusListener = new BehaviorSubject<string>('');
+  private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {
     if (!environment.production) {
@@ -17,13 +18,18 @@ export class AuthService {
     }
   }
 
-  signup(form) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    this.http.post(this.LOCAL_URL + '/api/signup', form, { headers })
-      .subscribe(() => {
-        this.router.navigate(['/']);
-      }, error => { this.authStatusListener.next('error'); console.error(error); });
+  signup(name: string, lastName: string, email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const signupData: SignupData = { name, lastName, email, password };
+      this.http.post(this.LOCAL_URL + '/api/signup', signupData, { headers })
+        .toPromise()
+        .then(data => {
+          this.router.navigate(['/']);
+          resolve(data);
+        }).catch(error => reject(error));
+    }).catch(error => console.error(error));
   }
 
   onRequestComplete() {

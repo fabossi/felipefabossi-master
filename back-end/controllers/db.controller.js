@@ -6,28 +6,26 @@ const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
 
 exports.signupToMongo = (req, res) => {
-  return new Promise((resolve, reject) => {
-    bcrypt.hash(req.body.passwordTextInput.toString(), 20)
+  new Promise((resolve, reject) => {
+    bcrypt.hash(req.body.password, 20)
       .then((hashedPassword) => {
-        const usr = new User({
-          name: req.body.nameTextInput.toLowerCase(),
-          lastName: req.body.lastNameTextInput.toLowerCase(),
-          email: req.body.emailTextInput.toLowerCase(),
+        const user = new User({
+          name: req.body.name,
+          lastName: req.body.lastName,
+          email: req.body.email,
           password: hashedPassword
         })
         db
           .getDb()
-          .db()
+          .db('User')
           .collection('users')
-          .insertOne(usr)
+          .insertOne(user)
           .then(result => {
-            res.status(200).json({ user: result }); resolve(result);
+            console.log(result.ops[0]);
+            res.status(200).json({ user: result.ops[0] });
+            resolve(result);
           }).catch(error => {
-            console.log(error);
-            res.sendStatus(500).json({
-              error: error,
-              message: 'We had a problem to signup, try again, please.'
-            });
+            res.status(500).json({ error: error, message: 'We had a problem to signup, try again, please.' });
             reject(error);
           });
       }).catch(error => { console.error(error); res.status(500).json({ error: error }); })
@@ -43,10 +41,9 @@ exports.saveContactToMongo = (req, res) => {
       message: req.body.messageTextInput.toLowerCase(),
       email: req.body.emailTextInput.toLowerCase(),
     });
-    console.log(newContact);
     db
       .getDb()
-      .db()
+      .db('contacts')
       .collection('contacts')
       .insertOne(newContact)
       .then(result => {

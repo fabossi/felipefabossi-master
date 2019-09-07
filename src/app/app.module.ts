@@ -14,11 +14,7 @@ import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
-import { ContactFormComponent } from './forms/contact-form/contact-form.component';
 import { ModalMessageSubmitComponent } from './modal-message-submit/modal-message-submit.component';
-// import { SignupComponent } from './forms/signup/signup.component';
-// import { ModalFormsComponent } from './modal-forms/modal-forms.component';
-// import { LoginComponent } from './forms/login/login.component';
 import { OnlyComputerComponent } from './mobile-first/only-computer/only-computer.component';
 import { ContactService } from './services/contact-service.service';
 import { AuthService } from './services/auth.service';
@@ -38,10 +34,6 @@ dom.watch();
     ModalMessageSubmitComponent,
     HeaderSocialMobileComponent,
     OnlyComputerComponent,
-    // ContactFormComponent,
-    // ModalFormsComponent,
-    // SignupComponent,
-    // LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [ContactService, AuthService],
