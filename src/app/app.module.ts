@@ -16,12 +16,12 @@ import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.componen
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
 import { ContactFormComponent } from './forms/contact-form/contact-form.component';
 import { ModalMessageSubmitComponent } from './modal-message-submit/modal-message-submit.component';
-import { SignupComponent } from './forms/signup/signup.component';
+// import { SignupComponent } from './forms/signup/signup.component';
+// import { ModalFormsComponent } from './modal-forms/modal-forms.component';
+// import { LoginComponent } from './forms/login/login.component';
 import { OnlyComputerComponent } from './mobile-first/only-computer/only-computer.component';
-import { LoginComponent } from './forms/login/login.component';
 import { ContactService } from './services/contact-service.service';
 import { AuthService } from './services/auth.service';
-import { ModalFormsComponent } from './modal-forms/modal-forms.component';
 
 
 library.add(faEye, faEyeSlash);
@@ -37,11 +37,11 @@ dom.watch();
     ModalFeedbackComponent,
     ModalMessageSubmitComponent,
     HeaderSocialMobileComponent,
-    ContactFormComponent,
-    ModalFormsComponent,
     OnlyComputerComponent,
-    SignupComponent,
-    LoginComponent,
+    // ContactFormComponent,
+    // ModalFormsComponent,
+    // SignupComponent,
+    // LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [ContactService, AuthService],

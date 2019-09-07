@@ -20,9 +20,11 @@ export class HeaderMenuComponent implements OnInit {
 
   showEmail() {
     this.contactService.showEmail.next(true);
+    this.contactService.type.next('email');
   }
 
   showSignup() {
     this.contactService.showSignup.next(true);
+    this.contactService.type.next('signup');
   }
 }

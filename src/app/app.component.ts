@@ -42,13 +42,6 @@ export class AppComponent implements OnDestroy, OnInit {
         this.showModal = true;
       }
     });
-    this.subscriptionModal = this.contactService.showEmail.subscribe((showModal) => {
-      this.showModal = showModal;
-    });
-
-    this.subscriptionSignUp = this.contactService.showSignup.subscribe((showSignup) => {
-      this.showSignup = showSignup;
-    });
   }
 
   ngOnInit() {

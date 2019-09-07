@@ -10,6 +10,7 @@ export class ContactService {
   private LOCAL_URL = '';
   showEmail = new Subject<boolean>();
   showSignup = new Subject<boolean>();
+  type = new BehaviorSubject<string>('');
   private submitComplete = new BehaviorSubject<string>('');
   status: 'SUCCESS' | '400';
 

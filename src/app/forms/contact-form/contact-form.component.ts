@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { ContactService } from 'src/app/services/contact-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -19,17 +22,17 @@ export class ContactFormComponent implements OnInit {
   mxlengthLN = 45;
   initAnimation = false;
 
-  constructor() {
-    // this.emailService.getItemsReady().subscribe(status => {
-    //   if (status === 'ready') {
-    //     this.stausRequest = status;
-    //     this.cleanFields();
-    //   } else if (status === 'waiting') {
-    //     this.stausRequest = status;
-    //   } else if (status === 'error') {
-    //     this.stausRequest = status;
-    //   }
-    // });
+  constructor(private contactService: ContactService, private route: Router) {
+    this.contactService.getItemsReady().subscribe(status => {
+      if (status === 'ready') {
+        this.stausRequest = status;
+        this.cleanFields();
+      } else if (status === 'waiting') {
+        this.stausRequest = status;
+      } else if (status === 'error') {
+        this.stausRequest = status;
+      }
+    });
   }
 
   ngOnInit() {
@@ -49,11 +52,12 @@ export class ContactFormComponent implements OnInit {
     if (this.contactForm.invalid) {
       throw new Error('Fill all fields');
     } else {
-      // this.emailService.submitInformations(this.contactForm.value).then().catch(error => {
-      //   if (error) {
-      //     throw Error(error);
-      //   }
-      // });
+      this.contactService.submitInformations(this.contactForm.value).then().catch(error => {
+        if (error) {
+          throw Error(error);
+        }
+      });
+      this.route.navigate(['/']);
     }
   }
 

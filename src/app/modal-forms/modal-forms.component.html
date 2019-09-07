@@ -1,2 +1,6 @@
 <div class='close-img' (click)='closeModal()'></div>
-<ng-content></ng-content>
+<ng-container [ngSwitch]="type">
+  <app-contact-form *ngSwitchCase="'email'"></app-contact-form>
+  <app-signup-form *ngSwitchCase="'signup'"></app-signup-form>
+</ng-container>
+

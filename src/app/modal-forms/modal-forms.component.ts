@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ModalFormsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionSignup: Subscription;
+  subsType: Subscription;
+  type: string;
 
   constructor(private contactService: ContactService, private router: Router) {
     this.subscription = this.contactService.showEmail.subscribe((isActivated) => {
@@ -23,11 +25,20 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
         this.closeModal(signUpActive);
       }
     });
+    this.subsType = this.contactService.type.subscribe((type) => {
+      if (type === 'email') {
+        this.type = type;
+      }
+      if (type === 'signup') {
+        this.type = type;
+      }
+    });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.subscriptionSignup.unsubscribe();
+    this.subsType.unsubscribe();
   }
 
   ngOnInit() {

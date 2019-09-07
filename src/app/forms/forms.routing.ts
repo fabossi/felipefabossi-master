@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
-
+import { ModalFormsComponent } from '../modal-forms/modal-forms.component';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: ModalFormsComponent
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: ModalFormsComponent
   },
+  {
+    path: 'email',
+    component: ModalFormsComponent
+  }
 ];
 
 @NgModule({
