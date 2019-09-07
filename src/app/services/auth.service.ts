@@ -23,7 +23,7 @@ export class AuthService {
     this.http.post(this.LOCAL_URL + '/api/signup', form, { headers })
       .subscribe(() => {
         this.router.navigate(['/']);
-      }, error => { this.authStatusListener.next('error'); });
+      }, error => { this.authStatusListener.next('error'); console.error(error); });
   }
 
   onRequestComplete() {

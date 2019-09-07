@@ -7,12 +7,12 @@ const key = require('../models/key.model');
 
 exports.signupToMongo = (req, res) => {
   return new Promise((resolve, reject) => {
-    bcrypt.hash(req.body.password.toString(), 10)
+    bcrypt.hash(req.body.passwordTextInput.toString(), 20)
       .then((hashedPassword) => {
         const usr = new User({
-          name: req.body.name,
-          lastName: req.body.lastName,
-          email: req.body.email,
+          name: req.body.nameTextInput.toLowerCase(),
+          lastName: req.body.lastNameTextInput.toLowerCase(),
+          email: req.body.emailTextInput.toLowerCase(),
           password: hashedPassword
         })
         db

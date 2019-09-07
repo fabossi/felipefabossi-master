@@ -51,7 +51,11 @@ export class SignupComponent implements OnInit {
   }
 
   onSignUp() {
-    this.authService.signup(this.signupForm);
+    try {
+      this.authService.signup(this.signupForm.value);
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   seePassword() {
