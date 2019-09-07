@@ -11,6 +11,7 @@ form {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  overflow-y: hidden;
 }
 
 @include loader;
@@ -32,7 +33,6 @@ form {
   justify-content: space-between;
   align-items: center;
   font-size: 1.05rem;
-
   &__top {
     position: relative;
     top: 20%;
@@ -81,6 +81,7 @@ form {
 }
 
 .basics-input-styles {
+  display: flex;
   background-color: transparent;
   padding: 1rem;
   outline: none;
@@ -90,6 +91,12 @@ form {
   color: $color-whiter;
   font-size: 1.4rem;
   text-align: center;
+  &__icon {
+    align-self: flex-end;
+    position: relative;
+    top: -2.5rem;
+    right: 0.6rem;
+  }
 }
 
 .textarea-input {
@@ -98,8 +105,4 @@ form {
 
 .hasError {
   border-bottom: 0.1rem solid $color-red-2 !important;
-}
-
-.noError {
-  border-bottom: 0.1rem solid $color-primary-light !important;
 }

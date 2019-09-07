@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   mxlengthN = 25;
   mxlengthLN = 45;
   initAnimation = false;
+  see_password = false;
 
   constructor(private authService: AuthService) {
     this.authService.onRequestComplete().subscribe(status => {
@@ -47,6 +48,14 @@ export class SignupComponent implements OnInit {
 
   cleanFields() {
     this.signupForm.reset();
+  }
+
+  onSignUp() {
+    this.authService.signup(this.signupForm);
+  }
+
+  seePassword() {
+    this.see_password = !this.see_password;
   }
 
 }

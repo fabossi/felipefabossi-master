@@ -20,7 +20,7 @@ export class AuthService {
   signup(form) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    this.http.post(this.LOCAL_URL + '/api/signup/', form, { headers })
+    this.http.post(this.LOCAL_URL + '/api/signup', form, { headers })
       .subscribe(() => {
         this.router.navigate(['/']);
       }, error => { this.authStatusListener.next('error'); });
