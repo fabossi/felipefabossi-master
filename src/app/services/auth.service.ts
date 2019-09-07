@@ -9,7 +9,7 @@ import { SignupData } from '../forms/signup/signup.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private LOCAL_URL = '';
+  LOCAL_URL = '';
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {
@@ -20,10 +20,8 @@ export class AuthService {
 
   signup(name: string, lastName: string, email: string, password: string) {
     return new Promise((resolve, reject) => {
-      const headers = new HttpHeaders();
-      headers.append('Content-Type', 'application/json');
       const signupData: SignupData = { name, lastName, email, password };
-      this.http.post(this.LOCAL_URL + '/api/signup', signupData, { headers })
+      this.http.post(this.LOCAL_URL + '/api/signup', signupData)
         .toPromise()
         .then(data => {
           this.router.navigate(['/']);

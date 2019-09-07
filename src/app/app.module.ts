@@ -20,9 +20,6 @@ import { ContactService } from './services/contact-service.service';
 import { AuthService } from './services/auth.service';
 
 
-library.add(faEye, faEyeSlash);
-dom.watch();
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +32,7 @@ dom.watch();
     HeaderSocialMobileComponent,
     OnlyComputerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [ContactService, AuthService],
   bootstrap: [AppComponent]
 })

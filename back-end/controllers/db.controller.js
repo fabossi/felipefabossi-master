@@ -7,7 +7,7 @@ const key = require('../models/key.model');
 
 exports.signupToMongo = (req, res) => {
   new Promise((resolve, reject) => {
-    bcrypt.hash(req.body.password, 20)
+    bcrypt.hash(req.body.password, 10)
       .then((hashedPassword) => {
         const user = new User({
           name: req.body.name,
@@ -25,6 +25,7 @@ exports.signupToMongo = (req, res) => {
             res.status(200).json({ user: result.ops[0] });
             resolve(result);
           }).catch(error => {
+            console.error(error);
             res.status(500).json({ error: error, message: 'We had a problem to signup, try again, please.' });
             reject(error);
           });
