@@ -40,7 +40,7 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(cors());
-app.use('/api/', apiLimiter, user_route);
+app.use('/api/', apiLimiter, limiter, user_route);
 app.use('/api/', apiLimiter, limiter, contact_route);
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({

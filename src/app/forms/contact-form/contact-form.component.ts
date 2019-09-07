@@ -49,15 +49,16 @@ export class ContactFormComponent implements OnInit {
 
   submitInformations() {
     if (this.contactForm.invalid) {
-      throw new Error('Fill all fields');
-    } else {
-      this.contactService.submitInformations(this.contactForm.value).then().catch(error => {
+      return;
+    }
+    this.contactService.submitInformations(this.contactForm.value)
+      .then(() => {
+        this.route.navigate(['/']);
+      }).catch(error => {
         if (error) {
           throw Error(error);
         }
       });
-      this.route.navigate(['/']);
-    }
   }
 
   cleanFields() {

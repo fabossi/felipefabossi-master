@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
@@ -16,7 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, ModalFormsComponent, ContactFormComponent],
-  imports: [FormsRoutingComponent, CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule, FontAwesomeModule]
+  imports: [FormsRoutingComponent, CommonModule, ReactiveFormsModule, FontAwesomeModule]
 })
 
 export class FormsModuleComponent { }

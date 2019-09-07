@@ -1,6 +1,7 @@
-const router = require('express').Router();
-const userController = require('../controllers/user.controller');
+const express = require('express');
+const router = express.Router();
+const db_controller = require('../controllers/db.controller');
 
-router.post('/signup', userController.signup);
+router.post('/signup', db_controller.signUpToMongo);
 
 module.exports = router;

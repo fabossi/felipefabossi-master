@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { SignupData } from '../forms/signup/signup.model';
@@ -19,15 +19,12 @@ export class AuthService {
   }
 
   signup(name: string, lastName: string, email: string, password: string) {
-    return new Promise((resolve, reject) => {
-      const signupData: SignupData = { name, lastName, email, password };
-      this.http.post(this.LOCAL_URL + '/api/signup', signupData)
-        .toPromise()
-        .then(data => {
-          this.router.navigate(['/']);
-          resolve(data);
-        }).catch(error => reject(error));
-    }).catch(error => console.error(error));
+    const body: SignupData = { name, lastName, email, password };
+    this.http.post(this.LOCAL_URL + '/api/signup', body)
+      .subscribe((data) => {
+        console.log(data);
+        this.router.navigate(['/']);
+      }, error => { this.authStatusListener.next(false); console.log(error); });
   }
 
   onRequestComplete() {

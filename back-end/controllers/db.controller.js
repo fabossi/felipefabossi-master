@@ -5,34 +5,35 @@ const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
 
-exports.signupToMongo = (req, res) => {
-  new Promise((resolve, reject) => {
-    bcrypt.hash(req.body.password, 10)
-      .then((hashedPassword) => {
-        const user = new User({
-          name: req.body.name,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          password: hashedPassword
+exports.signUpToMongo = (req, res) => {
+  return new Promise((resolve, reject) => {
+    bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
+      const user = new User({
+        name: req.body.name.toLowerCase(),
+        lastName: req.body.lastName.toLowerCase(),
+        email: req.body.email.toLowerCase(),
+        password: hashedPassword
+      });
+      user
+        .save()
+        .then((createdUser) => {
+          resolve(createdUser);
+          res.status(201).json(
+            {
+              message: 'User added succesfully!',
+              res: createdUser
+            });
+        }).catch(error => {
+          console.log(error);
+          reject(error);
+          res.status(500).json({
+            error: error,
+            message: 'Invalid authentication credentials!'
+          })
         })
-        db
-          .getDb()
-          .db('User')
-          .collection('users')
-          .insertOne(user)
-          .then(result => {
-            console.log(result.ops[0]);
-            res.status(200).json({ user: result.ops[0] });
-            resolve(result);
-          }).catch(error => {
-            console.error(error);
-            res.status(500).json({ error: error, message: 'We had a problem to signup, try again, please.' });
-            reject(error);
-          });
-      }).catch(error => { console.error(error); res.status(500).json({ error: error }); })
-  })
+    }).catch(err => console.error(err));
+  }).catch(error => console.error(error))
 }
-
 
 exports.saveContactToMongo = (req, res) => {
   return new Promise((resolve, reject) => {
