@@ -21,6 +21,16 @@ const limiter = RateLimit({
     "Too many requests, please try again in 15 minutes"
 });
 
+const limiter_signup = RateLimit({
+  store: new MongoStore({
+    uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/Users?retryWrites=true&w=majority`
+  }),
+  max: 200,
+  windowMs: 5 * 60 * 1000,
+  message:
+    "Too many requests, please try again in 15 minutes"
+});
+
 const apiLimiter = RateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10,
@@ -40,7 +50,7 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(cors());
-app.use('/api/', apiLimiter, limiter, user_route);
+app.use('/api/', apiLimiter, limiter_signup, user_route);
 app.use('/api/', apiLimiter, limiter, contact_route);
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({

@@ -1,6 +1,6 @@
 const db = require('../Database/db.mongo');
 const Contact = require('../models/contact.model');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
@@ -14,25 +14,21 @@ exports.signUpToMongo = (req, res) => {
         email: req.body.email.toLowerCase(),
         password: hashedPassword
       });
-      user
-        .save()
-        .then((createdUser) => {
-          resolve(createdUser);
-          res.status(201).json(
-            {
-              message: 'User added succesfully!',
-              res: createdUser
-            });
-        }).catch(error => {
-          console.log(error);
-          reject(error);
-          res.status(500).json({
-            error: error,
-            message: 'Invalid authentication credentials!'
-          })
-        })
-    }).catch(err => console.error(err));
-  }).catch(error => console.error(error))
+      user.save().then((createdUser) => {
+        console.log(createdUser);
+        res.status(201).json(
+          {
+            message: 'User added succesfully!',
+            res: createdUser
+          });
+        resolve(createdUser);
+      }).catch(error => {
+        console.log(error);
+        res.status(401).json({ error: error, message: 'Invalid authentication credentials!' });
+        reject(error);
+      })
+    }).catch(error => { console.log(error), res.status(500).json({ error: error }) });
+  }).catch(error => { console.log(error), res.status(500).json({ error: error }) })
 }
 
 exports.saveContactToMongo = (req, res) => {
@@ -50,8 +46,8 @@ exports.saveContactToMongo = (req, res) => {
       .insertOne(newContact)
       .then(result => {
         res.status(200).json(result.ops[0]); resolve(result);
-      }).catch(error => { res.status(500).json({ err: error }); reject(error); });
-  }).catch(error => { res.status(500).json({ err: error }); })
+      }).catch(error => { console.error(error), res.status(500).json({ error: error }); reject(error); });
+  }).catch(error => { console.error(error), res.status(502).json({ error: error }); })
 }
 
 exports.getMongoContact = (req, res) => {

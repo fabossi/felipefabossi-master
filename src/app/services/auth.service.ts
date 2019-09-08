@@ -19,12 +19,17 @@ export class AuthService {
   }
 
   signup(name: string, lastName: string, email: string, password: string) {
-    const body: SignupData = { name, lastName, email, password };
-    this.http.post(this.LOCAL_URL + '/api/signup', body)
-      .subscribe((data) => {
-        console.log(data);
-        this.router.navigate(['/']);
-      }, error => { this.authStatusListener.next(false); console.log(error); });
+    return new Promise((resolve, reject) => {
+      const body: SignupData = { name, lastName, email, password };
+      this.http.post(this.LOCAL_URL + '/api/signup', body)
+        .toPromise()
+        .then((data) => {
+          console.log('estou no then');
+          console.log(data);
+          this.router.navigate(['/']);
+          resolve(data);
+        }).catch(error => { console.error(error); reject(error); });
+    });
   }
 
   onRequestComplete() {
