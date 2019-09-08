@@ -36,6 +36,9 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
   closeModal(show) {
     this.show = !show;
     this.authService.showModal.next(this.show);
-    this.router.navigate([this.routerService.previousUrl]);
+    if (this.routerService.getPreviousUrl() !== '') {
+      this.router.navigate([this.routerService.getPreviousUrl()]);
+    }
+    this.router.navigate(['/']);
   }
 }

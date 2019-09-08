@@ -6,8 +6,8 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class PreviousRouteService {
 
-  previousUrl: string;
-  currentUrl: string;
+  private previousUrl: string;
+  private currentUrl: string;
 
   constructor(private router: Router) {
     this.currentUrl = this.router.url;
@@ -17,5 +17,9 @@ export class PreviousRouteService {
         this.currentUrl = event.url;
       }
     });
+  }
+
+  getPreviousUrl() {
+    return this.previousUrl;
   }
 }
