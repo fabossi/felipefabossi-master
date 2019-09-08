@@ -15,6 +15,7 @@ exports.signUpToMongo = (req, res) => {
         password: hashedPassword
       });
       user.save().then((createdUser) => {
+        console.log(createdUser);
         res.status(201).json(
           {
             message: 'User added succesfully!',

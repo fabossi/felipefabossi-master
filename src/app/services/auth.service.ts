@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Subject, BehaviorSubject } from 'rxjs';
@@ -8,14 +8,19 @@ import { SignupData } from '../forms/signup/signup.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
   LOCAL_URL = '';
-  private authStatusListener = new Subject<boolean>();
-  private requestFinished = new BehaviorSubject<string>('');
+  showModal = new Subject<boolean>();
+  type = new BehaviorSubject<string>('');
+  requestFinished = new BehaviorSubject<string>('');
   constructor(private http: HttpClient, private router: Router) {
     if (!environment.production) {
       this.LOCAL_URL = 'http://localhost:4000';
     }
+  }
+
+  ngOnDestroy() {
+    this.showModal.next(false);
   }
 
   signup(name: string, lastName: string, email: string, password: string) {
@@ -30,10 +35,24 @@ export class AuthService {
           this.router.navigate(['/']);
           resolve(data);
         }).catch(error => {
-          this.authStatusListener.next(false);
-          this.requestFinished.next('error'); console.error(error); reject(error);
+          this.requestFinished.next('error'); reject(error);
         });
     });
+  }
+
+  submitInformations(form) {
+    return new Promise((resolve, reject) => {
+      this.requestFinished.next('waiting');
+      this.http.post(this.LOCAL_URL + '/api/contact', form)
+        .toPromise()
+        .then(data => {
+          this.requestFinished.next('ready');
+          resolve(data);
+        }).catch(error => {
+          this.requestFinished.next('error');
+          reject(error);
+        });
+    }).catch(error => { console.error(error); });
   }
 
   onRequestComplete() {

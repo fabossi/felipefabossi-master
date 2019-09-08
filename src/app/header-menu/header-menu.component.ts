@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../services/contact-service.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -12,19 +12,18 @@ export class HeaderMenuComponent implements OnInit {
   RLSK = '/page/skills';
   RLCR = '/page/career';
   RLAM = '/page/about-me';
-  constructor(private contactService: ContactService) { }
-
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   showEmail() {
-    this.contactService.showEmail.next(true);
-    this.contactService.type.next('email');
+    this.authService.showModal.next(true);
+    this.authService.type.next('email');
   }
 
   showSignup() {
-    this.contactService.showSignup.next(true);
-    this.contactService.type.next('signup');
+    this.authService.showModal.next(true);
+    this.authService.type.next('signup');
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ContactService } from 'src/app/services/contact-service.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -21,8 +21,8 @@ export class ContactFormComponent implements OnInit {
   mxlengthLN = 45;
   initAnimation = false;
 
-  constructor(private contactService: ContactService, private route: Router) {
-    this.contactService.getItemsReady().subscribe(status => {
+  constructor(private authService: AuthService, private route: Router) {
+    this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
         this.stausRequest = status;
         this.cleanFields();
@@ -51,7 +51,7 @@ export class ContactFormComponent implements OnInit {
     if (this.contactForm.invalid) {
       return;
     }
-    this.contactService.submitInformations(this.contactForm.value)
+    this.authService.submitInformations(this.contactForm.value)
       .then(() => {
         this.route.navigate(['/']);
       }).catch(error => {

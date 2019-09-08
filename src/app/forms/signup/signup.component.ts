@@ -60,8 +60,7 @@ export class SignupComponent implements OnInit {
       return;
     }
     this.authService.signup(this.signupForm.get('nameTextInput').value, this.signupForm.get('lastNameTextInput').value,
-      this.signupForm.get('emailTextInput').value, this.signupForm.get('passwordTextInput').value)
-      .then().catch(error => { console.error(error); });
+      this.signupForm.get('emailTextInput').value, this.signupForm.get('passwordTextInput').value);
   }
 
   seePassword() {

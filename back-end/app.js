@@ -12,7 +12,7 @@ const RateLimit = require('express-rate-limit');
 const MongoStore = require('rate-limit-mongo');
 const timeout = require('express-timeout-handler');
 const options = {
-  timeout: 3000,
+  timeout: 8000,
   onTimeout: function (req, res) {
     res.status(503).send('Service unavailable. Please retry.');
   },
@@ -49,6 +49,9 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(timeout.handler(options));
+app.use('/api/', apiLimiter, limiter_bd, user_route);
+app.use('/api/', apiLimiter, limiter_bd, contact_route);
+app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
@@ -57,9 +60,6 @@ app.use(helmet.contentSecurityPolicy({
     fontSrc: ["'self'", 'https://fonts.googleapis.com']
   }
 }));
-app.use('/api/', apiLimiter, limiter_bd, user_route);
-app.use('/api/', apiLimiter, limiter_bd, contact_route);
-app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));

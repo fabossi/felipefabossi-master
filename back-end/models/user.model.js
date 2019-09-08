@@ -3,7 +3,6 @@ const uniqueValidator = require('mongoose-unique-validator');
 const db = require('../Database/db.mongo')
 
 const userSchema = mongoose.Schema({
-  // _id: { type: String, required: true },
   name: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },

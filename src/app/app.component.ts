@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ContactService } from './services/contact-service.service';
-
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,35 +11,23 @@ import { ContactService } from './services/contact-service.service';
 
 export class AppComponent implements OnDestroy, OnInit {
   subscription: Subscription;
-  subscriptionModal: Subscription;
-  subscriptionSignUp: Subscription;
   hideToMobile = false;
-  isLoading: boolean;
-  showFeedback = false;
-  showModal = false;
-  showSignup = false;
   initialAnimation = false;
-  _status_feedback: 'SUCCESS' | '400';
 
-  constructor(private contactService: ContactService) {
+  constructor(private authService: AuthService, private router: Router) {
     if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }
-    this.subscription = this.contactService.getItemsReady().subscribe(status => {
+    this.subscription = this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
-        this.showModal = false;
-        this._status_feedback = this.contactService.status;
         setTimeout(() => {
-          this.showFeedback = true;
+          this.router.navigate(['auth/feedback']);
         }, 400);
       } else if (status === 'error') {
-        this.showModal = false;
-        this._status_feedback = this.contactService.status;
         setTimeout(() => {
-          this.showFeedback = true;
+          this.router.navigate(['auth/feedback']);
         }, 400);
       } else if (status === 'waiting') {
-        this.showModal = true;
       }
     });
   }
@@ -50,8 +38,6 @@ export class AppComponent implements OnDestroy, OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.subscriptionModal.unsubscribe();
-    this.subscriptionSignUp.unsubscribe();
   }
 
   onResize(e) {
@@ -59,14 +45,6 @@ export class AppComponent implements OnDestroy, OnInit {
       this.hideToMobile = false;
     } else {
       this.hideToMobile = true;
-    }
-  }
-
-  askFeedback(event: Event) {
-    if (event) {
-      this.showFeedback = false;
-    } else {
-      this.showFeedback = true;
     }
   }
 }

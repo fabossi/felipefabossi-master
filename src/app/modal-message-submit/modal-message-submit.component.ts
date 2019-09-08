@@ -1,4 +1,7 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-message-submit',
@@ -6,38 +9,29 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./modal-message-submit.component.scss'],
 })
 
-export class ModalMessageSubmitComponent implements OnInit {
-  @Output() modalFeedBackEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
+  subsFeedback: Subscription;
+  show: boolean;
 
-  private _status: 'SUCCESS' | '400';
-  message = '';
-  showModal = false;
-
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
+    this.subsFeedback = this.authService.showModal.subscribe((show) => {
+      if (show) {
+        this.closeModal(show);
+      }
+    });
   }
 
   ngOnInit() {
   }
 
-  get status(): 'SUCCESS' | '400' {
-    return this._status;
+  ngOnDestroy() {
+    this.subsFeedback.unsubscribe();
   }
 
-  @Input()
-  set status(status: 'SUCCESS' | '400') {
-    this._status = status;
-    switch (status) {
-      case 'SUCCESS':
-        this.message = 'Thanks for the contact, your email was sent successfully.';
-        break;
-      case '400':
-        this.message = `Oops, something wrong happened, try again.`;
-        break;
-    }
+  closeModal(show) {
+    this.show = !show;
+    this.authService.showModal.next(this.show);
+    this.router.navigate(['/']);
   }
 
-  closeModal() {
-    this.showModal = !this.showModal;
-    this.modalFeedBackEvent.emit(this.showModal);
-  }
 }
