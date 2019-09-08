@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { PreviousRouteService } from '../services/previous-route.service';
 
 @Component({
   selector: 'app-modal-forms',
@@ -10,9 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class ModalFormsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  subscriptionSignup: Subscription;
   active: boolean;
-  subsType: Subscription;
   type: string;
 
   constructor(private authService: AuthService, private router: Router) {
@@ -21,12 +20,12 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
         this.active = isActivated;
       }
     });
-    this.subscriptionSignup = this.authService.showModal.subscribe((signUpActive) => {
+    this.subscription = this.authService.showModal.subscribe((signUpActive) => {
       if (signUpActive) {
         this.active = signUpActive;
       }
     });
-    this.subsType = this.authService.type.subscribe((type) => {
+    this.subscription = this.authService.type.subscribe((type) => {
       if (type === 'email') {
         this.type = type;
       }
@@ -38,8 +37,6 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.subscriptionSignup.unsubscribe();
-    this.subsType.unsubscribe();
   }
 
   ngOnInit() {
@@ -47,12 +44,7 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
 
   closeModal() {
     this.active = !this.active;
-    if (this.subscription) {
-      this.authService.showModal.next(this.active);
-    }
-    if (this.subscriptionSignup) {
-      this.authService.showModal.next(this.active);
-    }
+    this.authService.showModal.next(this.active);
     this.router.navigate(['/']);
   }
 }

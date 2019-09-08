@@ -41,7 +41,7 @@
         {{ messageTextInput.value.length }} of {{mxlengthTA}}
       </div>
     </div>
-    <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">
+    <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
       <button (click)='submitInformations()' class='button'>SEND</button>
     </ng-container>
     <ng-container *ngIf="stausRequest === 'waiting'">

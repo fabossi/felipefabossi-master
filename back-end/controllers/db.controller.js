@@ -2,6 +2,8 @@ const db = require('../Database/db.mongo');
 const Contact = require('../models/contact.model');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user.model');
+const mail_controller = require('./mail.controller');
+const admin_controller = require('./adminEmail.controller');
 const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
 
@@ -15,20 +17,17 @@ exports.signUpToMongo = (req, res) => {
         password: hashedPassword
       });
       user.save().then((createdUser) => {
-        console.log(createdUser);
-        res.status(201).json(
-          {
-            message: 'User added succesfully!',
-            res: createdUser
-          });
+        res.status(201).json({
+          message: `Welcome, ${req.body.name} ${req.body.lastName}! `, res: createdUser
+        });
         resolve(createdUser);
       }).catch(error => {
         console.log(error);
         res.status(401).json({ error: error, message: 'Invalid authentication credentials!' });
         reject(error);
       })
-    }).catch(error => { console.log(error), res.status(500).json({ error: error }) });
-  }).catch(error => { console.log(error), res.status(500).json({ error: error }) })
+    }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
+  }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) })
 }
 
 exports.saveContactToMongo = (req, res) => {
@@ -45,9 +44,24 @@ exports.saveContactToMongo = (req, res) => {
       .collection('contacts')
       .insertOne(newContact)
       .then(result => {
-        res.status(200).json(result.ops[0]); resolve(result);
-      }).catch(error => { console.error(error), res.status(500).json({ error: error }); reject(error); });
-  }).catch(error => { console.error(error), res.status(502).json({ error: error }); })
+        mail_controller.sendEmail(req.body.emailTextInput);
+        admin_controller.sendAdminEmail(req.body.emailTextInput, req.body.messageTextInput);
+        res.status(200)
+          .json({
+            res: result.ops[0],
+            message: 'Your message was sent succesfully.'
+          });
+        resolve(result);
+      }).catch(error => {
+        console.error(error), res.status(500)
+          .json({ message: 'Sending contact failed, try again later' });
+        reject(error);
+      });
+  }).catch(error => {
+    console.error(error),
+      res.status(502)
+        .json({ message: 'Ops, something wrong happen, try again!' });
+  })
 }
 
 exports.getMongoContact = (req, res) => {

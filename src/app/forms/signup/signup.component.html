@@ -57,7 +57,7 @@
           class="generic-message-input-error__top">the passwords are not equal!</div>
       </div>
     </div>
-    <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready'">
+    <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
       <button (click)='onSignUp()' class='button'>SIGNUP</button>
     </ng-container>
     <ng-container *ngIf="stausRequest === 'waiting'">

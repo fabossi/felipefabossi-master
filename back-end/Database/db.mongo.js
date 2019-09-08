@@ -1,7 +1,5 @@
-// const mongodb = require('mongodb');
 require('dotenv').config();
 const mongoose = require('mongoose');
-// const MongoClient = mongodb.MongoClient;
 const mongoDbUrl = process.env.url_mongo;
 
 let _db;

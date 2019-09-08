@@ -10,8 +10,10 @@ import { SignupData } from '../forms/signup/signup.model';
 })
 export class AuthService implements OnDestroy {
   LOCAL_URL = '';
+  errorMessage: string;
   showModal = new Subject<boolean>();
   type = new BehaviorSubject<string>('');
+  previousUrl = '';
   requestFinished = new BehaviorSubject<string>('');
   constructor(private http: HttpClient, private router: Router) {
     if (!environment.production) {

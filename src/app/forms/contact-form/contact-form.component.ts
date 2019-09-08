@@ -51,14 +51,7 @@ export class ContactFormComponent implements OnInit {
     if (this.contactForm.invalid) {
       return;
     }
-    this.authService.submitInformations(this.contactForm.value)
-      .then(() => {
-        this.route.navigate(['/']);
-      }).catch(error => {
-        if (error) {
-          throw Error(error);
-        }
-      });
+    this.authService.submitInformations(this.contactForm.value);
   }
 
   cleanFields() {

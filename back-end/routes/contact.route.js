@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const contact_controller = require('../controllers/contact.controller');
+const db_controller = require('../controllers/db.controller');
 
-router.post('/contact', contact_controller.insertContact);
+router.post('/contact', db_controller.saveContactToMongo);
 
 module.exports = router;
