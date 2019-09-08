@@ -41,7 +41,7 @@ exports.saveContactToMongo = (req, res) => {
     });
     db
       .getDb()
-      .db('contacts')
+      .db('Fabossi-website')
       .collection('contacts')
       .insertOne(newContact)
       .then(result => {
