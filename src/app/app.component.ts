@@ -21,14 +21,9 @@ export class AppComponent implements OnDestroy, OnInit {
     }
     this.subscription = this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
-        setTimeout(() => {
-          this.router.navigate(['auth/feedback']);
-        }, 400);
+        this.router.navigate(['/']);
       } else if (status === 'error') {
-        setTimeout(() => {
-          this.router.navigate(['auth/feedback']);
-        }, 400);
-      } else if (status === 'waiting') {
+        this.router.navigate(['auth/feedback']);
       }
     });
   }

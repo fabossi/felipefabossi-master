@@ -38,23 +38,25 @@ exports.saveContactToMongo = (req, res) => {
       message: req.body.messageTextInput.toLowerCase(),
       email: req.body.emailTextInput.toLowerCase(),
     });
-    db
-      .getDb()
-      .db('Fabossi-website')
-      .collection('contacts')
-      .insertOne(newContact)
+    // db
+    //   .getDb()
+    //   .db('Fabossi-website')
+    //   .collection('contacts')
+    //   .insertOne(newContact)
+    newContact
+      .save()
       .then(result => {
         mail_controller.sendEmail(req.body.emailTextInput);
         admin_controller.sendAdminEmail(req.body.emailTextInput, req.body.messageTextInput);
         res.status(200)
           .json({
-            res: result.ops[0],
+            res: result,
             message: 'Your message was sent succesfully.'
           });
         resolve(result);
       }).catch(error => {
         console.error(error), res.status(500)
-          .json({ message: 'Sending contact failed, try again later' });
+          .json({ message: 'Sending contact failed, we will back you to the last' });
         reject(error);
       });
   }).catch(error => {

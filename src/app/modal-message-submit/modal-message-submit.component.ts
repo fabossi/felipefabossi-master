@@ -15,6 +15,7 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
   show: boolean;
   message: string;
   previousUrl: string;
+  shake = false;
 
   constructor(private authService: AuthService, private router: Router, private routeService: PreviousRouteService) {
     this.subsFeedback = this.authService.showModal.subscribe((show) => {
@@ -31,6 +32,7 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.shake = true;
   }
 
   ngOnDestroy() {
