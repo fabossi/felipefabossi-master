@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PreviousRouteService {
 
-  private previousUrl: string;
-  private currentUrl: string;
+  previousUrl: string;
+  currentUrl: string;
+  emitUrl = new BehaviorSubject<string>('');
 
   constructor(private router: Router) {
     this.currentUrl = this.router.url;
@@ -15,11 +17,12 @@ export class PreviousRouteService {
       if (event instanceof NavigationEnd) {
         this.previousUrl = this.currentUrl;
         this.currentUrl = event.url;
+        this.emitUrl.next(this.previousUrl);
       }
     });
   }
 
   getPreviousUrl() {
-    return this.previousUrl;
+    return this.emitUrl;
   }
 }

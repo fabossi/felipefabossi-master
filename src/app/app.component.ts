@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { PreviousRouteService } from './services/previous-route.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +15,7 @@ export class AppComponent implements OnDestroy, OnInit {
   hideToMobile = false;
   initialAnimation = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private routerService: PreviousRouteService) {
     if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }

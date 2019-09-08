@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { PreviousRouteService } from '../services/previous-route.service';
 
 @Component({
   selector: 'app-modal-forms',
