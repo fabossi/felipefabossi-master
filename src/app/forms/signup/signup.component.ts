@@ -27,7 +27,15 @@ export class SignupComponent implements OnInit {
   see_password = false;
 
   constructor(private authService: AuthService) {
-    this.authService.onRequestComplete().subscribe(status => { });
+    this.authService.onRequestComplete().subscribe(status => {
+      if (status === 'ready') {
+        this.stausRequest = status;
+      } else if (status === 'waiting') {
+        this.stausRequest = status;
+      } else if (status === 'error') {
+        this.stausRequest = status;
+      }
+    });
   }
 
   ngOnInit() {

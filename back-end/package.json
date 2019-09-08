@@ -23,6 +23,7 @@
     "express-rate-limit": "^5.0.0",
     "express-sanitizer": "^1.0.5",
     "express-session": "^1.16.2",
+    "express-timeout-handler": "^2.2.0",
     "helmet": "3.20.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.0",

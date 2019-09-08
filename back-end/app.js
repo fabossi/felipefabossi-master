@@ -10,22 +10,20 @@ const helmet = require('helmet');
 const compression = require('compression');
 const RateLimit = require('express-rate-limit');
 const MongoStore = require('rate-limit-mongo');
+const timeout = require('express-timeout-handler');
+const options = {
+  timeout: 3000,
+  onTimeout: function (req, res) {
+    res.status(503).send('Service unavailable. Please retry.');
+  },
+  disable: ['write', 'setHeaders', 'send', 'json', 'end']
+};
 
-const limiter = RateLimit({
+const limiter_bd = RateLimit({
   store: new MongoStore({
-    uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/contacts?retryWrites=true&w=majority`
+    uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/Fabossi-website?retryWrites=true&w=majority`
   }),
-  max: 200,
-  windowMs: 5 * 60 * 1000,
-  message:
-    "Too many requests, please try again in 15 minutes"
-});
-
-const limiter_signup = RateLimit({
-  store: new MongoStore({
-    uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/Users?retryWrites=true&w=majority`
-  }),
-  max: 200,
+  max: 10,
   windowMs: 5 * 60 * 1000,
   message:
     "Too many requests, please try again in 15 minutes"
@@ -39,6 +37,7 @@ const apiLimiter = RateLimit({
 });
 
 app.set('port', process.env.PORT || 4000);
+app.use(cors());
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
@@ -49,10 +48,7 @@ app.use(helmet.ieNoOpen());
 app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
-app.use(cors());
-app.use('/api/', apiLimiter, limiter_signup, user_route);
-app.use('/api/', apiLimiter, limiter, contact_route);
-app.use("/", express.static(path.join(__dirname, "public")));
+app.use(timeout.handler(options));
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
@@ -61,6 +57,9 @@ app.use(helmet.contentSecurityPolicy({
     fontSrc: ["'self'", 'https://fonts.googleapis.com']
   }
 }));
+app.use('/api/', apiLimiter, limiter_bd, user_route);
+app.use('/api/', apiLimiter, limiter_bd, contact_route);
+app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
@@ -76,5 +75,4 @@ mongodb.initDb((err, db) => {
 
   }
 });
-
 
