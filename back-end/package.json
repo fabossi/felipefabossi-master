@@ -25,6 +25,7 @@
     "express-session": "^1.16.2",
     "express-timeout-handler": "^2.2.0",
     "helmet": "3.20.0",
+    "http-proxy": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.0",
     "mongoose": "^5.5.14",

@@ -15,6 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.authService.errorMessage = 'An unknow error ocurred, try again.';
         if (error.error.message) {
           this.authService.errorMessage = error.error.message;
+          console.log(this.authService.errorMessage);
         }
         return throwError(error);
       })

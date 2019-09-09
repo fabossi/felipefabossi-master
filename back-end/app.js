@@ -12,9 +12,9 @@ const RateLimit = require('express-rate-limit');
 const MongoStore = require('rate-limit-mongo');
 const timeout = require('express-timeout-handler');
 const options = {
-  timeout: 8000,
-  onTimeout: function (req, res) {
-    res.status(503).send('Service unavailable. Please retry.');
+  timeout: 3000,
+  onTimeout: (req, res) => {
+    res.status(503).send({ message: 'This process is taking longer than expected. Please, try again.' });
   },
   disable: ['write', 'setHeaders', 'send', 'json', 'end']
 };

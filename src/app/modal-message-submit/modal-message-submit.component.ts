@@ -16,6 +16,7 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
   message: string;
   previousUrl: string;
   shake = false;
+  redirectURL = '';
 
   constructor(private authService: AuthService, private router: Router, private routeService: PreviousRouteService) {
     this.subsFeedback = this.authService.showModal.subscribe((show) => {
@@ -26,12 +27,15 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
     this.subsFeedback = this.routeService.getPreviousUrl().subscribe((url) => {
       this.previousUrl = url;
     });
-    if (this.authService.errorMessage !== null || this.authService.errorMessage !== undefined) {
-      this.message = this.authService.errorMessage;
-    }
-    if (this.authService.succesfullyMessage !== null || this.authService.succesfullyMessage) {
-      this.message = this.authService.succesfullyMessage;
-    }
+    this.subsFeedback = this.authService.onRequestComplete().subscribe((requestStatus) => {
+      if (requestStatus === 'error') {
+        this.message = this.authService.errorMessage;
+        this.redirectURL = this.previousUrl;
+      } else if (requestStatus === 'ready') {
+        this.message = this.authService.succesfullyMessage;
+        this.redirectURL = '/';
+      }
+    });
   }
 
   ngOnInit() {
@@ -45,6 +49,6 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
   closeModal(show) {
     this.show = !show;
     this.authService.showModal.next(this.show);
-    this.router.navigate([this.previousUrl]);
+    this.router.navigate([this.redirectURL]);
   }
 }
