@@ -5,7 +5,7 @@
       <div class="generic-message-input-error">
         <input autofocus
           [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
-          class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
+          class='container-names__name-input basics-input-styles capitalize' autocomplete="off" type="text"
           formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name">
         <div *ngIf="signupForm?.get('nameTextInput').errors || signupForm?.get('nameTextInput').invalid"
           class="generic-message-input-error__top">Insert at least 3 characters.</div>
@@ -14,8 +14,9 @@
       <div class="generic-message-input-error">
         <input
           [ngClass]="{'hasError': !signupForm.get('lastNameTextInput').valid && signupForm.get('lastNameTextInput').touched}"
-          class='generic-message-input-error container-names__lastName-input basics-input-styles' autocomplete="off"
-          type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN' placeholder="Your lastname">
+          class='generic-message-input-error container-names__lastName-input basics-input-styles capitalize'
+          autocomplete="off" type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN'
+          placeholder="Your lastname">
         <div *ngIf="signupForm?.get('lastNameTextInput').errors || signupForm?.get('lastNameTextInput').invalid"
           class="generic-message-input-error__top">Insert at least 3 characters.</div>
       </div>

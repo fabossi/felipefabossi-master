@@ -5,7 +5,7 @@
       <div class="generic-message-input-error">
         <input autofocus
           [ngClass]="{'hasError': !contactForm.get('nameTextInput').valid && contactForm.get('nameTextInput').touched}"
-          class='container-names__name-input basics-input-styles' autocomplete="off" type="text"
+          class='container-names__name-input basics-input-styles capitalize' autocomplete="off" type="text"
           formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name">
         <div *ngIf="contactForm.get('nameTextInput').errors || contactForm.get('nameTextInput').invalid"
           class="generic-message-input-error__top">Insert at least 3 characters.</div>
@@ -14,8 +14,9 @@
       <div class="generic-message-input-error">
         <input
           [ngClass]="{'hasError': !contactForm.get('lastNameTextInput').valid && contactForm.get('lastNameTextInput').touched}"
-          class='generic-message-input-error container-names__lastName-input basics-input-styles' autocomplete="off"
-          type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN' placeholder="Your lastname">
+          class='generic-message-input-error container-names__lastName-input basics-input-styles capitalize'
+          autocomplete="off" type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN'
+          placeholder="Your lastname">
         <div *ngIf="contactForm.get('lastNameTextInput').errors || contactForm.get('lastNameTextInput').invalid"
           class="generic-message-input-error__top">Insert at least 3 characters.</div>
       </div>
@@ -33,8 +34,8 @@
     <div class="generic-message-input-error">
       <textarea
         [ngClass]="{'hasError': !contactForm.get('messageTextInput').valid && contactForm.get('messageTextInput').touched}"
-        class='generic-message-input-error textarea-input basics-input-styles' id='messageTextInput' autocomplete="off"
-        cols="2" rows="2" formControlName="messageTextInput" [maxlength]="mxlengthTA"
+        class='generic-message-input-error textarea-input basics-input-styles capitalize' id='messageTextInput'
+        autocomplete="off" cols="2" rows="2" formControlName="messageTextInput" [maxlength]="mxlengthTA"
         placeholder="Write your message to me here." #messageTextInput>
       </textarea>
       <div class='generic-message-input-error__top'>

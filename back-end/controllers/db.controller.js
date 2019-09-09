@@ -18,12 +18,12 @@ exports.signUpToMongo = (req, res) => {
       });
       user.save().then((createdUser) => {
         res.status(201).json({
-          message: `Welcome, ${req.body.name} ${req.body.lastName}! `, res: createdUser
+          message: `Welcome to my page, ${req.body.name} ${req.body.lastName}!`, res: createdUser
         });
         resolve(createdUser);
       }).catch(error => {
         console.log(error);
-        res.status(401).json({ error: error, message: 'Invalid authentication credentials!' });
+        res.status(401).json({ message: 'Invalid authentication credentials!' });
         reject(error);
       })
     }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
@@ -55,14 +55,15 @@ exports.saveContactToMongo = (req, res) => {
           });
         resolve(result);
       }).catch(error => {
-        console.error(error), res.status(500)
-          .json({ message: 'Sending contact failed, we will back you to the last' });
+        console.error(error),
+          res.status(500)
+            .json({ message: 'Sending contact failed, we will back you to the last step' });
         reject(error);
       });
   }).catch(error => {
     console.error(error),
       res.status(502)
-        .json({ message: 'Ops, something wrong happen, try again!' });
+        .json({ message: 'Sending contact failed, we will back you to the last step' });
   })
 }
 
