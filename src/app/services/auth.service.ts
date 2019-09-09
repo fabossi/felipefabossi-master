@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { SignupData } from '../forms/signup/signup.model';
+import { LoginData } from '../forms/login/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { SignupData } from '../forms/signup/signup.model';
 export class AuthService implements OnDestroy {
   LOCAL_URL = '';
   errorMessage: string;
+  succesfullyMessage: string;
   showModal = new Subject<boolean>();
   type = new BehaviorSubject<string>('');
   previousUrl = '';
@@ -34,7 +36,22 @@ export class AuthService implements OnDestroy {
         .then((data) => {
           console.log(data);
           this.requestFinished.next('ready');
-          this.router.navigate(['/']);
+          resolve(data);
+        }).catch(error => {
+          this.requestFinished.next('error'); reject(error);
+        });
+    });
+  }
+
+  login(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      const body: LoginData = { email, password };
+      this.requestFinished.next('waiting');
+      this.http.post(this.LOCAL_URL + '/api/login', body)
+        .toPromise()
+        .then((data) => {
+          console.log(data);
+          this.requestFinished.next('ready');
           resolve(data);
         }).catch(error => {
           this.requestFinished.next('error'); reject(error);
@@ -45,9 +62,11 @@ export class AuthService implements OnDestroy {
   submitInformations(form) {
     return new Promise((resolve, reject) => {
       this.requestFinished.next('waiting');
-      this.http.post(this.LOCAL_URL + '/api/contact', form)
+      this.http.post<{ message: string }>(this.LOCAL_URL + '/api/contact', form)
         .toPromise()
         .then(data => {
+          this.succesfullyMessage = data.message;
+          console.log(this.succesfullyMessage);
           this.requestFinished.next('ready');
           resolve(data);
         }).catch(error => {

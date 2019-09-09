@@ -2,12 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
-
-library.add(faEye, faEyeSlash);
-dom.watch();
 
 @Component({
   selector: 'app-signup-form',

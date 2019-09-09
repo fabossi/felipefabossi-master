@@ -9,6 +9,12 @@ import { ModalFormsComponent } from '../modal-forms/modal-forms.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ModalMessageSubmitComponent } from '../modal-message-submit/modal-message-submit.component';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+
+library.add(faEye, faEyeSlash);
+dom.watch();
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, ModalFormsComponent, ContactFormComponent, ModalMessageSubmitComponent],

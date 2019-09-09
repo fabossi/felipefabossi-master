@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { PreviousRouteService } from './services/previous-route.service';
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent implements OnDestroy, OnInit {
     }
     this.subscription = this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
-        this.router.navigate(['/']);
+        this.router.navigate(['auth/feedback']);
       } else if (status === 'error') {
         this.router.navigate(['auth/feedback']);
       }

@@ -29,6 +29,9 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
     if (this.authService.errorMessage !== null || this.authService.errorMessage !== undefined) {
       this.message = this.authService.errorMessage;
     }
+    if (this.authService.succesfullyMessage !== null || this.authService.succesfullyMessage) {
+      this.message = this.authService.succesfullyMessage;
+    }
   }
 
   ngOnInit() {
