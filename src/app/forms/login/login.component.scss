@@ -110,3 +110,15 @@ form {
 .hasError {
   border-bottom: 0.1rem solid $color-red-2 !important;
 }
+
+.login-link {
+  color: #bdbdbd;
+  position: relative;
+  text-decoration: underline;
+  cursor: pointer;
+  top: -9%;
+  font-size: 1.15rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

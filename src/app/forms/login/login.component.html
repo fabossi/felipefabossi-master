@@ -24,6 +24,7 @@
   </div>
   <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
     <button (click)='onLogin()' class='button'>LOGIN</button>
+    <button class='login-link' (click)='backtoEmail()'>Have no account yet?</button>
   </ng-container>
   <ng-container *ngIf="stausRequest === 'waiting'">
     <div class="lds-ring">

@@ -53,4 +53,8 @@ export class LoginComponent implements OnInit {
   seePassword() {
     this.see_password = !this.see_password;
   }
+
+  backtoEmail() {
+    this.authService.type.next('signup');
+  }
 }

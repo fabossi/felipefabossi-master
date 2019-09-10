@@ -12,18 +12,12 @@ import { PreviousRouteService } from '../services/previous-route.service';
 
 export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
   subsFeedback: Subscription;
-  show: boolean;
   message: string;
   previousUrl: string;
   shake = false;
   redirectURL = '';
 
   constructor(private authService: AuthService, private router: Router, private routeService: PreviousRouteService) {
-    this.subsFeedback = this.authService.showModal.subscribe((show) => {
-      if (show) {
-        this.closeModal(show);
-      }
-    });
     this.subsFeedback = this.routeService.getPreviousUrl().subscribe((url) => {
       this.previousUrl = url;
     });
@@ -46,9 +40,7 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
     this.subsFeedback.unsubscribe();
   }
 
-  closeModal(show) {
-    this.show = !show;
-    this.authService.showModal.next(this.show);
+  closeModal() {
     this.router.navigate([this.redirectURL]);
   }
 }
