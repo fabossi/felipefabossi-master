@@ -25,6 +25,7 @@ export class AuthService implements OnDestroy {
 
   ngOnDestroy() {
     this.showModal.next(false);
+    this.type.next('');
   }
 
   signup(name: string, lastName: string, email: string, password: string) {

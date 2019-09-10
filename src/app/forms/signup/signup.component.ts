@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
   initAnimation = false;
   see_password = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
         this.stausRequest = status;
@@ -61,4 +62,10 @@ export class SignupComponent implements OnInit {
     this.see_password = !this.see_password;
   }
 
+  openLogin() {
+    this.authService.showModal.next(true);
+    this.authService.type.next('login');
+    console.log(this.authService.type.next('login'));
+    this.router.navigateByUrl('auth/login', { skipLocationChange: true });
+  }
 }

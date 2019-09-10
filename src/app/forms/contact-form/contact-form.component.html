@@ -34,8 +34,8 @@
     <div class="generic-message-input-error">
       <textarea
         [ngClass]="{'hasError': !contactForm.get('messageTextInput').valid && contactForm.get('messageTextInput').touched}"
-        class='generic-message-input-error textarea-input basics-input-styles capitalize' id='messageTextInput'
-        autocomplete="off" cols="2" rows="2" formControlName="messageTextInput" [maxlength]="mxlengthTA"
+        class='generic-message-input-error textarea-input basics-input-styles' id='messageTextInput' autocomplete="off"
+        cols="2" rows="2" formControlName="messageTextInput" [maxlength]="mxlengthTA"
         placeholder="Write your message to me here." #messageTextInput>
       </textarea>
       <div class='generic-message-input-error__top'>

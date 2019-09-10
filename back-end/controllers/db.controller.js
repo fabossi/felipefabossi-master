@@ -16,16 +16,24 @@ exports.signUpToMongo = (req, res) => {
         email: req.body.email.toLowerCase(),
         password: hashedPassword
       });
-      user.save().then((createdUser) => {
-        res.status(201).json({
-          message: `Welcome to my page, ${req.body.name} ${req.body.lastName}!`, res: createdUser
-        });
-        resolve(createdUser);
-      }).catch(error => {
-        console.log(error);
-        res.status(401).json({ message: 'Invalid authentication credentials!' });
-        reject(error);
-      })
+      if (user !== null || user !== '') {
+        user.save().then((createdUser) => {
+          res.status(201).json({
+            message: `Welcome to my page, ${req.body.name} ${req.body.lastName}!`, res: createdUser
+          });
+          resolve(createdUser);
+        }).catch(error => {
+          console.log(error);
+          if (error.errors.email.kind === 'unique') {
+            res.status(401).json({ message: `Email: "${req.body.email}" already registered, try again!` });
+          } else {
+            res.status(401).json({ message: 'Invalid authentication credentials, try again!' });
+          }
+          reject(error);
+        })
+      } else {
+        res.status(404).json({ message: 'Plese fill all fields!' });
+      }
     }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
   }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) })
 }
