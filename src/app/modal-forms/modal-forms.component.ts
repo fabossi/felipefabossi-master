@@ -14,16 +14,6 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
   type: string;
 
   constructor(private authService: AuthService, private router: Router) {
-    this.subscription = this.authService.showModal.subscribe((isActivated) => {
-      if (isActivated) {
-        this.active = isActivated;
-      }
-    });
-    this.subscription = this.authService.showModal.subscribe((signUpActive) => {
-      if (signUpActive) {
-        this.active = signUpActive;
-      }
-    });
     this.subscription = this.authService.type.subscribe((type) => {
       if (type === 'email') {
         this.type = type;
@@ -43,7 +33,7 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
 
   closeModal() {
     this.active = !this.active;
-    this.authService.showModal.next(this.active);
+    this.authService.type.next('');
     this.router.navigate(['/']);
   }
 }

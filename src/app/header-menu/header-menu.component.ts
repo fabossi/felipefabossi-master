@@ -18,12 +18,10 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   showEmail() {
-    this.authService.showModal.next(true);
     this.authService.type.next('email');
   }
 
   showSignup() {
-    this.authService.showModal.next(true);
     this.authService.type.next('signup');
   }
 }

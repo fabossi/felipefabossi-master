@@ -13,7 +13,6 @@ export class AuthService implements OnDestroy {
   LOCAL_URL = '';
   errorMessage: string;
   succesfullyMessage: string;
-  showModal = new Subject<boolean>();
   type = new BehaviorSubject<string>('');
   previousUrl = '';
   requestFinished = new BehaviorSubject<string>('');
@@ -24,7 +23,6 @@ export class AuthService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.showModal.next(false);
     this.type.next('');
   }
 

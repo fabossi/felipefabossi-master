@@ -63,9 +63,7 @@ export class SignupComponent implements OnInit {
   }
 
   openLogin() {
-    this.authService.showModal.next(true);
     this.authService.type.next('login');
-    console.log(this.authService.type.next('login'));
     this.router.navigateByUrl('auth/login', { skipLocationChange: true });
   }
 }
