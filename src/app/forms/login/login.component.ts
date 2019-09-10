@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  initAnimation = false;
   subscription: Subscription;
   loginForm: FormGroup;
   isLoading = false;
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
       'passwordTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthN)]),
     });
+    this.initAnimation = true;
   }
 
   onLogin() {

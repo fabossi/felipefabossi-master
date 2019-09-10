@@ -5,11 +5,7 @@ import { ModalMessageSubmitComponent } from '../modal-message-submit/modal-messa
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: ModalFormsComponent
-  },
-  {
-    path: 'signup',
+    path: 'forms',
     component: ModalFormsComponent
   },
   {

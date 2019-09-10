@@ -64,6 +64,6 @@ export class SignupComponent implements OnInit {
 
   openLogin() {
     this.authService.type.next('login');
-    this.router.navigateByUrl('auth/login', { skipLocationChange: true });
+    // this.authService.type.next('email');
   }
 }
