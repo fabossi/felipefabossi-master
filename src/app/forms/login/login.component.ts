@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
       .catch(error => console.error(error));
   }
 
-
   seePassword() {
     this.see_password = !this.see_password;
   }

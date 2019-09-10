@@ -47,14 +47,16 @@ export class AuthService implements OnDestroy {
     return new Promise((resolve, reject) => {
       const body: LoginData = { email, password };
       this.requestFinished.next('waiting');
-      this.http.post(this.LOCAL_URL + '/api/login', body)
+      this.http.post<{ message: string }>(this.LOCAL_URL + '/api/login', body)
         .toPromise()
         .then((data) => {
-          console.log(data);
+          this.succesfullyMessage = data.message;
           this.requestFinished.next('ready');
           resolve(data);
         }).catch(error => {
-          this.requestFinished.next('error'); reject(error);
+          this.errorMessage = error.message;
+          this.requestFinished.next('error');
+          reject(error);
         });
     });
   }
