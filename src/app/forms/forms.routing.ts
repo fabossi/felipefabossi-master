@@ -9,10 +9,6 @@ const routes: Routes = [
     component: ModalFormsComponent
   },
   {
-    path: 'email',
-    component: ModalFormsComponent
-  },
-  {
     path: 'feedback',
     component: ModalMessageSubmitComponent
   }
