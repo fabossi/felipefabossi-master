@@ -64,6 +64,5 @@ export class SignupComponent implements OnInit {
 
   openLogin() {
     this.authService.type.next('login');
-    // this.authService.type.next('email');
   }
 }
