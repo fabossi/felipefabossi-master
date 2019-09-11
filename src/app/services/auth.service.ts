@@ -104,6 +104,7 @@ export class AuthService implements OnDestroy {
         .then((data) => {
           this.succesfullyMessage = data.message;
           this.requestFinished.next('ready');
+          this.login(email, password);
           resolve(data);
         }).catch(error => {
           this.authStatusListener.next(false);

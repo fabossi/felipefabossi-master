@@ -54,7 +54,11 @@ exports.loginUser = (req, res) => {
         return res.status(401).json({ message: 'wrong email or password! Try again.' })
       }
       const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id }, key.s_k, { expiresIn: '1h' });
-      res.status(200).json({ message: 'User logged in succesfully!', token: token, expiresIn: 3600, userId: fetchedUser._id });
+      res.status(200).json({
+        message: `Welcome ${fetchedUser.name.charAt(0).toUpperCase() + fetchedUser.name.substring(1)}
+         ${fetchedUser.lastName.charAt(0).toUpperCase() + fetchedUser.lastName.substring(1)},
+       it's great to have you here!`, token: token, expiresIn: 3600, userId: fetchedUser._id
+      });
 
     }).catch(error => {
       res.status(500).json({ error: error, message: 'wrong email or password! Try again.' });
