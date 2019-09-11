@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header-menu',
@@ -12,7 +13,15 @@ export class HeaderMenuComponent implements OnInit {
   RLSK = '/page/skills';
   RLCR = '/page/career';
   RLAM = '/page/about-me';
-  constructor(private authService: AuthService) { }
+  subsLogin: Subscription;
+  isLoggedin = false;
+  constructor(private authService: AuthService) {
+    this.subsLogin = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.isLoggedin = isAuthenticated;
+      });
+  }
 
   ngOnInit() {
   }
@@ -21,7 +30,11 @@ export class HeaderMenuComponent implements OnInit {
     this.authService.type.next('email');
   }
 
-  showSignup() {
+  showLogin() {
     this.authService.type.next('login');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

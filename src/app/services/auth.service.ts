@@ -168,6 +168,7 @@ export class AuthService implements OnDestroy {
     this.isLoggedIn = false;
     this.userId = null;
     clearTimeout(this.tokenTimer);
+    this.authStatusListener.next(false);
     this.route.navigate(['/']);
     this.clearAuthData();
   }

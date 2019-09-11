@@ -1,6 +1,9 @@
 <div class="container-writeEmail">
-  <a routerLink="auth/forms">
-    <button class='container-writeEmail__button-email' (click)='showSignup()'>login or signup</button>
+  <a *ngIf="!isLoggedin" routerLink="auth/forms">
+    <button class='container-writeEmail__button-email' (click)='showLogin()'>login or signup</button>
+  </a>
+  <a *ngIf="isLoggedin">
+    <button class='container-writeEmail__button-email' (click)='logout()'>Logout</button>
   </a>
 </div>
 <a [routerLink]='RLH'>Home</a>
