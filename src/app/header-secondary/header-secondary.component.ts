@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -8,17 +9,17 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class HeaderSecondaryComponent implements AfterViewInit {
   animate = true;
+  NodeEvent = false;
   MongoEvent = false;
   PythonEvent = false;
-  NodeEvent = false;
   AngularEvent = false;
-  moveBoatToMongo = true;
   moveBoatToNode = true;
-  moveBoatToAngular = true;
+  moveBoatToMongo = true;
   moveBoatToPython = true;
+  moveBoatToAngular = true;
+  subsAuthStatus: Subscription;
 
   constructor() {
-
   }
 
   ngAfterViewInit() {

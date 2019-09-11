@@ -17,25 +17,23 @@ exports.signUpToMongo = (req, res) => {
         password: hashedPassword
       });
       if (user !== null || user !== '') {
-        user.save().then((createdUser) => {
-          res.status(201).json({
-            message: `Welcome to my page, ${req.body.name} ${req.body.lastName}!`, res: createdUser
-          });
-          resolve(createdUser);
-        }).catch(error => {
-          console.log(error);
-          if (error.errors.email.kind === 'unique') {
-            res.status(401).json({ message: `Email: "${req.body.email}" already registered, try again!` });
-          } else {
-            res.status(401).json({ message: 'Invalid authentication credentials, try again!' });
-          }
-          reject(error);
-        })
+        user
+          .save()
+          .then((createdUser) => {
+            resolve(createdUser);
+          }).catch(error => {
+            if (error.errors.email.kind === 'unique') {
+              res.status(401).json({ message: `Email: "${req.body.email}" already registered, try again!` });
+            } else {
+              res.status(401).json({ message: 'Invalid authentication credentials, try again!' });
+            }
+            reject(error);
+          })
       } else {
         res.status(404).json({ message: 'Plese fill all fields!' });
       }
-    }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
-  }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
+    }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }) });
+  }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }) });
 }
 
 exports.loginUser = (req, res) => {
@@ -61,7 +59,7 @@ exports.loginUser = (req, res) => {
       });
 
     }).catch(error => {
-      res.status(500).json({ error: error, message: 'wrong email or password! Try again.' });
+      res.status(500).json({ message: 'wrong email or password! Try again.' });
     })
 }
 
@@ -113,7 +111,7 @@ exports.getMongoContact = (req, res) => {
       .then(resultado => {
         console.log(resultado); res.status(200).json({ users: resultado }); resolve(resultado);
       }).catch(error => { res.status(500).json({ err: error }); reject(error) });
-  }).catch(error => { console.error(error); res.status(500).json({ err: error }); })
+  }).catch(error => { res.status(500).json({ err: error }); })
 }
 
 exports.deleteContacts = (req, res) => {
@@ -126,5 +124,5 @@ exports.deleteContacts = (req, res) => {
       .then(result => {
         console.log(result); resolve(result)
       }).catch(error => { res.status(500).json({ err: error }); reject(error) });
-  }).catch(err => { console.error(err); res.status(500).json({ err: error }); })
+  }).catch(err => { res.status(500).json({ err: error }); })
 }
