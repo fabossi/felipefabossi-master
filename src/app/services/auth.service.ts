@@ -39,7 +39,6 @@ export class AuthService implements OnDestroy {
   }
 
   private saveAuthData(token: string, expiresIn: Date, userId: string) {
-    console.log('entrei aqui pora');
     localStorage.setItem('token', token);
     localStorage.setItem('expiresIn', expiresIn.toISOString());
     localStorage.setItem('userId', userId);
@@ -55,7 +54,6 @@ export class AuthService implements OnDestroy {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiresIn');
     const userId = localStorage.getItem('userId');
-    console.log(token);
     if (!token || !expirationDate) {
       return;
     }
@@ -121,11 +119,9 @@ export class AuthService implements OnDestroy {
       this.http.post<{ message: string, token: string, expiresIn: number, userId: string }>(this.LOCAL_URL + '/api/login', body)
         .toPromise()
         .then((data) => {
-          console.table(data);
           const token = data.token;
           this.token = token;
           if (token) {
-            console.log('TEM TOKI CARAI ' + token);
             const expiresInDuration = data.expiresIn;
             this.setAuthTimer(expiresInDuration);
             this.isLoggedIn = true;

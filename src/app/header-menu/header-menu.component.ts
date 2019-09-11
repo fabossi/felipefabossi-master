@@ -28,10 +28,11 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   showEmail() {
-    if (!this.isLoggedin) {
+    if (this.isLoggedin) {
       this.authService.type.next('email');
+    } else {
+      this.authService.type.next('login');
     }
-    this.authService.type.next('login');
   }
 
   showLogin() {
