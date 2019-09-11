@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-menu',
@@ -15,7 +16,7 @@ export class HeaderMenuComponent implements OnInit {
   RLAM = '/page/about-me';
   subsLogin: Subscription;
   isLoggedin = false;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private route: Router) {
     this.subsLogin = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
@@ -27,7 +28,10 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   showEmail() {
-    this.authService.type.next('email');
+    if (!this.isLoggedin) {
+      this.authService.type.next('email');
+    }
+    this.authService.type.next('login');
   }
 
   showLogin() {
