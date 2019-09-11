@@ -28,7 +28,6 @@ export class ContactFormComponent implements OnInit {
     this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
         this.stausRequest = status;
-        this.cleanFields();
       } else if (status === 'waiting') {
         this.stausRequest = status;
       } else if (status === 'error') {
@@ -55,6 +54,7 @@ export class ContactFormComponent implements OnInit {
       return;
     }
     this.authService.submitInformations(this.contactForm.value);
+    this.cleanFields();
   }
 
   cleanFields() {
