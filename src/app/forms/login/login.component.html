@@ -4,7 +4,7 @@
     <div class="generic-message-input-error">
       <input
         [ngClass]="{'hasError': !loginForm?.get('emailTextInput').valid && loginForm?.get('emailTextInput').touched}"
-        class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="email"
+        class='generic-message-input-error email-input basics-input-styles' autofocus autocomplete="off" type="email"
         name='emailTextInput' formControlName="emailTextInput" placeholder="youremail@provider.com" />
       <div *ngIf="loginForm?.get('emailTextInput').invalid" class="generic-message-input-error__top">Please, insert
         a valid email.</div>
@@ -15,7 +15,7 @@
         [ngClass]="{'hasError': !loginForm?.get('passwordTextInput').valid && loginForm?.get('passwordTextInput').touched}"
         class='generic-message-input-error container-names__lastName-input basics-input-styles' autocomplete="off"
         [type]="!see_password ? 'password' : 'text'" formControlName="passwordTextInput" [maxlength]='mxlengthLN'
-        placeholder="confirm your password here" />
+        placeholder="Your password here" />
       <fa-icon class='basics-input-styles__icon' (click)="seePassword()"
         [icon]="['fas', !see_password ? 'eye' : 'eye-slash']"></fa-icon>
       <div *ngIf="loginForm?.get('passwordTextInput').errors || loginForm?.get('passwordTextInput').invalid"

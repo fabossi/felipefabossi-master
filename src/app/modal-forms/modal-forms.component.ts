@@ -15,12 +15,7 @@ export class ModalFormsComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router) {
     this.subscription = this.authService.type.subscribe((type) => {
-      if (type === 'email') {
-        this.type = type;
-      }
-      if (type === 'signup') {
-        this.type = type;
-      }
+      this.type = type;
     });
   }
 

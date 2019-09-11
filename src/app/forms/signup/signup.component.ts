@@ -12,6 +12,11 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   isLoading = false;
   subscription: Subscription;
+  regexLetters = '^[a-zA-Z]+$';
+  onlyLettersMessage = 'Insert at least 3 characters without numbers.';
+  validEmailMessage = 'Please, insert a valid email.';
+  threeLettersMessage = 'Insert at least 3 characters.';
+  diferentPasswordMessage = 'the passwords are not equal!';
   opacity = false;
   signupForm: FormGroup;
   stausRequest = 'wait';
@@ -36,9 +41,9 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.signupForm = new FormGroup({
       'nameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
-      Validators.maxLength(this.mxlengthN)]),
+      Validators.maxLength(this.mxlengthN), Validators.pattern(this.regexLetters)]),
       'lastNameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
-      Validators.maxLength(this.mxlengthLN)]),
+      Validators.maxLength(this.mxlengthLN), Validators.pattern(this.regexLetters)]),
       'emailTextInput': new FormControl('', [Validators.required, Validators.email]),
       'passwordTextInput': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'passwordConfirmTextInput': new FormControl('', [Validators.required, Validators.minLength(3)]),

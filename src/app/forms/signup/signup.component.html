@@ -8,7 +8,7 @@
           class='container-names__name-input basics-input-styles capitalize' autocomplete="off" type="text"
           formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name">
         <div *ngIf="signupForm?.get('nameTextInput').errors || signupForm?.get('nameTextInput').invalid"
-          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
       </div>
 
       <div class="generic-message-input-error">
@@ -18,7 +18,7 @@
           autocomplete="off" type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN'
           placeholder="Your lastname">
         <div *ngIf="signupForm?.get('lastNameTextInput').errors || signupForm?.get('lastNameTextInput').invalid"
-          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
       </div>
     </div>
 
@@ -27,8 +27,8 @@
         [ngClass]="{'hasError': !signupForm?.get('emailTextInput').valid && signupForm?.get('emailTextInput').touched}"
         class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="email"
         name='emailTextInput' formControlName="emailTextInput" placeholder="youremail@provider.com" />
-      <div *ngIf="signupForm?.get('emailTextInput').invalid" class="generic-message-input-error__top">Please, insert
-        a valid email.</div>
+      <div *ngIf="signupForm?.get('emailTextInput').invalid" class="generic-message-input-error__top">
+        {{validEmailMessage}}</div>
     </div>
 
     <div class="container-names">
@@ -39,7 +39,7 @@
           [type]="!see_password ? 'password' : 'text'" formControlName="passwordTextInput" [maxlength]='mxlengthN'
           placeholder="write your password here" />
         <div *ngIf="signupForm?.get('passwordTextInput').errors || signupForm?.get('passwordTextInput').invalid"
-          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+          class="generic-message-input-error__top">{{threeLettersMessage}}</div>
       </div>
 
       <div class="generic-message-input-error">
@@ -52,10 +52,10 @@
           [icon]="['fas', !see_password ? 'eye' : 'eye-slash']"></fa-icon>
         <div
           *ngIf="signupForm?.get('passwordConfirmTextInput').errors || signupForm?.get('passwordConfirmTextInput').invalid"
-          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+          class="generic-message-input-error__top">{{threeLettersMessage}}</div>
 
         <div *ngIf="signupForm?.get('passwordTextInput').value !== signupForm?.get('passwordConfirmTextInput').value"
-          class="generic-message-input-error__top">the passwords are not equal!</div>
+          class="generic-message-input-error__top">{{diferentPasswordMessage}}</div>
       </div>
     </div>
     <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">

@@ -16,6 +16,9 @@ export class ContactFormComponent implements OnInit {
   opacity = false;
   contactForm: FormGroup;
   stausRequest = 'wait';
+  regexLetters = '^[a-zA-Z]+$';
+  onlyLettersMessage = 'Insert at least 3 characters without numbers.';
+  validEmailMessage = 'Please, insert a valid email.';
   mxlengthTA = 355;
   mxlengthN = 25;
   mxlengthLN = 45;
@@ -37,9 +40,9 @@ export class ContactFormComponent implements OnInit {
   ngOnInit() {
     this.contactForm = new FormGroup({
       'nameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
-      Validators.maxLength(this.mxlengthN)]),
+      Validators.maxLength(this.mxlengthN), Validators.pattern(this.regexLetters)]),
       'lastNameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
-      Validators.maxLength(this.mxlengthLN)]),
+      Validators.maxLength(this.mxlengthLN), Validators.pattern(this.regexLetters)]),
       'messageTextInput': new FormControl('', [Validators.required, Validators.minLength(4),
       Validators.maxLength(this.mxlengthTA)]),
       'emailTextInput': new FormControl('', [Validators.required, Validators.email]),

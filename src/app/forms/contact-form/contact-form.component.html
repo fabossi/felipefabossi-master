@@ -8,7 +8,7 @@
           class='container-names__name-input basics-input-styles capitalize' autocomplete="off" type="text"
           formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name">
         <div *ngIf="contactForm.get('nameTextInput').errors || contactForm.get('nameTextInput').invalid"
-          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
       </div>
 
       <div class="generic-message-input-error">
@@ -18,7 +18,7 @@
           autocomplete="off" type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN'
           placeholder="Your lastname">
         <div *ngIf="contactForm.get('lastNameTextInput').errors || contactForm.get('lastNameTextInput').invalid"
-          class="generic-message-input-error__top">Insert at least 3 characters.</div>
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
       </div>
     </div>
 
@@ -27,8 +27,8 @@
         [ngClass]="{'hasError': !contactForm.get('emailTextInput').valid && contactForm.get('emailTextInput').touched}"
         class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="email"
         name='emailTextInput' formControlName="emailTextInput" placeholder="youremail@provider.com">
-      <div *ngIf="contactForm.get('emailTextInput').invalid" class="generic-message-input-error__top">Please, insert
-        a valid email.</div>
+      <div *ngIf="contactForm.get('emailTextInput').invalid" class="generic-message-input-error__top">
+      {{validEmailMessage}}</div>
     </div>
 
     <div class="generic-message-input-error">

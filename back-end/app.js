@@ -14,7 +14,7 @@ const timeout = require('express-timeout-handler');
 const options = {
   timeout: 8000,
   onTimeout: (req, res) => {
-    res.status(503).send({ message: 'This process is taking longer than expected. Please, try again.' });
+    return res.status(503).send({ message: 'This process is taking longer than expected. Please, try again.' });
   },
   disable: ['write', 'setHeaders', 'send', 'json', 'end']
 };

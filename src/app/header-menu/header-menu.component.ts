@@ -22,6 +22,6 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   showSignup() {
-    this.authService.type.next('signup');
+    this.authService.type.next('login');
   }
 }

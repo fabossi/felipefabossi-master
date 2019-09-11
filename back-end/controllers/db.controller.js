@@ -35,7 +35,30 @@ exports.signUpToMongo = (req, res) => {
         res.status(404).json({ message: 'Plese fill all fields!' });
       }
     }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
-  }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) })
+  }).catch(error => { console.log(error), res.status(500).json({ message: 'Singup user failed, try again later' }) });
+}
+
+exports.loginUser = (req, res) => {
+  let fetchedUser;
+  User
+    .findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        return res.status(401).json({ message: 'wrong email or password! Try again.' })
+      }
+      fetchedUser = user;
+      return bcrypt.compare(req.body.password, user.password)
+    })
+    .then((result) => {
+      if (!result) {
+        return res.status(401).json({ message: 'wrong email or password! Try again.' })
+      }
+      const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id }, key.s_k, { expiresIn: '1h' });
+      res.status(200).json({ message: 'User logged in succesfully!', token: token, expiresIn: 3600, userId: fetchedUser._id });
+
+    }).catch(error => {
+      res.status(500).json({ error: error, message: 'wrong email or password! Try again.' });
+    })
 }
 
 exports.saveContactToMongo = (req, res) => {

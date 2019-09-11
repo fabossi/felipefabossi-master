@@ -43,11 +43,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.authService
       .login(this.loginForm
         .get('emailTextInput').value,
         this.loginForm.get('passwordTextInput').value)
-      .catch(error => console.error(error));
+      .catch(error => { throw new Error(error); });
   }
 
   seePassword() {
