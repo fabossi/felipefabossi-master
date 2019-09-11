@@ -96,7 +96,6 @@
   cursor: pointer;
   backface-visibility: hidden;
   transition: transform 0.4s;
-
   @supports (-webkit-mask: url()) or (mask-image: url()) {
     background-color: $color-white;
     -webkit-mask-image: url('https://fabossi.s3-sa-east-1.amazonaws.com/close.svg');
@@ -111,6 +110,6 @@
   }
 
   &:active {
-    transform: scale(1);
+    transform: scale(-0.9);
   }
 }
