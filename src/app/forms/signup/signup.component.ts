@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
     this.signupForm.reset();
   }
 
-  onSignUp() {
+  onSignUp(event) {
     if (this.signupForm.invalid) {
       return;
     }

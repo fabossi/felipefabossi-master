@@ -32,35 +32,38 @@ exports.signUpToMongo = (req, res) => {
       } else {
         res.status(404).json({ message: 'Plese fill all fields!' });
       }
-    }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }) });
+    }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }); reject(error); });
   }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }) });
 }
 
 exports.loginUser = (req, res) => {
-  let fetchedUser;
-  User
-    .findOne({ email: req.body.email })
-    .then((user) => {
-      if (!user) {
-        return res.status(401).json({ message: 'wrong email or password! Try again.' })
-      }
-      fetchedUser = user;
-      return bcrypt.compare(req.body.password, user.password)
-    })
-    .then((result) => {
-      if (!result) {
-        return res.status(401).json({ message: 'wrong email or password! Try again.' })
-      }
-      const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id }, key.s_k, { expiresIn: '1h' });
-      res.status(200).json({
-        message: `Welcome ${fetchedUser.name.charAt(0).toUpperCase() + fetchedUser.name.substring(1)}
-         ${fetchedUser.lastName.charAt(0).toUpperCase() + fetchedUser.lastName.substring(1)},
-       it's great to have you here!`, token: token, expiresIn: 3600, userId: fetchedUser._id
-      });
-
-    }).catch(error => {
-      res.status(500).json({ message: 'wrong email or password! Try again.' });
-    })
+  return new Promise((resolve, reject) => {
+    let fetchedUser;
+    User
+      .findOne({ email: req.body.email })
+      .then((user) => {
+        if (!user) {
+          return res.status(401).json({ message: 'wrong email or password! Try again.' })
+        }
+        fetchedUser = user;
+        return bcrypt.compare(req.body.password, user.password)
+      })
+      .then((result) => {
+        if (!result) {
+          return res.status(401).json({ message: 'wrong email or password! Try again.' })
+        }
+        const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id }, key.s_k, { expiresIn: '1h' });
+        res.status(200).json({
+          message: `Welcome ${fetchedUser.name.charAt(0).toUpperCase() + fetchedUser.name.substring(1)}
+        ${fetchedUser.lastName.charAt(0).toUpperCase() + fetchedUser.lastName.substring(1)},
+        it's great to have you here!`, token: token, expiresIn: 3600, userId: fetchedUser._id
+        });
+        resolve(result);
+      }).catch(error => {
+        res.status(500).json({ message: 'wrong email or password! Try again.' });
+        reject(error);
+      })
+  })
 }
 
 exports.saveContactToMongo = (req, res) => {

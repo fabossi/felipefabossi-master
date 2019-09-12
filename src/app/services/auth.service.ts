@@ -78,7 +78,6 @@ export class AuthService implements OnDestroy {
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }
-
   }
 
   onRequestComplete() {
@@ -106,6 +105,7 @@ export class AuthService implements OnDestroy {
           resolve(data);
         }).catch(error => {
           this.authStatusListener.next(false);
+          this.errorMessage = error.message;
           this.requestFinished.next('error');
           reject(error);
         });
@@ -150,10 +150,10 @@ export class AuthService implements OnDestroy {
         .toPromise()
         .then(data => {
           this.succesfullyMessage = data.message;
-          console.log(this.succesfullyMessage);
           this.requestFinished.next('ready');
           resolve(data);
         }).catch(error => {
+          this.errorMessage = error.message;
           this.requestFinished.next('error');
           reject(error);
         });

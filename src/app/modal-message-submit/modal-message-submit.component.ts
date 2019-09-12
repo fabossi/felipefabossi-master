@@ -34,6 +34,10 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.shake = true;
+    const svg = document.querySelector('svg');
+    setTimeout(() => {
+      svg.classList.add('active');
+    }, 130);
   }
 
   ngOnDestroy() {
