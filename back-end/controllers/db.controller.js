@@ -8,32 +8,34 @@ const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
 
 exports.signUpToMongo = (req, res) => {
-  return new Promise((resolve, reject) => {
-    bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
-      const user = new User({
-        name: req.body.name.toLowerCase(),
-        lastName: req.body.lastName.toLowerCase(),
-        email: req.body.email.toLowerCase(),
-        password: hashedPassword
-      });
-      if (user !== null || user !== '') {
-        user
-          .save()
-          .then((createdUser) => {
-            resolve(createdUser);
-          }).catch(error => {
-            if (error.errors.email.kind === 'unique') {
-              res.status(401).json({ message: `Email: "${req.body.email}" already registered, try again!` });
-            } else {
-              res.status(401).json({ message: 'Invalid authentication credentials, try again!' });
-            }
-            reject(error);
-          })
-      } else {
-        res.status(404).json({ message: 'Plese fill all fields!' });
-      }
-    }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }); reject(error); });
-  }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }) });
+  // new Promise((resolve, reject) => {
+  bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
+    const user = new User({
+      name: req.body.name.toLowerCase(),
+      lastName: req.body.lastName.toLowerCase(),
+      email: req.body.email.toLowerCase(),
+      password: hashedPassword
+    });
+    if (user !== null || user !== '') {
+      user
+        .save()
+        .then((createdUser) => {
+          return res.status(201).json({ res: createdUser });
+          // resolve(createdUser);
+        }).catch(error => {
+          console.log(error);
+          if (error.errors.email.kind === 'unique') {
+            return res.status(401).json({ message: `Email: "${req.body.email}" already registered, try again!` });
+          } else {
+            return res.status(401).json({ message: 'Invalid authentication credentials, try again!' });
+          }
+          // reject(error);
+        })
+    } else {
+      res.status(500).json({ message: 'Plese fill all fields!' });
+    }
+  }).catch(error => { console.log(error); res.status(500).json({ message: 'Singup user failed, try again later' }); reject(error); });
+  // }).catch(error => { console.log(error); res.status(500).json({ message: 'Singup user failed, try again later' }) });
 }
 
 exports.loginUser = (req, res) => {

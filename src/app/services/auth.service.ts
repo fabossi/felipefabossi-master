@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
-  private authStatusListener = new Subject<boolean>();
-  private isLoggedIn = false;
-  private tokenTimer: any;
-  private token: string;
-  private userId: string;
-  private LOCAL_URL = '';
+  authStatusListener = new Subject<boolean>();
+  isLoggedIn = false;
+  tokenTimer: any;
+  token: string;
+  userId: string;
+  LOCAL_URL = '';
   errorMessage: string;
   previousUrl = '';
   succesfullyMessage: string;
@@ -96,17 +96,20 @@ export class AuthService implements OnDestroy {
     return new Promise((resolve, reject) => {
       const body: SignupData = { name, lastName, email, password };
       this.requestFinished.next('waiting');
+      console.log('esperando');
       this.http.post<{ message: string }>(this.LOCAL_URL + '/api/signup', body)
         .toPromise()
         .then((data) => {
           this.succesfullyMessage = data.message;
           this.requestFinished.next('ready');
           this.login(email, password);
+          console.log('terminei e deu tudo certo.');
           resolve(data);
         }).catch(error => {
           this.authStatusListener.next(false);
-          this.errorMessage = error.message;
+          this.errorMessage = error.error.message;
           this.requestFinished.next('error');
+          console.log('Deu ruim');
           reject(error);
         });
     });

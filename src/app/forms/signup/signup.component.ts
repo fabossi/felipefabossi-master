@@ -55,12 +55,16 @@ export class SignupComponent implements OnInit {
     this.signupForm.reset();
   }
 
-  onSignUp(event) {
+  onSignUp() {
     if (this.signupForm.invalid) {
       return;
     }
     this.authService.signup(this.signupForm.get('nameTextInput').value, this.signupForm.get('lastNameTextInput').value,
-      this.signupForm.get('emailTextInput').value, this.signupForm.get('passwordTextInput').value);
+      this.signupForm.get('emailTextInput').value, this.signupForm.get('passwordTextInput').value)
+      .then()
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   seePassword() {

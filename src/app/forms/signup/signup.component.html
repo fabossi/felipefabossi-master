@@ -59,7 +59,7 @@
       </div>
     </div>
     <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
-      <button (click)='onSignUp($event)' class='button'>SIGNUP</button>
+      <button (click)='onSignUp()' class='button'>SIGNUP</button>
       <button class='login-link' (click)='openLogin()'>Already have an account?</button>
     </ng-container>
     <ng-container *ngIf="stausRequest === 'waiting'">

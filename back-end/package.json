@@ -25,6 +25,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "nodemailer": "^1.2.2",
     "nodemon": "^1.19.1",
-    "rate-limit-mongo": "^1.0.3"
+    "rate-limit-mongo": "^1.0.3",
+    "request": "^2.88.0"
   }
 }
