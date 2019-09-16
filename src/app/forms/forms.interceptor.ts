@@ -1,14 +1,17 @@
+import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class FormsInterceptor implements HttpInterceptor {
-  intercept(
-    req:
-      import('@angular/common/http').HttpRequest<any>,
-    next:
-      import('@angular/common/http').HttpHandler):
-    import('rxjs').Observable<import('@angular/common/http').HttpEvent<any>> {
-    throw new Error('Method not implemented.');
+  constructor(private authService: AuthService) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const authToken = this.authService.getToken();
+    const authRequest = req.clone({
+      headers: req.headers.set('Authorization', 'Bearer ' + authToken)
+    });
+    return next.handle(authRequest);
   }
+
 }

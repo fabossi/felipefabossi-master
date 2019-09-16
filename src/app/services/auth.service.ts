@@ -92,24 +92,25 @@ export class AuthService implements OnDestroy {
     return this.isLoggedIn;
   }
 
+  getToken() {
+    return this.token;
+  }
+
   signup(name: string, lastName: string, email: string, password: string) {
     return new Promise((resolve, reject) => {
       const body: SignupData = { name, lastName, email, password };
       this.requestFinished.next('waiting');
-      console.log('esperando');
       this.http.post<{ message: string }>(this.LOCAL_URL + '/api/signup', body)
         .toPromise()
         .then((data) => {
           this.succesfullyMessage = data.message;
           this.requestFinished.next('ready');
           this.login(email, password);
-          console.log('terminei e deu tudo certo.');
           resolve(data);
         }).catch(error => {
           this.authStatusListener.next(false);
           this.errorMessage = error.error.message;
           this.requestFinished.next('error');
-          console.log('Deu ruim');
           reject(error);
         });
     });
@@ -139,7 +140,7 @@ export class AuthService implements OnDestroy {
           resolve(data);
         }).catch(error => {
           this.authStatusListener.next(false);
-          this.errorMessage = error.message;
+          this.errorMessage = error.error.message;
           this.requestFinished.next('error');
           reject(error);
         });

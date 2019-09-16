@@ -16,6 +16,14 @@ form {
 
 @include loader;
 
+.h1 {
+  position: relative;
+  top: -18%;
+  color: white;
+  letter-spacing: 1rem;
+  font-family: -webkit-body;
+}
+
 .container-names {
   display: flex;
   flex-direction: row;
@@ -49,36 +57,54 @@ form {
   color: $color-grey;
 }
 
-.button {
-  position: relative;
-  top: 9.5rem;
-  border: none;
-  border-radius: 1.5rem;
-  padding: 0.9rem 2.3rem;
-  font-size: 1.2rem;
-  color: $color-white;
-  text-transform: uppercase;
-  background-color: $color-primary-dark;
-  cursor: pointer;
-  outline: none;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+.container-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 30%;
-  box-shadow: 0 0rem 0.5rem 0.3rem #28b485a8, 0 0rem 0.8rem 0.3rem #28b485a8;
-
-  &:hover {
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
+  position: relative;
+  top: 17%;
+  & > * {
+    margin: 1rem 0;
   }
+  &__button {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.9rem 2.3rem;
+    font-size: 1.2rem;
+    color: $color-white;
+    text-transform: uppercase;
+    background-color: $color-primary-dark;
+    cursor: pointer;
+    outline: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    width: 100%;
+    box-shadow: 0 0rem 0.5rem 0.3rem #28b485a8, 0 0rem 0.8rem 0.3rem #28b485a8;
+    &:hover {
+      -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+    }
 
-  &:active {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
+    &:active {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  &__login-link {
+    color: #bdbdbd;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.15rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
   }
 }
 
@@ -111,14 +137,7 @@ form {
   border-bottom: 0.1rem solid $color-red-2 !important;
 }
 
-.login-link {
-  color: #bdbdbd;
+.loader {
   position: relative;
-  text-decoration: underline;
-  cursor: pointer;
-  top: 17%;
-  font-size: 1.15rem;
-  background-color: transparent;
-  border: none;
-  outline: none;
+  top: 7%;
 }

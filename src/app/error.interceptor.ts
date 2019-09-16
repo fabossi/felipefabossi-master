@@ -12,10 +12,9 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.authService.errorMessage = 'An unknow error ocurred, try again.';
+        console.log(error.error.message);
         if (error.error.message) {
           this.authService.errorMessage = error.error.message;
-          console.log(this.authService.errorMessage);
         }
         return throwError(error);
       })

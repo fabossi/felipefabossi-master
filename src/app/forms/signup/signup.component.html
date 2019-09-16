@@ -3,10 +3,10 @@
   <form [formGroup]="signupForm" [ngClass]="{'form-animation': initAnimation}">
     <div class="container-names">
       <div class="generic-message-input-error">
-        <input autofocus
+        <input
           [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
           class='container-names__name-input basics-input-styles capitalize' autocomplete="off" type="text"
-          formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name">
+          formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name" autofocus>
         <div *ngIf="signupForm?.get('nameTextInput').errors || signupForm?.get('nameTextInput').invalid"
           class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
       </div>
@@ -58,10 +58,11 @@
           class="generic-message-input-error__top">{{diferentPasswordMessage}}</div>
       </div>
     </div>
-    <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
-      <button (click)='onSignUp()' class='button'>SIGNUP</button>
-      <button class='login-link' (click)='openLogin()'>Already have an account?</button>
-    </ng-container>
+    <div class='container-button'
+      *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
+      <button (click)='onSignUp()' class='container-button__button'>SIGNUP</button>
+      <button class='container-button__login-link' (click)='openLogin()'>Already have an account?</button>
+    </div>
     <ng-container *ngIf="stausRequest === 'waiting'">
       <div class="lds-ring">
         <div></div>
@@ -71,5 +72,4 @@
       </div>
     </ng-container>
   </form>
-
 </ng-container>

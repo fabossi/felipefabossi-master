@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   isLoading = false;
   subscription: Subscription;
-  regexLetters = '^[a-zA-Z]+$';
+  regexLetters = '^[ a-zA-Z]+$';
   onlyLettersMessage = 'Insert at least 3 characters without numbers.';
   validEmailMessage = 'Please, insert a valid email.';
   threeLettersMessage = 'Insert at least 3 characters.';

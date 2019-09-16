@@ -1,5 +1,7 @@
 <form [formGroup]="loginForm" [ngClass]="{'form-animation': initAnimation}">
 
+  <h1 class='h1'>LOGIN</h1>
+
   <div class="container-names">
     <div class="generic-message-input-error">
       <input
@@ -22,16 +24,17 @@
         class="generic-message-input-error__top">Insert at least 3 characters.</div>
     </div>
   </div>
-  <ng-container *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
-    <button (click)='onLogin()' class='button'>LOGIN</button>
-    <button class='login-link' (click)='backtoSignup()'>Have no account yet?</button>
-  </ng-container>
+  <div class='container-button' *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
+    <button (click)='onLogin()' class='container-button__button'>LOGIN</button>
+    <button class='container-button__login-link' (click)='backtoSignup()'>Have no account yet?</button>
+  </div>
   <ng-container *ngIf="stausRequest === 'waiting'">
-    <div class="lds-ring">
+    <div class="loader lds-ring">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
   </ng-container>
+
 </form>

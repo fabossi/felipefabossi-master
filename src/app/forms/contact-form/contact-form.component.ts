@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -16,7 +17,7 @@ export class ContactFormComponent implements OnInit {
   opacity = false;
   contactForm: FormGroup;
   stausRequest = 'wait';
-  regexLetters = '^[a-zA-Z]+$';
+  regexLetters = '^[ a-zA-Z]+$';
   onlyLettersMessage = 'Insert at least 3 characters without numbers.';
   validEmailMessage = 'Please, insert a valid email.';
   mxlengthTA = 355;
@@ -24,7 +25,7 @@ export class ContactFormComponent implements OnInit {
   mxlengthLN = 45;
   initAnimation = false;
 
-  constructor(private authService: AuthService, private route: Router) {
+  constructor(private authService: AuthService, private userService: UserService) {
     this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
         this.stausRequest = status;
@@ -38,15 +39,27 @@ export class ContactFormComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = new FormGroup({
-      'nameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
+      nameTextInput: new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthN), Validators.pattern(this.regexLetters)]),
-      'lastNameTextInput': new FormControl('', [Validators.required, Validators.minLength(3),
+      lastNameTextInput: new FormControl('', [Validators.required, Validators.minLength(3),
       Validators.maxLength(this.mxlengthLN), Validators.pattern(this.regexLetters)]),
-      'messageTextInput': new FormControl('', [Validators.required, Validators.minLength(4),
+      messageTextInput: new FormControl('', [Validators.required, Validators.minLength(4),
       Validators.maxLength(this.mxlengthTA)]),
-      'emailTextInput': new FormControl('', [Validators.required, Validators.email]),
+      emailTextInput: new FormControl('', [Validators.required, Validators.email]),
     });
     this.initAnimation = true;
+    this.userService.getUserInformation(localStorage.getItem('userId'))
+      .subscribe((user) => {
+        if (user) {
+          this.contactForm
+            .setValue({
+              nameTextInput: user.name,
+              lastNameTextInput: user.lastName,
+              emailTextInput: user.email,
+              messageTextInput: ''
+            });
+        }
+      });
   }
 
   submitInformations() {
