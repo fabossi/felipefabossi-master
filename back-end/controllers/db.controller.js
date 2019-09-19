@@ -31,7 +31,7 @@ exports.signUpToMongo = (req, res) => {
     } else {
       res.status(500).json({ message: 'Plese fill all fields!' });
     }
-  }).catch(error => { return res.status(500).json({ message: 'Singup user failed, try again later' }); });
+  }).catch(error => { res.status(500).json({ message: 'Singup user failed, try again later' }); });
 }
 
 exports.loginUser = (req, res) => {
@@ -99,7 +99,6 @@ exports.getMongoContact = (req, res) => {
 }
 
 exports.getUserInformationById = (req, res) => {
-  console.log(req.params);
   User
     .findById(req.params.id)
     .then((user) => {
