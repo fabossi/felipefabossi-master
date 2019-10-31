@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@a
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { AuthService } from './services/auth.service';
+import { EMPTY } from 'rxjs';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -15,6 +16,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.log(error.error.message);
         if (error.error.message) {
           this.authService.errorMessage = error.error.message;
+          // return EMPTY;
         }
         return throwError(error);
       })

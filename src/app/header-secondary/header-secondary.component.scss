@@ -2,76 +2,76 @@
 @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
 
 :host {
-  height: 100vh;
-  width: 100vw;
+  height  : 100vh;
+  width   : 100vw;
   position: absolute;
 }
 
 .height {
   height: 12%;
-  width: 12%;
+  width : 12%;
 }
 
 .make-animation {
   -webkit-animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation        : scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .header-first {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  width          : 100vw;
+  height         : 100vh;
+  display        : flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction : column;
+  align-items    : flex-start;
 
   &__container-languages {
-    align-self: center;
-    display: flex;
-    flex-direction: row;
+    align-self     : center;
+    display        : flex;
+    flex-direction : row;
     justify-content: space-evenly;
-    align-items: center;
-    width: 92%;
-    z-index: 3;
+    align-items    : center;
+    width          : 92%;
+    z-index        : 3;
 
-    & > * {
+    &>* {
       cursor: pointer;
     }
 
     &__python {
       height: 10%;
-      width: 10%;
+      width : 10%;
     }
 
     &__angular {
       height: 10%;
-      width: 10%;
+      width : 10%;
     }
 
     &__mongo {
       height: 16%;
-      width: 16%;
+      width : 16%;
     }
   }
 
   &__button-more {
-    position: absolute;
+    position           : absolute;
     backface-visibility: hidden;
-    border-radius: 0.7rem;
-    padding: 1.3rem;
-    background-color: $color-white;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    width: 10%;
-    transition: all 0.22s ease-in;
-    align-self: flex-end;
-    bottom: 5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.71);
+    border-radius      : 0.7rem;
+    padding            : 1.3rem;
+    background-color   : $color-white;
+    outline            : none;
+    cursor             : pointer;
+    border             : none;
+    width              : 10%;
+    transition         : all 0.22s ease-in;
+    align-self         : flex-end;
+    bottom             : 5rem;
+    box-shadow         : 0 4px 15px rgba(0, 0, 0, 0.71);
 
     &__text-button {
       text-transform: uppercase;
-      color: $color-blacker;
+      color         : $color-blacker;
     }
 
     &:hover {
@@ -84,12 +84,12 @@
   }
 
   &__container-h1s {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+    position       : absolute;
+    display        : flex;
+    flex-direction : column;
     justify-content: center;
-    align-items: center;
-    height: 30%;
+    align-items    : center;
+    height         : 30%;
 
     &__hello {
       font-size: 2rem;
@@ -101,40 +101,41 @@
   }
 
   &__storm-img {
-    width: 100vw;
-    height: 60%;
-    position: absolute;
+    width     : 100vw;
+    height    : 60%;
+    position  : absolute;
     align-self: flex-end;
-    bottom: 0%;
+    bottom    : 0%;
   }
 
   &__container-boat {
-    display: flex;
-    flex-direction: row;
+    display            : flex;
+    flex-direction     : row;
     backface-visibility: hidden;
-    justify-content: center;
-    position: relative;
-    top: 7.2%;
+    justify-content    : center;
+    position           : relative;
+    top                : 7.2%;
+
     &__boat-logo {
       position: relative;
-      height: 13rem;
+      height  : 13rem;
     }
 
     &__play {
-      position: relative;
-      height: 4rem;
-      width: 4rem;
+      position     : relative;
+      height       : 4rem;
+      width        : 4rem;
       border-radius: 4rem;
-      opacity: 0.7;
-      transition: transform 0.3s;
-      z-index: 3;
-      cursor: pointer;
-      box-shadow: 0rem 0 2.5rem 0rem;
-      left: 22%;
+      opacity      : 0.7;
+      transition   : transform 0.3s;
+      z-index      : 3;
+      cursor       : pointer;
+      box-shadow   : 0rem 0 2.5rem 0rem;
+      left         : 22%;
 
       &__play-img {
         height: 100%;
-        width: 100%;
+        width : 100%;
       }
 
       &:hover {
@@ -154,14 +155,14 @@
 
 .highlihgted {
   backface-visibility: hidden;
-  transition: filter 0.5s ease-in !important;
-  filter: grayscale(0) !important;
+  transition         : filter 0.5s ease-in !important;
+  filter             : grayscale(0) !important;
 }
 
 .darked {
   backface-visibility: hidden;
-  transition: filter 0.5s ease-in !important;
-  filter: grayscale(60%) !important;
+  transition         : filter 0.5s ease-in !important;
+  filter             : grayscale(60%) !important;
 }
 
 .make-grey {
@@ -175,5 +176,5 @@
 
 .boatMovimentation {
   margin-left: var(--offset-x);
-  transition: all 5.5s;
+  transition : all 5.5s;
 }

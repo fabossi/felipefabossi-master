@@ -96,6 +96,7 @@ export class AuthService implements OnDestroy {
     return this.token;
   }
 
+
   signup(name: string, lastName: string, email: string, password: string) {
     return new Promise((resolve, reject) => {
       const body: SignupData = { name, lastName, email, password };

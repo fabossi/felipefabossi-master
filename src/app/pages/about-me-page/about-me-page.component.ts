@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-me-page.component.scss']
 })
 export class AboutMePageComponent implements OnInit {
-
+  animate = false;
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.animate = true;
+    }, 300);
   }
 
 }

@@ -11,6 +11,18 @@ const compression = require('compression');
 const RateLimit = require('express-rate-limit');
 const MongoStore = require('rate-limit-mongo');
 const timeout = require('express-timeout-handler');
+var originsWhitelist = [
+  'http://localhost:4200',
+  'https://www.felipefabossi.com',
+  'http://www.felipefabossi.com'
+];
+const corsOptions = {
+  origin: function (origin, callback) {
+    const isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+    callback(null, isWhitelisted);
+  },
+  credentials: true
+}
 const options = {
   timeout: 8000,
   onTimeout: (req, res) => {
@@ -38,7 +50,7 @@ const apiLimiter = RateLimit({
 });
 
 app.set('port', process.env.PORT || 4000);
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());

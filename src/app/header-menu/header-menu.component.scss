@@ -1,55 +1,56 @@
 @import '../../sass/main.component.scss';
 
 :host {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  position         : relative;
+  display          : -webkit-box;
+  display          : -ms-flexbox;
+  display          : flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-  width: 60%;
-  height: 3rem;
-  top: 16%;
-  z-index: 1;
+  -ms-flex-align   : center;
+  align-items      : center;
+  -webkit-box-pack : space-between;
+  -ms-flex-pack    : space-between;
+  justify-content  : space-between;
+  width            : 60%;
+  height           : 3rem;
+  top              : 16%;
+  z-index          : 1;
 }
 
 a {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1rem;
-  letter-spacing: 0.2rem;
-  letter-spacing: 0.2rem;
-  color: #2e2e2e;
+  text-decoration    : none;
+  text-transform     : uppercase;
+  font-size          : 1rem;
+  letter-spacing     : 0.2rem;
+  letter-spacing     : 0.2rem;
+  color              : #2e2e2e;
   backface-visibility: hidden;
 }
 
 .a {
   transition: all 0.2s;
+
   &:hover {
     transform: scale(1.05);
   }
 }
 
 .container-writeEmail {
-  display: flex;
+  display       : flex;
   flex-direction: row;
-  align-items: center;
+  align-items   : center;
 
   &__button-email {
-    padding: 1rem;
-    background-color: transparent;
-    border-radius: 1rem;
-    border: none;
-    border: 0.1rem solid $color-grey;
-    text-transform: uppercase;
-    cursor: pointer;
+    padding            : 1rem;
+    background-color   : transparent;
+    border-radius      : 1rem;
+    border             : none;
+    border             : 0.1rem solid $color-grey;
+    text-transform     : uppercase;
+    cursor             : pointer;
     backface-visibility: hidden;
-    transition: opacity 0.2s;
-    outline: none;
+    transition         : opacity 0.2s;
+    outline            : none;
 
     &:hover {
       opacity: 0.7;
@@ -61,20 +62,20 @@ a {
   }
 
   &__new-img {
-    position: relative;
-    right: 2.3rem;
-    height: 4rem;
-    width: 4rem;
-    top: -1.5rem;
+    position : relative;
+    right    : 2.3rem;
+    height   : 4rem;
+    width    : 4rem;
+    top      : -1.5rem;
     transform: scale(0.5);
 
     @supports (-webkit-mask: url()) or (mask-image: url()) {
-      background-color: $color-red-1;
+      background-color  : $color-red-1;
       -webkit-mask-image: url('https://fabossi.s3-sa-east-1.amazonaws.com/new.svg');
-      -webkit-mask-size: cover;
-      mask-image: url('https://fabossi.s3-sa-east-1.amazonaws.com/new.svg');
-      mask-size: cover;
-      background-image: none;
+      -webkit-mask-size : cover;
+      mask-image        : url('https://fabossi.s3-sa-east-1.amazonaws.com/new.svg');
+      mask-size         : cover;
+      background-image  : none;
     }
   }
 }
@@ -84,42 +85,42 @@ a {
 }
 
 .make-animation {
-  &:hover ~ .message__inf {
+  &:hover~.message__inf {
     visibility: visible;
-    height: 3rem;
+    height    : 3rem;
   }
 
-  &:hover ~ .message__inf > span {
+  &:hover~.message__inf>span {
     opacity: 1;
   }
 }
 
 .message {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  flex-direction : column;
+  align-items    : center;
 
   &__inf {
-    height: 0rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: height 0.4s, visibility 0.7s;
+    height          : 0rem;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    transition      : height 0.4s, visibility 0.7s;
     transition-delay: 0.2s;
-    box-shadow: 0 0rem 2em rgba($color: $color-black, $alpha: 0.18);
-    position: absolute;
-    top: 35px;
-    border-radius: 1rem;
-    visibility: hidden;
+    box-shadow      : 0 0rem 2em rgba($color: $color-black, $alpha: 0.18);
+    position        : absolute;
+    top             : 35px;
+    border-radius   : 1rem;
+    visibility      : hidden;
 
     &__text {
-      transition: opacity 0.35s;
+      transition      : opacity 0.35s;
       transition-delay: 0.1s;
-      font-size: 1.2rem;
-      color: $color-blacker;
-      padding: 0rem 1rem;
-      opacity: 0;
+      font-size       : 1.2rem;
+      color           : $color-blacker;
+      padding         : 0rem 1rem;
+      opacity         : 0;
     }
   }
 }

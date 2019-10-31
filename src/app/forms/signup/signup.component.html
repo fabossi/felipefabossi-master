@@ -49,7 +49,7 @@
           [type]="!see_password ? 'password' : 'text'" formControlName="passwordConfirmTextInput"
           [maxlength]='mxlengthLN' placeholder="confirm your password here" />
         <fa-icon class='basics-input-styles__icon' (click)="seePassword()"
-          [icon]="['fas', !see_password ? 'eye' : 'eye-slash']"></fa-icon>
+          [icon]="!see_password ? faEye : faEyeSlash"></fa-icon>
         <div
           *ngIf="signupForm?.get('passwordConfirmTextInput').errors || signupForm?.get('passwordConfirmTextInput').invalid"
           class="generic-message-input-error__top">{{threeLettersMessage}}</div>

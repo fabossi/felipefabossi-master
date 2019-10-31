@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

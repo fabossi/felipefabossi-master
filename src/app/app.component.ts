@@ -30,6 +30,11 @@ export class AppComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.authService.autoAuthUser();
     this.initialAnimation = true;
+    this.teste();
+  }
+
+  teste() {
+    console.log("1" + 2 + "3" + 4);2
   }
 
   ngOnDestroy() {

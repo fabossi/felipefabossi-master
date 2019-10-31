@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-signup-form',
@@ -25,6 +26,8 @@ export class SignupComponent implements OnInit {
   mxlengthLN = 45;
   initAnimation = false;
   see_password = false;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.onRequestComplete().subscribe(status => {
