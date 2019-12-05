@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const db_controller = require('../controllers/db.controller');
+const dbController = require('../controllers/db.controller');
 
-router.post('/signup', db_controller.signUpToMongo);
-router.post('/login', db_controller.loginUser)
+router.post('/signup', dbController.signUpToMongo);
+router.post('/login', dbController.loginUser)
 
 module.exports = router;

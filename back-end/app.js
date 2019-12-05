@@ -3,8 +3,8 @@ const app = express();
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require("body-parser");
-const user_route = require('./routes/user.route');
-const contact_route = require('./routes/contact.route');
+const userRoute = require('./routes/user.route');
+const contactRoute = require('./routes/contact.route');
 const mongodb = require('./Database/db.mongo');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -62,8 +62,8 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(timeout.handler(options));
-app.use('/api/', apiLimiter, limiter_bd, user_route);
-app.use('/api/', apiLimiter, limiter_bd, contact_route);
+app.use('/api/', apiLimiter, limiter_bd, userRoute);
+app.use('/api/', apiLimiter, limiter_bd, contactRoute);
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({
   directives: {

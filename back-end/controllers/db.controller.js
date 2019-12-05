@@ -2,8 +2,8 @@ const db = require('../Database/db.mongo');
 const Contact = require('../models/contact.model');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user.model');
-const mail_controller = require('./mail.controller');
-const admin_controller = require('./adminEmail.controller');
+const mailController = require('./mail.controller');
+const adminController = require('./adminEmail.controller');
 const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
 
@@ -70,8 +70,8 @@ exports.saveContactToMongo = (req, res) => {
   newContact
     .save()
     .then(result => {
-      mail_controller.sendEmail(req.body.emailTextInput);
-      admin_controller.sendAdminEmail(req.body.emailTextInput, req.body.messageTextInput);
+      mailController.sendEmail(req.body.emailTextInput);
+      adminController.sendAdminEmail(req.body.emailTextInput, req.body.messageTextInput);
       res.status(200)
         .json({
           res: result,
