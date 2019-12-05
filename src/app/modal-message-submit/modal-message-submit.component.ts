@@ -1,4 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { PreviousRouteService } from '../services/previous-route.service';
 
 @Component({
   selector: 'app-modal-message-submit',
@@ -6,38 +10,41 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./modal-message-submit.component.scss'],
 })
 
-export class ModalMessageSubmitComponent implements OnInit {
-  @Output() modalFeedBackEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
+  subsFeedback: Subscription;
+  message: string;
+  previousUrl: string;
+  shake = false;
+  redirectURL = '';
 
-  private _status: 'SUCCESS' | '400';
-  message = '';
-  showModal = false;
-
-  constructor() {
+  constructor(private authService: AuthService, private router: Router, private routeService: PreviousRouteService) {
+    this.subsFeedback = this.routeService.getPreviousUrl().subscribe((url) => {
+      this.previousUrl = url;
+    });
+    this.subsFeedback = this.authService.onRequestComplete().subscribe((requestStatus) => {
+      if (requestStatus === 'error') {
+        this.message = this.authService.errorMessage;
+        this.redirectURL = this.previousUrl;
+      } else if (requestStatus === 'ready') {
+        this.message = this.authService.succesfullyMessage;
+        this.redirectURL = '/';
+      }
+    });
   }
 
   ngOnInit() {
+    this.shake = true;
+    const svg = document.querySelector('svg');
+    setTimeout(() => {
+      svg.classList.add('active');
+    }, 130);
   }
 
-  get status(): 'SUCCESS' | '400' {
-    return this._status;
-  }
-
-  @Input()
-  set status(status: 'SUCCESS' | '400') {
-    this._status = status;
-    switch (status) {
-      case 'SUCCESS':
-        this.message = 'Obrigado pelo contato, seu e-mail foi enviado com sucesso.';
-        break;
-      case '400':
-        this.message = `Ops, algo de errado aconteceu, tente novamente.`;
-        break;
-    }
+  ngOnDestroy() {
+    this.subsFeedback.unsubscribe();
   }
 
   closeModal() {
-    this.showModal = !this.showModal;
-    this.modalFeedBackEvent.emit(this.showModal);
+    this.router.navigate([this.redirectURL]);
   }
 }

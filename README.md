@@ -1,27 +1,42 @@
-# FelipefabossiSite
+# Felipe Fabossi Personal Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
+This project is my personal site, which is under construction.
+In it I intend to talk about the languages I currently work, my experiences in IT and programming.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Prerequisites
 
-## Code scaffolding
+1 - Install angular/cli on your machine: (https://angular.io/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2 - Install NodeJS on your machine: (https://nodejs.org)
 
-## Build
+3 - Clone the project from github using: "git clone https://github.com/fabossi/felipefabossi-site.git"
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+4 - Open terminal and go to angular project folder and run: npm install --s
 
-## Running unit tests
+5 - Open terminal and go to backend nodeJS project folder and run: npm install --s
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Running
 
-## Running end-to-end tests
+1 - Open terminal and go to angular project folder and run: ng serve
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To use nodemon you need to install the package globally, just open terminal and run: npm i nodemon -g 
 
-## Further help
+2 - Open terminal and go to backend nodeJS folder and run: nodemon / node app.js
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Deployment
+
+See my post on Medium where I explain how to deploy this angular application using aws.
+
+* https://medium.com/@fabossif/subindo-uma-aplica%C3%A7%C3%A3o-angular-node-js-na-amazon-web-services-aws-c2fb6c923341
+
+## Built With
+
+* [Angular](https://angular.io/docs) - The web framework used
+* [NodeJS / Express] (https://nodejs.org/en/docs/) - Back-end framework used 
+
+
+## Authors
+
+* **Felipe Fabossi** - *Initial work* - [FabossiWebsite](https://github.com/fabossi/felipefabossi-site/)

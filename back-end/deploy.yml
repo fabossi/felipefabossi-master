@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: fabossi-site
+spec:
+  selector:
+    matchLabels:
+      app: fabossi-site
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fabossi-site
+    spec:
+      containers:
+      - name: fabossi-site
+        image: fabossi/fabossi-site
+        ports:
+        - containerPort: 4000

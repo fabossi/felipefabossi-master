@@ -1,41 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EmailServiceService } from './services/email-service.service';
-
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { PreviousRouteService } from './services/previous-route.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnDestroy, OnInit {
   subscription: Subscription;
   hideToMobile = false;
-  isLoading: boolean;
-  showFeedback = false;
-  _status_feedback: 'SUCCESS' | '400';
+  initialAnimation = false;
 
-  constructor(private emailService: EmailServiceService) {
+  constructor(private authService: AuthService, private router: Router, private routerService: PreviousRouteService) {
     if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }
-    this.subscription = this.emailService.getItemsReady().subscribe(status => {
+    this.subscription = this.authService.onRequestComplete().subscribe(status => {
       if (status === 'ready') {
-        this.isLoading = false;
-        this._status_feedback = this.emailService.status;
-        setTimeout(() => {
-          this.showFeedback = true;
-        }, 400);
+        this.router.navigate(['auth/feedback']);
       } else if (status === 'error') {
-        this.isLoading = false;
-        this._status_feedback = this.emailService.status;
-        setTimeout(() => {
-          this.showFeedback = true;
-        }, 4200);
-      } else if (status === 'waiting') {
-        this.isLoading = true;
+        this.router.navigate(['auth/feedback']);
       }
     });
+  }
+
+  ngOnInit() {
+    this.authService.autoAuthUser();
+    this.initialAnimation = true;
+    this.teste();
+  }
+
+  teste() {
+    console.log("1" + 2 + "3" + 4);2
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onResize(e) {
@@ -43,14 +46,6 @@ export class AppComponent {
       this.hideToMobile = false;
     } else {
       this.hideToMobile = true;
-    }
-  }
-
-  askFeedback(event: Event) {
-    if (event) {
-      this.showFeedback = false;
-    } else {
-      this.showFeedback = true;
     }
   }
 }

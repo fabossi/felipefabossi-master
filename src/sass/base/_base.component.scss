@@ -2,14 +2,17 @@
 @import "../abstracts/mixins.component";
 
 html {
-  font-size: 62.5%;
+  font-size      : 62.5%;
+  scroll-behavior: smooth;
 
   @include respond(tab-land) {
     font-size: 56.25%;
   }
+
   @include respond(tab-port) {
     font-size: 50%;
   }
+
   @include respond(big-desk) {
     font-size: 75%;
   }
@@ -18,19 +21,25 @@ html {
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
+  margin            : 0;
+  padding           : 0;
   -webkit-box-sizing: inherit;
-  box-sizing: inherit;
+  box-sizing        : inherit;
+}
+
+:root {
+  --offset-x: 0;
 }
 
 body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  line-height: 1.7;
-  color: $color-grey-dark;
+  font-family       : "Lato", sans-serif;
+  font-weight       : 400;
+  line-height       : 1.7;
+  color             : $color-grey-dark;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing        : border-box;
+  scroll-behavior   : smooth;
+  background-color  : #fdfdfd;
 
   @include respond(tab-port) {
     padding: 0;
@@ -39,10 +48,10 @@ body {
 
 ::-moz-selection {
   background-color: $color-grey-dark-3;
-  color: $color-white;
+  color           : $color-white;
 }
 
 ::selection {
   background-color: $color-grey-dark-3;
-  color: $color-white;
+  color           : $color-white;
 }

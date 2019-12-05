@@ -1,0 +1,143 @@
+@import '../../../sass/main.component.scss';
+
+:host(app-login),
+form {
+  height: 96%;
+  width: 75%;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+@include loader;
+
+.h1 {
+  position: relative;
+  top: -18%;
+  color: white;
+  letter-spacing: 1rem;
+  font-family: -webkit-body;
+}
+
+.container-names {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  & > * {
+    margin: 0 0.2rem;
+  }
+}
+
+.generic-message-input-error {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  &__top {
+    position: relative;
+    top: 20%;
+  }
+}
+
+.form-animation {
+  backface-visibility: hidden;
+  animation: topToBottom 2s ease-out;
+}
+
+::placeholder {
+  text-align: center;
+  color: $color-grey;
+}
+
+.container-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  position: relative;
+  top: 17%;
+  & > * {
+    margin: 1rem 0;
+  }
+  &__button {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.9rem 2.3rem;
+    font-size: 1.2rem;
+    color: $color-white;
+    text-transform: uppercase;
+    background-color: $color-primary-dark;
+    cursor: pointer;
+    outline: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    width: 100%;
+    box-shadow: 0 0rem 0.5rem 0.3rem #28b485a8, 0 0rem 0.8rem 0.3rem #28b485a8;
+    &:hover {
+      -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  &__login-link {
+    color: #bdbdbd;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.15rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+}
+
+.basics-input-styles {
+  display: flex;
+  background-color: transparent;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: 0.1rem solid $color-whiter;
+  width: 100%;
+  color: $color-whiter;
+  font-size: 1.4rem;
+  text-align: center;
+  &__icon {
+    align-self: flex-end;
+    position: relative;
+    top: -2.5rem;
+    right: 0.6rem;
+    cursor: pointer;
+    transform: scale(1.3);
+  }
+}
+
+.textarea-input {
+  text-align: left;
+}
+
+.hasError {
+  border-bottom: 0.1rem solid $color-red-2 !important;
+}
+
+.loader {
+  position: relative;
+  top: 7%;
+}

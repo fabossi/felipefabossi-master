@@ -1,39 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { enableProdMode } from '@angular/core';
 
 import { HeaderSecondaryComponent } from './header-secondary/header-secondary.component';
-import { ButtonHeaderSecondaryComponent } from './button-header-secondary/button-header-secondary.component';
-import { ButtonSignupComponent } from './button-signup/button-signup.component';
-import { SandwichMenuComponent } from './sandwich-menu/sandwich-menu.component';
 import { HeaderSocialComponent } from './header-social/header-social.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
-import { EmailServiceService } from './services/email-service.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
-import { SignupFormComponent } from './forms/signup-form/signup-form.component';
-import { ModalMessageSubmitComponent } from './modal-message-submit/modal-message-submit.component';
+import { OnlyComputerComponent } from './mobile-first/only-computer/only-computer.component';
+import { ErrorInterceptor } from './error.interceptor';
+// import { FormsInterceptor } from './forms/forms.interceptor';
+// enableProdMode();
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderSocialComponent,
     HeaderSecondaryComponent,
-    ButtonHeaderSecondaryComponent,
-    ButtonSignupComponent,
-    SandwichMenuComponent,
     HeaderMenuComponent,
-    ModalFeedbackComponent,
-    ModalMessageSubmitComponent,
     HeaderSocialMobileComponent,
-    SignupFormComponent,
+    OnlyComputerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [EmailServiceService],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: FormsInterceptor, multi: true }
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

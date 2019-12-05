@@ -5,10 +5,11 @@ import { MywebsitePageComponent } from './mywebsite-page/mywebsite-page.componen
 import { PagesRoutingComponent } from './pages.routing';
 import { CommonModule } from '@angular/common';
 import { ManutComponent } from '../error-pages/manut/manut.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AboutMePageComponent, CareerPageComponent, MywebsitePageComponent, ManutComponent],
-  imports: [PagesRoutingComponent, CommonModule]
+  imports: [PagesRoutingComponent, CommonModule, FontAwesomeModule]
 })
 
 export class PagesModuleComponent { }
