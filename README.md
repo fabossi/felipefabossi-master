@@ -1,27 +1,40 @@
-# FelipefabossiSite
+# Felipe Fabossi Personal Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
+This project is my personal site, which is under construction.
+In it I intend to talk about the languages I currently work, my experiences in IT and programming.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## Code scaffolding
+### Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1 - Install angular/cli on your machine *[link] (https://angular.io/)
+2 - Install NodeJS on your machine *[link] (https://nodejs.org)
+3 - Open terminal and go to angular project folder and run: npm install --s
+4 - Open terminal and go to backend nodeJS project folder and run: npm install --s
 
-## Build
+### Running
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1 - Open terminal and go to angular project folder and run: ng serve
 
-## Running unit tests
+To use nodemon you need to install package globally, just open terminal and run: npm i nodemon -g 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2 - Open terminal and go to backend nodeJS project folder and run: nodemon / node app.js
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Deployment
 
-## Further help
+See my post on Medium where I explain how to deploy this angular application using aws.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* [link] https://medium.com/@fabossif/subindo-uma-aplica%C3%A7%C3%A3o-angular-node-js-na-amazon-web-services-aws-c2fb6c923341
+
+## Built With
+
+* [Angular](https://angular.io/docs) - The web framework used
+* [NodeJS] (https://nodejs.org/en/docs/) - Back-end used 
+
+
+## Authors
+
+* **Felipe Fabossi** - *Initial work* - [FabossiWebsite](https://github.com/fabossifelipe)
