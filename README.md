@@ -39,7 +39,7 @@ See my post on Medium where I explain how to deploy this angular application usi
 
 ## Built With
 
-* [Angular](https://angular.io/docs) - The web framework used
+* [Angular] (https://angular.io/docs) - The web framework used
 * [NodeJS/Express] (https://nodejs.org/en/docs/) - Back-end framework used 
 
 
