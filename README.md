@@ -10,8 +10,11 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 1 - Install angular/cli on your machine: (https://angular.io/)
+
 2 - Install NodeJS on your machine: (https://nodejs.org)
+
 3 - Open terminal and go to angular project folder and run: npm install --s
+
 4 - Open terminal and go to backend nodeJS project folder and run: npm install --s
 
 ### Running
