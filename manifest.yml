@@ -1,0 +1,5 @@
+applications:
+  - name: "[felipefabossi] felipefabossiSite"
+    routes:
+      - route: felipefabossi.mybluemix.net
+    memory: 1024MB

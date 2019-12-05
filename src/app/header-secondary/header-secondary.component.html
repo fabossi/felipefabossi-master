@@ -1,0 +1,58 @@
+<div class="header-first">
+  <div class="header-first__container-languages">
+    <img [ngClass]="{'highlihgted': MongoEvent, 'darked': !MongoEvent}" (click)='checkMongoEvent(mongo)'
+      class='header-first__container-languages__mongo make-animation make-grey' src="../../assets/mongo.svg"
+      alt="Mongo Logo" id="mongo" #mongo>
+
+    <!-- src="https://fabossi.s3-sa-east-1.amazonaws.com/mongo.svg"-->
+
+    <img [ngClass]="{'highlihgted': PythonEvent, 'darked': !PythonEvent}" (click)='checkPythonEvent(python)'
+      class='header-first__container-languages__python make-animation make-grey' src="../../assets/python.svg"
+      alt="Python Logo" #python>
+
+    <!--src="https://fabossi.s3-sa-east-1.amazonaws.com/python.svg"-->
+
+    <img [ngClass]="{'highlihgted': NodeEvent, 'darked': !NodeEvent}" (click)='checkNodeEvent( node)'
+      class='header-first__container-languages__node height make-animation make-grey' src="../../assets/node.svg"
+      alt="NodeJS Logo" #node>
+
+    <!--src="https://fabossi.s3-sa-east-1.amazonaws.com/node.svg"-->
+
+    <img [ngClass]="{'highlihgted': AngularEvent, 'darked': !AngularEvent}" (click)='checkAngularEvent( angular)'
+      class='header-first__container-languages__angular make-animation make-grey' src="../../assets/angular.svg"
+      alt="Angular Logo" #angular>
+
+    <!--src="https://fabossi.s3-sa-east-1.amazonaws.com/angular.svg"-->
+  </div>
+
+  <div class='header-first__container-boat' [ngClass]="{'boatMovimentation': moveBoatToMongo}" id="boat-box">
+    <div class="header-first__container-boat__play">
+
+      <ng-container *ngIf="!animate">
+        <img src='../../assets/play2.svg' class="header-first__container-boat__play__play-img"
+          (click)='initAnimation($event)' />
+
+        <!--src='https://fabossi.s3-sa-east-1.amazonaws.com/play2.svg'-->
+      </ng-container>
+
+      <ng-container *ngIf="animate">
+        <img src='../../assets/pause.svg' class="header-first__container-boat__play__play-img"
+          (click)='initAnimation($event)' />
+
+        <!--src='https://fabossi.s3-sa-east-1.amazonaws.com/pause.svg'-->
+      </ng-container>
+
+    </div>
+    <img [ngClass]="{'boatMove' : animate}" class='header-first__container-boat__boat-logo' src="../../assets/boat.svg"
+      alt="Boat Image" id="boat">
+
+    <!--src="https://fabossi.s3-sa-east-1.amazonaws.com/boat.svg"-->
+  </div>
+
+  <img class="header-first__storm-img" height='50%' width='100%' src='../../assets/blue.png' />
+
+  <!--src='https://fabossi.s3-sa-east-1.amazonaws.com/blue.png'-->
+
+  <!-- <button class='header-first__button-more'>
+    <span class='header-first__button-more__text-button'>Learn more</span></button> -->
+</div>

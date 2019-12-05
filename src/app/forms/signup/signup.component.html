@@ -1,0 +1,75 @@
+<ng-container *ngIf="initAnimation">
+
+  <form [formGroup]="signupForm" [ngClass]="{'form-animation': initAnimation}">
+    <div class="container-names">
+      <div class="generic-message-input-error">
+        <input
+          [ngClass]="{'hasError': !signupForm.get('nameTextInput').valid && signupForm.get('nameTextInput').touched}"
+          class='container-names__name-input basics-input-styles capitalize' autocomplete="off" type="text"
+          formControlName="nameTextInput" [maxlength]='mxlengthN' placeholder="Your name" autofocus>
+        <div *ngIf="signupForm?.get('nameTextInput').errors || signupForm?.get('nameTextInput').invalid"
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
+      </div>
+
+      <div class="generic-message-input-error">
+        <input
+          [ngClass]="{'hasError': !signupForm.get('lastNameTextInput').valid && signupForm.get('lastNameTextInput').touched}"
+          class='generic-message-input-error container-names__lastName-input basics-input-styles capitalize'
+          autocomplete="off" type="text" formControlName="lastNameTextInput" [maxlength]='mxlengthLN'
+          placeholder="Your lastname">
+        <div *ngIf="signupForm?.get('lastNameTextInput').errors || signupForm?.get('lastNameTextInput').invalid"
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
+      </div>
+    </div>
+
+    <div class="generic-message-input-error">
+      <input
+        [ngClass]="{'hasError': !signupForm?.get('emailTextInput').valid && signupForm?.get('emailTextInput').touched}"
+        class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="email"
+        name='emailTextInput' formControlName="emailTextInput" placeholder="youremail@provider.com" />
+      <div *ngIf="signupForm?.get('emailTextInput').invalid" class="generic-message-input-error__top">
+        {{validEmailMessage}}</div>
+    </div>
+
+    <div class="container-names">
+      <div class="generic-message-input-error">
+        <input autofocus
+          [ngClass]="{'hasError': !signupForm?.get('passwordTextInput').valid && signupForm?.get('passwordTextInput').touched}"
+          class='container-names__name-input basics-input-styles' autocomplete="off"
+          [type]="!see_password ? 'password' : 'text'" formControlName="passwordTextInput" [maxlength]='mxlengthN'
+          placeholder="write your password here" />
+        <div *ngIf="signupForm?.get('passwordTextInput').errors || signupForm?.get('passwordTextInput').invalid"
+          class="generic-message-input-error__top">{{threeLettersMessage}}</div>
+      </div>
+
+      <div class="generic-message-input-error">
+        <input
+          [ngClass]="{'hasError': !signupForm?.get('passwordConfirmTextInput').valid && signupForm?.get('passwordConfirmTextInput').touched}"
+          class='generic-message-input-error container-names__lastName-input basics-input-styles' autocomplete="off"
+          [type]="!see_password ? 'password' : 'text'" formControlName="passwordConfirmTextInput"
+          [maxlength]='mxlengthLN' placeholder="confirm your password here" />
+        <fa-icon class='basics-input-styles__icon' (click)="seePassword()"
+          [icon]="!see_password ? faEye : faEyeSlash"></fa-icon>
+        <div
+          *ngIf="signupForm?.get('passwordConfirmTextInput').errors || signupForm?.get('passwordConfirmTextInput').invalid"
+          class="generic-message-input-error__top">{{threeLettersMessage}}</div>
+
+        <div *ngIf="signupForm?.get('passwordTextInput').value !== signupForm?.get('passwordConfirmTextInput').value"
+          class="generic-message-input-error__top">{{diferentPasswordMessage}}</div>
+      </div>
+    </div>
+    <div class='container-button'
+      *ngIf="stausRequest === 'wait' || stausRequest === 'ready' || stausRequest === 'error'">
+      <button (click)='onSignUp()' class='container-button__button'>SIGNUP</button>
+      <button class='container-button__login-link' (click)='openLogin()'>Already have an account?</button>
+    </div>
+    <ng-container *ngIf="stausRequest === 'waiting'">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </ng-container>
+  </form>
+</ng-container>

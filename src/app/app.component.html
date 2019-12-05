@@ -1,0 +1,11 @@
+<div (window:resize)="onResize($event)">
+  <header-social *ngIf="!hideToMobile"></header-social>
+
+  <div class="container-profile">
+    <app-header-menu></app-header-menu>
+  </div>
+
+  <app-only-computer *ngIf="hideToMobile"></app-only-computer>
+
+</div>
+<router-outlet></router-outlet>
