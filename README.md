@@ -3,9 +3,6 @@
 This project is my personal site, which is under construction.
 In it I intend to talk about the languages I currently work, my experiences in IT and programming.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -13,9 +10,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 2 - Install NodeJS on your machine: (https://nodejs.org)
 
-3 - Open terminal and go to angular project folder and run: npm install --s
+3 - Clone the project from github using: "git clone https://github.com/fabossi/felipefabossi-site.git"
 
-4 - Open terminal and go to backend nodeJS project folder and run: npm install --s
+4 - Open terminal and go to angular project folder and run: npm install --s
+
+5 - Open terminal and go to backend nodeJS project folder and run: npm install --s
 
 ### Running
 
@@ -30,12 +29,12 @@ To use nodemon you need to install the package globally, just open terminal and 
 
 See my post on Medium where I explain how to deploy this angular application using aws.
 
-* [link] https://medium.com/@fabossif/subindo-uma-aplica%C3%A7%C3%A3o-angular-node-js-na-amazon-web-services-aws-c2fb6c923341
+* https://medium.com/@fabossif/subindo-uma-aplica%C3%A7%C3%A3o-angular-node-js-na-amazon-web-services-aws-c2fb6c923341
 
 ## Built With
 
 * [Angular](https://angular.io/docs) - The web framework used
-* [NodeJS] (https://nodejs.org/en/docs/) - Back-end used 
+* [NodeJS / Express] (https://nodejs.org/en/docs/) - Back-end framework used 
 
 
 ## Authors
