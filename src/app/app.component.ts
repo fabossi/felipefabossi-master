@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { PreviousRouteService } from './services/previous-route.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,8 +12,9 @@ export class AppComponent implements OnDestroy, OnInit {
   subscription: Subscription;
   hideToMobile = false;
   initialAnimation = false;
+  date = '11/10/2018';
 
-  constructor(private authService: AuthService, private router: Router, private routerService: PreviousRouteService) {
+  constructor(private authService: AuthService, private router: Router) {
     if (window.screen.width <= 800) {
       this.hideToMobile = true;
     }
@@ -30,11 +30,6 @@ export class AppComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.authService.autoAuthUser();
     this.initialAnimation = true;
-    this.teste();
-  }
-
-  teste() {
-    console.log("1" + 2 + "3" + 4);2
   }
 
   ngOnDestroy() {
