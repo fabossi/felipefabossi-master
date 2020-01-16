@@ -25,6 +25,7 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
       if (requestStatus === 'error') {
         this.message = this.authService.errorMessage;
         this.redirectURL = this.previousUrl;
+        console.log(this.redirectURL);
       } else if (requestStatus === 'ready') {
         this.message = this.authService.succesfullyMessage;
         this.redirectURL = '/';
@@ -46,5 +47,6 @@ export class ModalMessageSubmitComponent implements OnInit, OnDestroy {
 
   closeModal() {
     this.router.navigate([this.redirectURL]);
+    console.log(this.redirectURL);
   }
 }

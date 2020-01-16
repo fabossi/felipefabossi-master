@@ -12,8 +12,9 @@ export class PreviousRouteService {
   emitUrl = new BehaviorSubject<string>('');
 
   constructor(private router: Router) {
+    console.log(this.router.url);
     this.currentUrl = this.router.url;
-    router.events.subscribe(event => {
+    this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.previousUrl = this.currentUrl;
         this.currentUrl = event.url;

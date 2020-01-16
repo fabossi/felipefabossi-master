@@ -77,12 +77,12 @@ exports.saveContactToMongo = (req, res) => {
           res: result,
           message: 'Your message was sent succesfully.'
         });
-      resolve(result);
+      // resolve(result);
     }).catch(error => {
       console.error(error),
         res.status(500)
           .json({ message: 'Sending contact failed, we will back you to the last step' });
-      reject(error);
+      // reject(error);
     });
 }
 
