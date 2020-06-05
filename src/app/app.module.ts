@@ -12,8 +12,13 @@ import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderSocialMobileComponent } from './mobile-first/header-social-mobile/header-social-mobile.component';
 import { OnlyComputerComponent } from './mobile-first/only-computer/only-computer.component';
 import { ErrorInterceptor } from './error.interceptor';
-// import { FormsInterceptor } from './forms/forms.interceptor';
-// enableProdMode();
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import { ErrorInterceptor } from './error.interceptor';
     HeaderSocialMobileComponent,
     OnlyComputerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule,
+    NgxMaskModule.forRoot(maskConfigFunction)],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: FormsInterceptor, multi: true }

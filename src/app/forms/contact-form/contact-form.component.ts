@@ -17,11 +17,14 @@ export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
   stausRequest = 'wait';
   regexLetters = '^[ a-zA-Z]+$';
+  regexPhone = '\(([0-9]{2}|0{1}((x|[0-9]){2}[0-9]{2}))\)\s*[0-9]{3,4}[- ]*[0-9]{4}';
   onlyLettersMessage = 'Insert at least 3 characters without numbers.';
+  cellPhoneIsInvalid = 'Por favor, insira um número válido de celular';
   validEmailMessage = 'Please, insert a valid email.';
   mxlengthTA = 355;
   mxlengthN = 25;
   mxlengthLN = 45;
+  mxlengthPh = 14;
   initAnimation = false;
 
   constructor(private authService: AuthService, private userService: UserService) {
@@ -45,6 +48,11 @@ export class ContactFormComponent implements OnInit {
       messageTextInput: new FormControl('', [Validators.required, Validators.minLength(4),
       Validators.maxLength(this.mxlengthTA)]),
       emailTextInput: new FormControl('', [Validators.required, Validators.email]),
+      telTextInput: new FormControl('', [Validators.required,
+      Validators.maxLength(this.mxlengthPh),
+      Validators.minLength(this.mxlengthPh),
+      Validators.pattern(this.regexPhone)]),
+      siteName: new FormControl('', [Validators.required])
     });
     this.initAnimation = true;
     this.userService.getUserInformation(localStorage.getItem('userId'))

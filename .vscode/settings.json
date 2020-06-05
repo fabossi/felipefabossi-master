@@ -1,3 +1,4 @@
 {
-    "scssFormatter.singleQuote": true
+    "scssFormatter.singleQuote": true,
+    "explorer.compactFolders": false
 }

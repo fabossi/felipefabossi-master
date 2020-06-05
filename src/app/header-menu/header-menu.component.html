@@ -1,6 +1,6 @@
 <div class="container-writeEmail">
   <a routerLink="auth/forms">
-    <button class='container-writeEmail__button-email' (click)='showEmail()'>Write an email</button>
+    <button class='container-writeEmail__button-email' (click)='showEmail()'>Create Website</button>
   </a>
 </div>
 <a [routerLink]='RLH'>Home</a>
@@ -11,16 +11,16 @@
   </div>
 </div>
 <div class='message'>
-  <a class='message ready-only make-animation'>Career</a>
+  <a class='message ready-only make-animation'>Clients</a>
   <div class="message__inf">
     <span class="message__inf__text">Career's page is under work.</span>
   </div>
 </div>
 <div class='message'>
-  <a class='message ready-only make-animation'>About me!</a>
-  <div class="message__inf">
+  <a [routerLink]="RLAM" class='message make-animation'>About us!</a>
+  <!-- <div class="message__inf">
     <span class="message__inf__text">About me page is under work.</span>
-  </div>
+  </div> -->
 </div>
 <div class="container-writeEmail">
   <a *ngIf="!isLoggedin" routerLink="auth/forms">

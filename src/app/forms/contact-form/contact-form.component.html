@@ -28,7 +28,27 @@
         class='generic-message-input-error email-input basics-input-styles' autocomplete="off" type="email"
         name='emailTextInput' formControlName="emailTextInput" placeholder="youremail@provider.com">
       <div *ngIf="contactForm.get('emailTextInput').invalid" class="generic-message-input-error__top">
-      {{validEmailMessage}}</div>
+        {{validEmailMessage}}</div>
+    </div>
+
+    <div class="container-names">
+      <div class="generic-message-input-error">
+        <input autofocus
+          [ngClass]="{'hasError': !contactForm.get('telTextInput').valid && contactForm.get('telTextInput').touched}"
+          class='container-names__name-input basics-input-styles' autocomplete="off" type="tel"
+          formControlName="telTextInput" [maxlength]='mxlengthPh' mask="(00) 00000-0000" placeholder="(99) 9999-9999">
+        <div *ngIf="contactForm.get('telTextInput').errors || contactForm.get('telTextInput').invalid"
+          class="generic-message-input-error__top">{{cellPhoneIsInvalid}}</div>
+      </div>
+
+      <div class="generic-message-input-error">
+        <input [ngClass]="{'hasError': !contactForm.get('siteName').valid && contactForm.get('siteName').touched}"
+          class='generic-message-input-error container-names__lastName-input basics-input-styles capitalize'
+          autocomplete="off" type="text" formControlName="siteName" [maxlength]='mxlengthLN'
+          placeholder="Your website name">
+        <div *ngIf="contactForm.get('siteName').errors || contactForm.get('siteName').invalid"
+          class="generic-message-input-error__top">{{onlyLettersMessage}}</div>
+      </div>
     </div>
 
     <div class="generic-message-input-error">
@@ -36,7 +56,7 @@
         [ngClass]="{'hasError': !contactForm.get('messageTextInput').valid && contactForm.get('messageTextInput').touched}"
         class='generic-message-input-error textarea-input basics-input-styles' id='messageTextInput' autocomplete="off"
         cols="2" rows="2" formControlName="messageTextInput" [maxlength]="mxlengthTA"
-        placeholder="Write your message to me here." #messageTextInput>
+        placeholder="Write your website description here." #messageTextInput>
       </textarea>
       <div class='generic-message-input-error__top'>
         {{ messageTextInput.value.length }} of {{mxlengthTA}}
