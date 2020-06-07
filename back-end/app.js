@@ -24,7 +24,7 @@ const corsOptions = {
   credentials: true
 }
 const options = {
-  timeout: 8000,
+  timeout: 12000,
   onTimeout: (req, res) => {
     return res.status(503).send({ message: 'This process is taking longer than expected. Please, try again.' });
   },
@@ -35,7 +35,7 @@ const limiter_bd = RateLimit({
   store: new MongoStore({
     uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/Fabossi-website?retryWrites=true&w=majority`
   }),
-  max: 10,
+  max: 20,
   windowMs: 5 * 60 * 1000,
   message:
     "Too many requests, please try again in 15 minutes"

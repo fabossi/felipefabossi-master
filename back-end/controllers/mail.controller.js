@@ -7,15 +7,11 @@ exports.sendEmail = (email) => {
   // async..await is not allowed in global scope, must use a wrapper
   async function main() {
 
-    // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-
-    // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
-      secure: true, // true for 465, false for other ports
+      secure: false, // true for 465, false for other ports
       requireTLS: true,
-      port: 465,
+      port: 587,
       auth: {
         user: process.env.user_email, // generated ethereal user
         pass: process.env.user_password // generated ethereal password

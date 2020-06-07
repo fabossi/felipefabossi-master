@@ -35,8 +35,8 @@
       <div class="generic-message-input-error">
         <input autofocus
           [ngClass]="{'hasError': !contactForm.get('telTextInput').valid && contactForm.get('telTextInput').touched}"
-          class='container-names__name-input basics-input-styles' autocomplete="off" type="tel"
-          formControlName="telTextInput" [maxlength]='mxlengthPh' mask="(00) 00000-0000" placeholder="(99) 9999-9999">
+          class='container-names__name-input basics-input-styles' autocomplete="off" formControlName="telTextInput"
+          [maxlength]='mxlengthPh' mask="(00) 00000-0000" placeholder="(99) 9999-9999">
         <div *ngIf="contactForm.get('telTextInput').errors || contactForm.get('telTextInput').invalid"
           class="generic-message-input-error__top">{{cellPhoneIsInvalid}}</div>
       </div>
