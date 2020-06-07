@@ -24,7 +24,7 @@ export class ContactFormComponent implements OnInit {
   mxlengthTA = 355;
   mxlengthN = 25;
   mxlengthLN = 45;
-  mxlengthPh = 14;
+  mxlengthPh = 15;
   initAnimation = false;
 
   constructor(private authService: AuthService, private userService: UserService) {
@@ -63,7 +63,9 @@ export class ContactFormComponent implements OnInit {
               nameTextInput: user.name,
               lastNameTextInput: user.lastName,
               emailTextInput: user.email,
-              messageTextInput: ''
+              messageTextInput: '',
+              telTextInput: '',
+              siteName: ''
             });
         }
       });

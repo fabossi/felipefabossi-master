@@ -9,15 +9,21 @@ import { ModalFormsComponent } from '../modal-forms/modal-forms.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ModalMessageSubmitComponent } from '../modal-message-submit/modal-message-submit.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, ModalFormsComponent, ContactFormComponent, ModalMessageSubmitComponent],
-  imports: [FormsRoutingComponent, CommonModule, ReactiveFormsModule, FontAwesomeModule]
+  imports: [FormsRoutingComponent, CommonModule, ReactiveFormsModule, FontAwesomeModule, NgxMaskModule.forRoot(maskConfigFunction)]
 })
 
 export class FormsModuleComponent {
 
   constructor() {
-    // library.addIcons(faEye, faEyeSlash);
   }
 }

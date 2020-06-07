@@ -151,7 +151,7 @@ export class AuthService implements OnDestroy {
   submitInformations(form) {
     return new Promise((resolve, reject) => {
       this.requestFinished.next('waiting');
-      this.http.post<{ message: string }>(this.LOCAL_URL + '/api/contact', form)
+      this.http.post<{ message: string, tel: string, siteName: string }>(this.LOCAL_URL + '/api/contact', form)
         .toPromise()
         .then(data => {
           this.succesfullyMessage = data.message;
