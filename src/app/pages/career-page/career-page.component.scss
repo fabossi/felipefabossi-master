@@ -7,4 +7,46 @@
   justify-items  : center;
   height         : 100vh;
   width          : 100vw;
+  font-size      : 13px;
+}
+
+.container {
+  width      : 500px;
+  height     : 200px;
+  // border  : .1rem solid black;
+  position   : relative;
+  top        : -5%;
+
+  &__files {
+    height          : 50px;
+    width           : 100%;
+    background-color: rgba(209, 209, 209, 0.356);
+    border-radius   : 1rem;
+    display         : flex;
+    flex-direction  : row;
+    align-items     : center;
+    justify-content : space-evenly;
+  }
+}
+
+img {
+  height: 55px;
+  width : 55px;
+}
+
+table {
+  font-family    : arial, sans-serif;
+  border-collapse: collapse;
+  width          : 100%;
+}
+
+td,
+th {
+  text-align: center;
+  border    : 1px solid #dddddd;
+  padding   : 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd3d;
 }

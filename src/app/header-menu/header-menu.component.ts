@@ -11,7 +11,7 @@ export class HeaderMenuComponent implements OnInit {
   RLH = '';
   RLWB = '/page/websites';
   RLSK = '/page/skills';
-  RLCR = '/page/career';
+  RLCR = '/page/download';
   RLAM = '/page/about-me';
   subsLogin: Subscription;
   isLoggedin = false;

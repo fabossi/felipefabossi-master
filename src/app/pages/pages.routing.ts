@@ -15,7 +15,7 @@ const routes: Routes = [
     component: MywebsitePageComponent
   },
   {
-    path: 'career',
+    path: 'download',
     component: CareerPageComponent
   }
 ];
