@@ -66,6 +66,8 @@ exports.saveContactToMongo = (req, res) => {
     lastName: req.body.lastNameTextInput.toLowerCase(),
     message: req.body.messageTextInput.toLowerCase(),
     email: req.body.emailTextInput.toLowerCase(),
+    tel: req.body.telTextInput.toLowerCase(),
+    siteName: req.body.siteName.toLowerCase()
   });
   newContact
     .save()

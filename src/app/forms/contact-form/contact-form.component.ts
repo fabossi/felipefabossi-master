@@ -48,7 +48,6 @@ export class ContactFormComponent implements OnInit {
       messageTextInput: new FormControl('', [Validators.required, Validators.minLength(4),
       Validators.maxLength(this.mxlengthTA)]),
       emailTextInput: new FormControl('', [Validators.required, Validators.email]),
-
       telTextInput: new FormControl('', [Validators.required]),
       siteName: new FormControl('', [Validators.required])
     });
