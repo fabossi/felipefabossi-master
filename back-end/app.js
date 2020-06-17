@@ -29,7 +29,7 @@ const limiter_bd = RateLimit({
   store: new MongoStore({
     uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/Fabossi-website?retryWrites=true&w=majority`
   }),
-  max: 20,
+  max: 40,
   windowMs: 5 * 60 * 1000,
   message:
     "Too many requests, please try again in 15 minutes"
