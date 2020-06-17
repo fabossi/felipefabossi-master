@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const bodyParser = require("body-parser");
 const userRoute = require('./routes/user.route');
+const fileRoute = require('./routes/files.route');
 const contactRoute = require('./routes/contact.route');
 const mongodb = require('./Database/db.mongo');
 const helmet = require('helmet');
@@ -63,6 +64,7 @@ app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(timeout.handler(options));
 app.use('/api/', apiLimiter, limiter_bd, userRoute);
+app.use('/api/', apiLimiter, fileRoute);
 app.use('/api/', apiLimiter, limiter_bd, contactRoute);
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(helmet.contentSecurityPolicy({
