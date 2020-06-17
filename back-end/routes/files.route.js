@@ -7,4 +7,3 @@ router.get('/downloadJS', fileController.downloadJS);
 router.get('/downloadCSS', fileController.downloadCSS);
 
 module.exports = router;
-

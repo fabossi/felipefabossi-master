@@ -12,20 +12,13 @@ const compression = require('compression');
 const RateLimit = require('express-rate-limit');
 const MongoStore = require('rate-limit-mongo');
 const timeout = require('express-timeout-handler');
-var originsWhitelist = [
-  'http://localhost:4200',
-  'https://www.felipefabossi.com',
-  'http://www.felipefabossi.com'
-];
-const corsOptions = {
-  origin: function (origin, callback) {
-    const isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
-    callback(null, isWhitelisted);
-  },
-  credentials: true
-}
+// var originsWhitelist = [
+//   'http://localhost:4200',
+//   'https://www.felipefabossi.com',
+//   'http://www.felipefabossi.com'
+// ];
 const options = {
-  timeout: 12000,
+  timeout: 24000,
   onTimeout: (req, res) => {
     return res.status(503).send({ message: 'This process is taking longer than expected. Please, try again.' });
   },
@@ -51,7 +44,7 @@ const apiLimiter = RateLimit({
 });
 
 app.set('port', process.env.PORT || 4000);
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
@@ -87,7 +80,6 @@ mongodb.initDb((err, db) => {
     app.listen(app.get('port'), '0.0.0.0', () => {
       console.log(`Server starting on => ${app.get('port')} `);
     });
-
   }
 });
 

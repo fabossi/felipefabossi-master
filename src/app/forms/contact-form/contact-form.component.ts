@@ -73,6 +73,7 @@ export class ContactFormComponent implements OnInit {
       return;
     }
     this.authService.submitInformations(this.contactForm.value);
+    this.userService.createFolderFiles();
     this.cleanFields();
   }
 

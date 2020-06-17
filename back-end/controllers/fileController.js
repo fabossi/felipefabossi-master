@@ -398,7 +398,7 @@ exports.createFiles = (req, res) => {
 
 exports.downloadHTML = (req, res) => {
   fs.writeFile(path.resolve('files/index.html'), html, function (err) {
-    if (err) throw res.status(500).json({ err: err });
+    if (err) { throw res.status(500).json({ err: err }) }
     res.sendFile(path.resolve('files/index.html'));
   });
 }

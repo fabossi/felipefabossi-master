@@ -52,6 +52,11 @@ export class UserService {
   }
 
   createFolderFiles() {
-    this.http.post(this.LOCAL_URL + 'api/files', null);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http.post(this.LOCAL_URL + '/api/files', httpOptions).toPromise();
   }
 }
