@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const dbController = require('../controllers/db.controller')
 const js = `var wrapHeight = 1000;
 var closedHead = 0;
 
@@ -41,13 +42,12 @@ function updateHeight() {
 
 }
 `
-
 const html = `<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Scrolling Sticky Menu With Bootstrap</title>
+    <title></title>
     <meta name="description" content="Single page website template with a fixed menu and full width page sections that adjust to the height of the browser. The current page is highlighted">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="styles.css">
@@ -61,7 +61,7 @@ const html = `<html lang="en" class="no-js">
 			<a href="/" id="logo">Free Unin9 WebSite</a>
 			<div class="description">
 				<h1>Scrolling Sticky Menu</h1>
-				<p>Single page website template with a fixed menu and full width page sections that adjust to the height of the browser. The current page is highlighted in the navigation as the visitor scrools through the site and it scrolls to the selected section when the menu is clicked. "Back to top" button included.</p>
+				<p>Hi, my phone is</p>
 			</div>
 			<div id="devices">
 				<a id="desktop" class="active" title="Desktop view"> </a>
@@ -82,18 +82,6 @@ const html = `<html lang="en" class="no-js">
 			</div>
 		</div>
 	</div>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-100718332-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 </body>
 </html>`

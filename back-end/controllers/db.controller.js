@@ -6,6 +6,8 @@ const mailController = require('./mail.controller');
 const adminController = require('./adminEmail.controller');
 const jwt = require('jsonwebtoken');
 const key = require('../models/key.model');
+exports.sitename = '';
+exports.tel = '';
 
 exports.signUpToMongo = (req, res) => {
   bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
@@ -72,12 +74,14 @@ exports.saveContactToMongo = (req, res) => {
   newContact
     .save()
     .then(result => {
+      sitename = req.body.siteName;
+      tel = req.body.tel;
       mailController.sendEmail(req.body.emailTextInput);
       adminController.sendAdminEmail(req.body.emailTextInput, req.body.messageTextInput);
       res.status(200)
         .json({
           res: result,
-          message: 'Your message was sent succesfully.'
+          message: 'Your message was sent succesfully and you can download your website files!!'
         });
       // resolve(result);
     }).catch(error => {
@@ -125,3 +129,4 @@ exports.deleteContacts = (req, res) => {
       console.log(result);
     }).catch(error => { res.status(500).json({ err: error }); });
 }
+
