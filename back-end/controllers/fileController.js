@@ -60,7 +60,7 @@ const html = `<html lang="en" class="no-js">
 		<div>
 			<a href="/" id="logo">Free Unin9 WebSite</a>
 			<div class="description">
-				<h1>Scrolling Sticky Menu With Bootstrap</h1>
+				<h1>Scrolling Sticky Menu</h1>
 				<p>Single page website template with a fixed menu and full width page sections that adjust to the height of the browser. The current page is highlighted in the navigation as the visitor scrools through the site and it scrolls to the selected section when the menu is clicked. "Back to top" button included.</p>
 			</div>
 			<div id="devices">
@@ -82,10 +82,7 @@ const html = `<html lang="en" class="no-js">
 			</div>
 		</div>
 	</div>
-	<div id="footerke">
-		<span>&copy; This template can be downloaded and edited for free as long as you're linking back to html5-templates.com</span>
-		<span class="mobileOnly">&copy; HTML5-Templates.com</span>
-	</div>
+
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
