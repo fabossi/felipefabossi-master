@@ -16,6 +16,29 @@ In it we intend to make a easier platform that users can create another websites
 
 5 - Open terminal and go to backend nodeJS project folder and run: npm install --s
 
+### CREDENTIALS TO USE APPLICATION
+
+# GMAIL CONFIGURATIONS
+
+1 - Copy this informations below
+
+2 - If is not created, create a .env file in backend root folder structure
+
+3 - Paste the informations in this file.
+
+
+user_email=pagefreeuni9@gmail.com
+user_password=PageFree123
+
+#Mongodb CREDENTIALS
+
+url_mongo=mongodb+srv://root:6mj0W4rGMMIqyWcK@fabossi-website-7jcsx.mongodb.net/Fabossi-website
+user_mongo=root
+password_mongo=6mj0W4rGMMIqyWcK
+
+JWT_KEY=Jh~8y)3i7[NFSn|?Dts{6WXm2Z=E$g]w
+
+
 ### Running
 
 1 - Open terminal and go to angular project folder and run: ng serve
