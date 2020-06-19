@@ -20,7 +20,7 @@ In it we intend to make a easier platform that users can create another websites
 
 # GMAIL  - MONGODB CONFIGURATIONS
 
-1 - Copy this informations below
+1 - Copy the informations below
 
 2 - If is not created, create a .env file in backend root folder structure
 
