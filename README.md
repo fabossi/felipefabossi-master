@@ -4,12 +4,6 @@ This project is my personal site, which is under construction.
 In it I intend to talk about the languages I currently work, my experiences in IT and programming.
 
 
-### Getting Started
-
-Follow this video link to watch how can you use the web application 
- 
- * https://drive.google.com/file/d/1VTIBxEemPwGg5tPL758v7B65PYJQ60p8/view?usp=sharing
-
 ### Prerequisites
 
 1 - Install angular/cli on your machine: (https://angular.io/)
@@ -45,4 +39,4 @@ See my post on Medium where I explain how to deploy this angular application usi
 
 ## Authors
 
-* **Felipe Fabossi** - *Initial work* - [FabossiWebsite](https://github.com/fabossi/felipefabossi-site/)
+* **UNINOVE STUDENTS** - *Initial work* - [freeuni9](https://github.com/fabossi/felipefabossi-site/)
