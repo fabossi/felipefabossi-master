@@ -18,7 +18,7 @@ const timeout = require('express-timeout-handler');
 //   'http://www.felipefabossi.com'
 // ];
 const options = {
-  timeout: 24000,
+  timeout: 28000,
   onTimeout: (req, res) => {
     return res.status(503).send({ message: 'This process is taking longer than expected. Please, try again.' });
   },
@@ -29,7 +29,7 @@ const limiter_bd = RateLimit({
   store: new MongoStore({
     uri: `mongodb+srv://${process.env.user_mongo}:${process.env.password_mongo}@fabossi-website-7jcsx.mongodb.net/Fabossi-website?retryWrites=true&w=majority`
   }),
-  max: 80,
+  max: 200,
   windowMs: 5 * 60 * 1000,
   message:
     "Too many requests, please try again in 15 minutes"
@@ -38,7 +38,7 @@ const limiter_bd = RateLimit({
 
 const apiLimiter = RateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10,
+  max: 200,
   message:
     "Too many requests, please try again after in 15 minutes"
 });

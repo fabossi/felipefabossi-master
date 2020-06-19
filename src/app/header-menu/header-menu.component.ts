@@ -15,6 +15,7 @@ export class HeaderMenuComponent implements OnInit {
   RLAM = '/page/about-me';
   subsLogin: Subscription;
   isLoggedin = false;
+  email = false;
   constructor(private authService: AuthService) {
     this.subsLogin = this.authService
       .getAuthStatusListener()
@@ -29,8 +30,10 @@ export class HeaderMenuComponent implements OnInit {
   showEmail() {
     if (this.isLoggedin) {
       this.authService.type.next('email');
+      this.email = true;
     } else {
       this.authService.type.next('login');
+      this.email = false;
     }
   }
 
