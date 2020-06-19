@@ -18,7 +18,7 @@ In it we intend to make a easier platform that users can create another websites
 
 ### CREDENTIALS TO USE APPLICATION
 
-# GMAIL CONFIGURATIONS
+# GMAIL  - MONGODB CONFIGURATIONS
 
 1 - Copy this informations below
 
