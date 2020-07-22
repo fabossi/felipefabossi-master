@@ -23,7 +23,6 @@ export class PreviousRouteService {
     });
   }
 
-
   getPreviousUrl() {
     return this.emitUrl;
   }
